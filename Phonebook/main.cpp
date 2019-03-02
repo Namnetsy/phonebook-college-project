@@ -1,0 +1,13 @@
+#include "MainForm.h"
+
+using namespace System;
+using namespace System::Windows::Forms;
+
+[STAThreadAttribute]
+
+void Main() {
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false);
+	Phonebook::MainForm main;
+	Application::Run(%main);
+}
