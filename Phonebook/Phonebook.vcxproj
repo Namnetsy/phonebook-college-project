@@ -145,13 +145,13 @@
     <ClInclude Include="AddForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="HelpForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="PhonebookCategory.h" />
     <ClInclude Include="PhonebookEntry.h" />
     <ClInclude Include="SearchForm.h">
       <FileType>CppForm</FileType>

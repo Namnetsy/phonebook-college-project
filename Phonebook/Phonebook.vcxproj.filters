@@ -41,9 +41,6 @@
     <ClInclude Include="PhonebookEntry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PhonebookCategory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AddForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HelpForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

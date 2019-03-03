@@ -1,12 +1,7 @@
-#include <string>
+#include <msclr\marshal_cppstd.h>
 
-static std::string toStandardString(System::String^ string)
-{
-	using System::Runtime::InteropServices::Marshal;
-	System::IntPtr pointer = Marshal::StringToHGlobalAnsi(string);
-	char* charPointer = reinterpret_cast<char*>(pointer.ToPointer());
-	std::string returnString(charPointer, string->Length);
-	Marshal::FreeHGlobal(pointer);
+#include "Helper.h"
 
-	return returnString;
+std::string Helper::toString(System::String^ value) {
+	return msclr::interop::marshal_as<std::string>(value);
 }

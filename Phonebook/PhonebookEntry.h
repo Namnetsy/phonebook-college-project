@@ -1,35 +1,45 @@
 #pragma once
 
-#include <fstream>
-#include <string>
 #include <vector>
+#include <string>
 
 using namespace std;
 using namespace System::Windows::Forms;
 
-const string DEFAULT_PATH = "Phonebook_entries.txt";
+namespace PhonebookEntry {
+	// Default path for storing phonebook's entries
+	const string DEFAULT_PATH = "Phonebook_entries.pbe";
 
-struct Entry {
-	string fullName;
-	string note;
-	string category;
-	string homePhone;
-	string workPhone;
-	string mobilePhone;
-	string email;
-	string address;
-	string city;
-	bool favorite;
-};
+	// Represents an entry in the phonebook
+	struct Entry {
+		string fullName;
+		string note;
+		string homePhone;
+		string workPhone;
+		string mobilePhone;
+		string email;
+		string address;
+		string city;
+	};
 
-vector<Entry> getDataFromFile(string path);
+	// Gets entries from a file
+	// And also returns vector as a result of getiing entries
+	vector<Entry> getEntries(string path);
 
-vector<Entry> getDataFromFile();
+	// The same as above but instead of custom path we will be used DEFAULT_PATH const
+	vector<Entry> getEntries();
 
-bool saveDataToFile(vector<Entry> entries, string path);
+	// Just save entries from the vector to a file by the path
+	// and returns bool as a result of saving operation
+	bool saveEntries(vector<Entry> entries, string path);
 
-bool saveDataToFile(vector<Entry> entries); // the same as above but without path
+	// Exactly the same as above but instead of path we will be used DEFAULT_PATH const
+	bool saveEntries(vector<Entry> entries);
 
-vector<Entry> convertGridToEntries(DataGridView^ grid);
+	// Gets entries from DataGridView and returns vector of entries as a result
+	vector<Entry> gridToEntries(DataGridView^ grid);
 
-bool addEntriesToGrid(vector<Entry> entries, DataGridView^ grid);
+	// Load entries to DataGridView without clearing it from a previous data
+	bool addEntriesToGrid(vector<Entry> entries, DataGridView^ grid);
+
+}
