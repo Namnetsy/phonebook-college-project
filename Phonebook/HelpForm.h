@@ -22,6 +22,9 @@ namespace Phonebook {
 			//TODO: Add the constructor code here
 			//
 		}
+	private:
+		Point mouseLocation;
+		bool isDown = false;
 
 	protected:
 		/// <summary>
@@ -120,6 +123,8 @@ namespace Phonebook {
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
 			this->picXout->Click += gcnew System::EventHandler(this, &HelpForm::picXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &HelpForm::picXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &HelpForm::picXout_MouseLeave);
 			// 
 			// lbWindowTitle
 			// 
@@ -197,5 +202,7 @@ namespace Phonebook {
 	private: System::Void panel1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void panel1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 };
 }

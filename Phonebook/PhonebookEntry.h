@@ -42,4 +42,8 @@ namespace PhonebookEntry {
 	// Load entries to DataGridView without clearing it from a previous data
 	bool addEntriesToGrid(vector<Entry> entries, DataGridView^ grid);
 
+	bool isDataExists(string path);
+
+	bool isDataExists();
+
 }

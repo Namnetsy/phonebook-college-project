@@ -114,6 +114,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -176,6 +178,7 @@
   <ItemGroup>
     <Image Include="..\Pictures\add-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
+    <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
     <Image Include="..\Pictures\show_all-focused.png" />
     <Image Include="..\Pictures\x_out-focused.png" />

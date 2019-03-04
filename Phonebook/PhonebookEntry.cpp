@@ -50,7 +50,7 @@ namespace PhonebookEntry {
 		Entry entry;
 		int len = entries.size();
 
-		if (!storedData.is_open())
+		if (!storedData.is_open() || len == 0)
 			return false;
 
 		// Store count of entries in a file
@@ -121,5 +121,17 @@ namespace PhonebookEntry {
 
 	vector<Entry> getEntries() {
 		return getEntries(DEFAULT_PATH);
+	}
+
+	bool isDataExists(string path) {
+		ifstream storedData(path, ios::binary);
+		bool isExists = storedData.is_open();
+		storedData.close();
+
+		return isExists;
+	}
+
+	bool isDataExists() {
+		return isDataExists(DEFAULT_PATH);
 	}
 }

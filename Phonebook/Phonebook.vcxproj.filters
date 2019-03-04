@@ -90,5 +90,8 @@
     <Image Include="..\Pictures\show_all-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\Pictures\save-focused.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

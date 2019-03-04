@@ -22,6 +22,9 @@ namespace Phonebook {
 			//TODO: Add the constructor code here
 			//
 		}
+	private:
+		Point mouseLocation;
+		bool isDown;
 
 	protected:
 		/// <summary>
@@ -150,13 +153,15 @@ namespace Phonebook {
 			// 
 			this->picXout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picXout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picXout.Image")));
-			this->picXout->Location = System::Drawing::Point(317, 8);
+			this->picXout->Location = System::Drawing::Point(320, 8);
 			this->picXout->Name = L"picXout";
 			this->picXout->Size = System::Drawing::Size(37, 33);
 			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
 			this->picXout->Click += gcnew System::EventHandler(this, &SearchForm::picXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &SearchForm::picXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &SearchForm::picXout_MouseLeave);
 			// 
 			// lbWindowTitle
 			// 
@@ -361,5 +366,7 @@ private: System::Void panControlButtons_MouseDown(System::Object^  sender, Syste
 private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 };
 }

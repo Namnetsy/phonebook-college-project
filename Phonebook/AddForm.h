@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MainForm.h"
+
 namespace Phonebook {
 
 	using namespace System;
@@ -15,13 +17,14 @@ namespace Phonebook {
 	public ref class AddForm : public System::Windows::Forms::Form
 	{
 	public:
-		AddForm(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+		AddForm(MainForm^ form);
+
+	private:
+		MainForm^ form;
+		Point mouseLocation;
+		bool isDown = false;
+
+	private: System::Windows::Forms::Button^  btnReset;
 
 	protected:
 		/// <summary>
@@ -55,11 +58,13 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::Label^  lbMobilePhone;
+	private: System::Windows::Forms::TextBox^  tbMobilePhone;
 
-	private: System::Windows::Forms::TextBox^  textBox5;
+
 	private: System::Windows::Forms::Label^  lbEmail;
+	private: System::Windows::Forms::TextBox^  tbEmail;
 
-	private: System::Windows::Forms::TextBox^  textBox6;
+
 	private: System::Windows::Forms::Label^  lbAddress;
 	private: System::Windows::Forms::TextBox^  tbAddress;
 	private: System::Windows::Forms::Label^  lbCity;
@@ -80,8 +85,9 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::Label^  lbWindowTitle;
+	private: System::Windows::Forms::Button^  btnAddEntry;
 
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::Panel^  panLeftBorder;
 	private: System::Windows::Forms::Panel^  panRightBorder;
 	private: System::Windows::Forms::Panel^  panBottomBorder;
@@ -89,7 +95,8 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::Panel^  panInfo;
-	private: System::Windows::Forms::Label^  lbAmountEntries;
+	private: System::Windows::Forms::Label^  lbInfo;
+
 	private: System::Windows::Forms::PictureBox^  picHelp;
 	private: System::Windows::Forms::Panel^  panBottomBorder2;
 
@@ -121,9 +128,9 @@ namespace Phonebook {
 			this->lbWorkPhone = (gcnew System::Windows::Forms::Label());
 			this->tbWorkPhone = (gcnew System::Windows::Forms::TextBox());
 			this->lbMobilePhone = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->tbMobilePhone = (gcnew System::Windows::Forms::TextBox());
 			this->lbEmail = (gcnew System::Windows::Forms::Label());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->tbEmail = (gcnew System::Windows::Forms::TextBox());
 			this->lbAddress = (gcnew System::Windows::Forms::Label());
 			this->tbAddress = (gcnew System::Windows::Forms::TextBox());
 			this->lbCity = (gcnew System::Windows::Forms::Label());
@@ -132,14 +139,15 @@ namespace Phonebook {
 			this->picPhonebookIcon = (gcnew System::Windows::Forms::PictureBox());
 			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->lbWindowTitle = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btnAddEntry = (gcnew System::Windows::Forms::Button());
 			this->panLeftBorder = (gcnew System::Windows::Forms::Panel());
 			this->panRightBorder = (gcnew System::Windows::Forms::Panel());
 			this->panBottomBorder = (gcnew System::Windows::Forms::Panel());
 			this->panInfo = (gcnew System::Windows::Forms::Panel());
-			this->lbAmountEntries = (gcnew System::Windows::Forms::Label());
+			this->lbInfo = (gcnew System::Windows::Forms::Label());
 			this->picHelp = (gcnew System::Windows::Forms::PictureBox());
 			this->panBottomBorder2 = (gcnew System::Windows::Forms::Panel());
+			this->btnReset = (gcnew System::Windows::Forms::Button());
 			this->panControlButtons->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhonebookIcon))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
@@ -216,39 +224,39 @@ namespace Phonebook {
 			// lbMobilePhone
 			// 
 			this->lbMobilePhone->AutoSize = true;
-			this->lbMobilePhone->Location = System::Drawing::Point(312, 60);
+			this->lbMobilePhone->Location = System::Drawing::Point(240, 60);
 			this->lbMobilePhone->Name = L"lbMobilePhone";
 			this->lbMobilePhone->Size = System::Drawing::Size(72, 13);
 			this->lbMobilePhone->TabIndex = 10;
 			this->lbMobilePhone->Text = L"Mobile Phone";
 			// 
-			// textBox5
+			// tbMobilePhone
 			// 
-			this->textBox5->Location = System::Drawing::Point(340, 83);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(163, 20);
-			this->textBox5->TabIndex = 11;
+			this->tbMobilePhone->Location = System::Drawing::Point(268, 83);
+			this->tbMobilePhone->Name = L"tbMobilePhone";
+			this->tbMobilePhone->Size = System::Drawing::Size(163, 20);
+			this->tbMobilePhone->TabIndex = 11;
 			// 
 			// lbEmail
 			// 
 			this->lbEmail->AutoSize = true;
-			this->lbEmail->Location = System::Drawing::Point(312, 116);
+			this->lbEmail->Location = System::Drawing::Point(240, 116);
 			this->lbEmail->Name = L"lbEmail";
 			this->lbEmail->Size = System::Drawing::Size(32, 13);
 			this->lbEmail->TabIndex = 12;
 			this->lbEmail->Text = L"Email";
 			// 
-			// textBox6
+			// tbEmail
 			// 
-			this->textBox6->Location = System::Drawing::Point(340, 135);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(163, 20);
-			this->textBox6->TabIndex = 13;
+			this->tbEmail->Location = System::Drawing::Point(268, 135);
+			this->tbEmail->Name = L"tbEmail";
+			this->tbEmail->Size = System::Drawing::Size(163, 20);
+			this->tbEmail->TabIndex = 13;
 			// 
 			// lbAddress
 			// 
 			this->lbAddress->AutoSize = true;
-			this->lbAddress->Location = System::Drawing::Point(312, 166);
+			this->lbAddress->Location = System::Drawing::Point(240, 166);
 			this->lbAddress->Name = L"lbAddress";
 			this->lbAddress->Size = System::Drawing::Size(45, 13);
 			this->lbAddress->TabIndex = 14;
@@ -256,7 +264,7 @@ namespace Phonebook {
 			// 
 			// tbAddress
 			// 
-			this->tbAddress->Location = System::Drawing::Point(340, 189);
+			this->tbAddress->Location = System::Drawing::Point(268, 189);
 			this->tbAddress->Name = L"tbAddress";
 			this->tbAddress->Size = System::Drawing::Size(163, 20);
 			this->tbAddress->TabIndex = 15;
@@ -264,7 +272,7 @@ namespace Phonebook {
 			// lbCity
 			// 
 			this->lbCity->AutoSize = true;
-			this->lbCity->Location = System::Drawing::Point(312, 221);
+			this->lbCity->Location = System::Drawing::Point(240, 221);
 			this->lbCity->Name = L"lbCity";
 			this->lbCity->Size = System::Drawing::Size(24, 13);
 			this->lbCity->TabIndex = 16;
@@ -272,7 +280,7 @@ namespace Phonebook {
 			// 
 			// tbCity
 			// 
-			this->tbCity->Location = System::Drawing::Point(340, 246);
+			this->tbCity->Location = System::Drawing::Point(268, 246);
 			this->tbCity->Name = L"tbCity";
 			this->tbCity->Size = System::Drawing::Size(163, 20);
 			this->tbCity->TabIndex = 17;
@@ -286,7 +294,7 @@ namespace Phonebook {
 			this->panControlButtons->Controls->Add(this->lbWindowTitle);
 			this->panControlButtons->Location = System::Drawing::Point(0, 0);
 			this->panControlButtons->Name = L"panControlButtons";
-			this->panControlButtons->Size = System::Drawing::Size(612, 46);
+			this->panControlButtons->Size = System::Drawing::Size(469, 46);
 			this->panControlButtons->TabIndex = 20;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &AddForm::panControlButtons_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AddForm::panControlButtons_MouseMove);
@@ -306,13 +314,15 @@ namespace Phonebook {
 			// 
 			this->picXout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picXout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picXout.Image")));
-			this->picXout->Location = System::Drawing::Point(568, 8);
+			this->picXout->Location = System::Drawing::Point(424, 8);
 			this->picXout->Name = L"picXout";
 			this->picXout->Size = System::Drawing::Size(37, 33);
 			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
 			this->picXout->Click += gcnew System::EventHandler(this, &AddForm::picXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &AddForm::picXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &AddForm::picXout_MouseLeave);
 			// 
 			// lbWindowTitle
 			// 
@@ -327,14 +337,15 @@ namespace Phonebook {
 			this->lbWindowTitle->Text = L"Add New Entry";
 			this->lbWindowTitle->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// button1
+			// btnAddEntry
 			// 
-			this->button1->Location = System::Drawing::Point(471, 304);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(116, 23);
-			this->button1->TabIndex = 21;
-			this->button1->Text = L"Add to Phonebook";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnAddEntry->Location = System::Drawing::Point(333, 294);
+			this->btnAddEntry->Name = L"btnAddEntry";
+			this->btnAddEntry->Size = System::Drawing::Size(116, 23);
+			this->btnAddEntry->TabIndex = 21;
+			this->btnAddEntry->Text = L"Add to Phonebook";
+			this->btnAddEntry->UseVisualStyleBackColor = true;
+			this->btnAddEntry->Click += gcnew System::EventHandler(this, &AddForm::btnAddEntry_Click);
 			// 
 			// panLeftBorder
 			// 
@@ -349,7 +360,7 @@ namespace Phonebook {
 			// 
 			this->panRightBorder->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->panRightBorder->Location = System::Drawing::Point(609, 3);
+			this->panRightBorder->Location = System::Drawing::Point(466, 3);
 			this->panRightBorder->Name = L"panRightBorder";
 			this->panRightBorder->Size = System::Drawing::Size(3, 363);
 			this->panRightBorder->TabIndex = 23;
@@ -360,32 +371,32 @@ namespace Phonebook {
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
 			this->panBottomBorder->Location = System::Drawing::Point(3, 333);
 			this->panBottomBorder->Name = L"panBottomBorder";
-			this->panBottomBorder->Size = System::Drawing::Size(609, 3);
+			this->panBottomBorder->Size = System::Drawing::Size(466, 3);
 			this->panBottomBorder->TabIndex = 24;
 			// 
 			// panInfo
 			// 
-			this->panInfo->Controls->Add(this->lbAmountEntries);
+			this->panInfo->Controls->Add(this->lbInfo);
 			this->panInfo->Controls->Add(this->picHelp);
 			this->panInfo->Location = System::Drawing::Point(3, 336);
 			this->panInfo->Name = L"panInfo";
-			this->panInfo->Size = System::Drawing::Size(606, 23);
+			this->panInfo->Size = System::Drawing::Size(463, 23);
 			this->panInfo->TabIndex = 25;
 			// 
-			// lbAmountEntries
+			// lbInfo
 			// 
-			this->lbAmountEntries->AutoSize = true;
-			this->lbAmountEntries->Location = System::Drawing::Point(9, 5);
-			this->lbAmountEntries->Name = L"lbAmountEntries";
-			this->lbAmountEntries->Size = System::Drawing::Size(153, 13);
-			this->lbAmountEntries->TabIndex = 8;
-			this->lbAmountEntries->Text = L"Please, fill out all of these fileds";
+			this->lbInfo->AutoSize = true;
+			this->lbInfo->Location = System::Drawing::Point(9, 5);
+			this->lbInfo->Name = L"lbInfo";
+			this->lbInfo->Size = System::Drawing::Size(153, 13);
+			this->lbInfo->TabIndex = 8;
+			this->lbInfo->Text = L"Please, fill out all of these fileds";
 			// 
 			// picHelp
 			// 
 			this->picHelp->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picHelp->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picHelp.Image")));
-			this->picHelp->Location = System::Drawing::Point(575, 2);
+			this->picHelp->Location = System::Drawing::Point(432, 2);
 			this->picHelp->Name = L"picHelp";
 			this->picHelp->Size = System::Drawing::Size(28, 19);
 			this->picHelp->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -398,28 +409,39 @@ namespace Phonebook {
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
 			this->panBottomBorder2->Location = System::Drawing::Point(0, 360);
 			this->panBottomBorder2->Name = L"panBottomBorder2";
-			this->panBottomBorder2->Size = System::Drawing::Size(612, 3);
+			this->panBottomBorder2->Size = System::Drawing::Size(466, 3);
 			this->panBottomBorder2->TabIndex = 26;
+			// 
+			// btnReset
+			// 
+			this->btnReset->Location = System::Drawing::Point(196, 294);
+			this->btnReset->Name = L"btnReset";
+			this->btnReset->Size = System::Drawing::Size(116, 23);
+			this->btnReset->TabIndex = 27;
+			this->btnReset->Text = L"Reset";
+			this->btnReset->UseVisualStyleBackColor = true;
+			this->btnReset->Click += gcnew System::EventHandler(this, &AddForm::btnReset_Click);
 			// 
 			// AddForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(612, 363);
+			this->ClientSize = System::Drawing::Size(468, 363);
+			this->Controls->Add(this->btnReset);
 			this->Controls->Add(this->panBottomBorder2);
 			this->Controls->Add(this->panInfo);
 			this->Controls->Add(this->panBottomBorder);
 			this->Controls->Add(this->panRightBorder);
 			this->Controls->Add(this->panLeftBorder);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnAddEntry);
 			this->Controls->Add(this->panControlButtons);
 			this->Controls->Add(this->tbCity);
 			this->Controls->Add(this->lbCity);
 			this->Controls->Add(this->tbAddress);
 			this->Controls->Add(this->lbAddress);
-			this->Controls->Add(this->textBox6);
+			this->Controls->Add(this->tbEmail);
 			this->Controls->Add(this->lbEmail);
-			this->Controls->Add(this->textBox5);
+			this->Controls->Add(this->tbMobilePhone);
 			this->Controls->Add(this->lbMobilePhone);
 			this->Controls->Add(this->tbWorkPhone);
 			this->Controls->Add(this->lbWorkPhone);
@@ -445,9 +467,15 @@ namespace Phonebook {
 
 		}
 #pragma endregion
+private: bool checkFields(Label^ label);
+
 private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void btnAddEntry_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void btnReset_Click(System::Object^  sender, System::EventArgs^  e);
+private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 };
 }
