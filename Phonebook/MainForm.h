@@ -22,6 +22,14 @@ namespace Phonebook {
 	private:
 		Point mouseLocation;
 	private: System::Windows::Forms::PictureBox^  picSave;
+	private: System::Windows::Forms::PictureBox^  picEdit;
+	private: System::Windows::Forms::ToolTip^  toolTip;
+	private: System::Windows::Forms::PictureBox^  picRemoveAll;
+
+
+
+
+
 			 bool isDown = false;
 
 	protected:
@@ -112,6 +120,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  address;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  city;
 	private: System::Windows::Forms::PictureBox^  picShowAll;
+	private: System::ComponentModel::IContainer^  components;
 
 
 
@@ -121,7 +130,7 @@ namespace Phonebook {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -130,6 +139,7 @@ namespace Phonebook {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
 			this->picPhonebookIcon = (gcnew System::Windows::Forms::PictureBox());
@@ -137,6 +147,8 @@ namespace Phonebook {
 			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->lbWindowTitle = (gcnew System::Windows::Forms::Label());
 			this->panToolbar = (gcnew System::Windows::Forms::Panel());
+			this->picRemoveAll = (gcnew System::Windows::Forms::PictureBox());
+			this->picEdit = (gcnew System::Windows::Forms::PictureBox());
 			this->picSave = (gcnew System::Windows::Forms::PictureBox());
 			this->picShowAll = (gcnew System::Windows::Forms::PictureBox());
 			this->picSearch = (gcnew System::Windows::Forms::PictureBox());
@@ -159,11 +171,14 @@ namespace Phonebook {
 			this->picHelp = (gcnew System::Windows::Forms::PictureBox());
 			this->panInfo = (gcnew System::Windows::Forms::Panel());
 			this->panBottomBorder2 = (gcnew System::Windows::Forms::Panel());
+			this->toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->panControlButtons->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhonebookIcon))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMinimize))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			this->panToolbar->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picRemoveAll))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picEdit))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowAll))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSearch))->BeginInit();
@@ -241,6 +256,8 @@ namespace Phonebook {
 			// 
 			// panToolbar
 			// 
+			this->panToolbar->Controls->Add(this->picRemoveAll);
+			this->panToolbar->Controls->Add(this->picEdit);
 			this->panToolbar->Controls->Add(this->picSave);
 			this->panToolbar->Controls->Add(this->picShowAll);
 			this->panToolbar->Controls->Add(this->picSearch);
@@ -251,16 +268,47 @@ namespace Phonebook {
 			this->panToolbar->Size = System::Drawing::Size(1071, 33);
 			this->panToolbar->TabIndex = 1;
 			// 
+			// picRemoveAll
+			// 
+			this->picRemoveAll->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picRemoveAll.Image")));
+			this->picRemoveAll->Location = System::Drawing::Point(220, 4);
+			this->picRemoveAll->Name = L"picRemoveAll";
+			this->picRemoveAll->Size = System::Drawing::Size(45, 25);
+			this->picRemoveAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picRemoveAll->TabIndex = 6;
+			this->picRemoveAll->TabStop = false;
+			this->toolTip->SetToolTip(this->picRemoveAll, L"Delete all data from disk");
+			this->picRemoveAll->Click += gcnew System::EventHandler(this, &MainForm::picRemoveAll_Click);
+			this->picRemoveAll->MouseEnter += gcnew System::EventHandler(this, &MainForm::picRemoveAll_MouseEnter);
+			this->picRemoveAll->MouseLeave += gcnew System::EventHandler(this, &MainForm::picRemoveAll_MouseLeave);
+			// 
+			// picEdit
+			// 
+			this->picEdit->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picEdit->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picEdit.Image")));
+			this->picEdit->Location = System::Drawing::Point(118, 4);
+			this->picEdit->Name = L"picEdit";
+			this->picEdit->Size = System::Drawing::Size(45, 25);
+			this->picEdit->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picEdit->TabIndex = 5;
+			this->picEdit->TabStop = false;
+			this->toolTip->SetToolTip(this->picEdit, L"Edit");
+			this->picEdit->Click += gcnew System::EventHandler(this, &MainForm::picEdit_Click);
+			this->picEdit->MouseEnter += gcnew System::EventHandler(this, &MainForm::picEdit_MouseEnter);
+			this->picEdit->MouseLeave += gcnew System::EventHandler(this, &MainForm::picEdit_MouseLeave);
+			// 
 			// picSave
 			// 
 			this->picSave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSave.Image")));
-			this->picSave->Location = System::Drawing::Point(118, 4);
+			this->picSave->Location = System::Drawing::Point(169, 4);
 			this->picSave->Name = L"picSave";
 			this->picSave->Size = System::Drawing::Size(45, 25);
 			this->picSave->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSave->TabIndex = 4;
 			this->picSave->TabStop = false;
+			this->toolTip->SetToolTip(this->picSave, L"Save");
 			this->picSave->Click += gcnew System::EventHandler(this, &MainForm::picSave_Click);
 			this->picSave->MouseEnter += gcnew System::EventHandler(this, &MainForm::picSave_MouseEnter);
 			this->picSave->MouseLeave += gcnew System::EventHandler(this, &MainForm::picSave_MouseLeave);
@@ -269,12 +317,13 @@ namespace Phonebook {
 			// 
 			this->picShowAll->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picShowAll.Image")));
-			this->picShowAll->Location = System::Drawing::Point(169, 4);
+			this->picShowAll->Location = System::Drawing::Point(271, 4);
 			this->picShowAll->Name = L"picShowAll";
 			this->picShowAll->Size = System::Drawing::Size(45, 25);
 			this->picShowAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picShowAll->TabIndex = 3;
 			this->picShowAll->TabStop = false;
+			this->toolTip->SetToolTip(this->picShowAll, L"Open from disk");
 			this->picShowAll->Click += gcnew System::EventHandler(this, &MainForm::picShowAll_Click);
 			this->picShowAll->MouseEnter += gcnew System::EventHandler(this, &MainForm::picShowAll_MouseEnter);
 			this->picShowAll->MouseLeave += gcnew System::EventHandler(this, &MainForm::picShowAll_MouseLeave);
@@ -283,12 +332,13 @@ namespace Phonebook {
 			// 
 			this->picSearch->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSearch->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSearch.Image")));
-			this->picSearch->Location = System::Drawing::Point(220, 4);
+			this->picSearch->Location = System::Drawing::Point(322, 4);
 			this->picSearch->Name = L"picSearch";
 			this->picSearch->Size = System::Drawing::Size(45, 25);
 			this->picSearch->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSearch->TabIndex = 2;
 			this->picSearch->TabStop = false;
+			this->toolTip->SetToolTip(this->picSearch, L"Search by entries");
 			this->picSearch->Click += gcnew System::EventHandler(this, &MainForm::picSearch_Click);
 			this->picSearch->MouseEnter += gcnew System::EventHandler(this, &MainForm::picSearch_MouseEnter);
 			this->picSearch->MouseLeave += gcnew System::EventHandler(this, &MainForm::picSearch_MouseLeave);
@@ -303,6 +353,7 @@ namespace Phonebook {
 			this->picRemoveEntry->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picRemoveEntry->TabIndex = 1;
 			this->picRemoveEntry->TabStop = false;
+			this->toolTip->SetToolTip(this->picRemoveEntry, L"Remove seleted entries");
 			this->picRemoveEntry->Click += gcnew System::EventHandler(this, &MainForm::picRemoveEntry_Click);
 			this->picRemoveEntry->MouseEnter += gcnew System::EventHandler(this, &MainForm::picRemoveEntry_MouseEnter);
 			this->picRemoveEntry->MouseLeave += gcnew System::EventHandler(this, &MainForm::picRemoveEntry_MouseLeave);
@@ -317,6 +368,7 @@ namespace Phonebook {
 			this->picAddEntry->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAddEntry->TabIndex = 0;
 			this->picAddEntry->TabStop = false;
+			this->toolTip->SetToolTip(this->picAddEntry, L"Add new entry");
 			this->picAddEntry->Click += gcnew System::EventHandler(this, &MainForm::picAddEntry_Click);
 			this->picAddEntry->MouseEnter += gcnew System::EventHandler(this, &MainForm::picAddEntry_MouseEnter);
 			this->picAddEntry->MouseLeave += gcnew System::EventHandler(this, &MainForm::picAddEntry_MouseLeave);
@@ -440,6 +492,7 @@ namespace Phonebook {
 			this->picHelp->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picHelp->TabIndex = 7;
 			this->picHelp->TabStop = false;
+			this->toolTip->SetToolTip(this->picHelp, L"Help");
 			this->picHelp->Click += gcnew System::EventHandler(this, &MainForm::picHelp_Click);
 			// 
 			// panInfo
@@ -484,6 +537,8 @@ namespace Phonebook {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMinimize))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
 			this->panToolbar->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picRemoveAll))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picEdit))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowAll))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSearch))->EndInit();
@@ -497,31 +552,38 @@ namespace Phonebook {
 		}
 
 #pragma endregion;
-public: void addEntry(PhonebookEntry::Entry entry);
-private: void updateAmountInfo();
+	public: void addEntry(PhonebookEntry::Entry entry);
+	public: void updateEntry(DataGridViewRow^ row, int index);
+	private: void updateAmountInfo();
 
-private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picMinimize_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picAddEntry_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSearch_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-private: System::Void picHelp_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picAddEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picAddEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picRemoveEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picRemoveEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSearch_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picShowAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picShowAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSave_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSave_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picRemoveEntry_Click(System::Object^  sender, System::EventArgs^  e);
-private: System::Void picShowAll_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picMinimize_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picAddEntry_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSearch_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+	private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+	private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+	private: System::Void picHelp_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picAddEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picAddEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSearch_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picShowAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picShowAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSave_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSave_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveEntry_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picShowAll_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picEdit_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picEdit_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picEdit_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

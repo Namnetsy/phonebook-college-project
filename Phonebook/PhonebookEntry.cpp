@@ -134,4 +134,16 @@ namespace PhonebookEntry {
 	bool isDataExists() {
 		return isDataExists(DEFAULT_PATH);
 	}
+
+	bool removeData(string path) {
+		if (!isDataExists())
+			return false;
+
+		std::remove(path.c_str());
+		return true;
+	}
+
+	bool removeData() {
+		return removeData(DEFAULT_PATH);
+	}
 }

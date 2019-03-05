@@ -2,6 +2,7 @@
 #include "AddForm.h"
 #include "SearchForm.h"
 #include "HelpForm.h"
+#include "EditForm.h"
 
 #include "PhonebookEntry.h"
 
@@ -175,6 +176,45 @@ namespace Phonebook {
 		}
 	}
 
+	// Edit button' events
+
+	System::Void MainForm::picEdit_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
+		picEdit->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"edit-focused")));
+	}
+	
+	System::Void MainForm::picEdit_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
+		picEdit->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"picEdit.Image")));
+	}
+
+	System::Void MainForm::picEdit_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (dgPhonebookEntries->SelectedRows->Count > 0) {
+			EditForm^ editForm = gcnew EditForm((DataGridViewRow^)dgPhonebookEntries->SelectedRows[0], this);
+			editForm->Show();
+		} else {
+			MessageBox::Show("Please, select a row to edit", "Info");
+		}
+	}
+
+	// Remove all button' events
+
+	System::Void MainForm::picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
+		picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"remove_all-focused")));
+	}
+	
+	System::Void MainForm::picRemoveAll_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
+		picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"picRemoveAll.Image")));
+	}
+	
+	System::Void MainForm::picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (!PhonebookEntry::removeData()) {
+			MessageBox::Show("There's nothing to remove", "Info");
+		}
+	}
+
 	// Other
 
 	void MainForm::addEntry(PhonebookEntry::Entry entry) {
@@ -184,6 +224,17 @@ namespace Phonebook {
 			gcnew String(entry.address.c_str()), gcnew String(entry.city.c_str()));
 
 		updateAmountInfo();
+	}
+
+	void MainForm::updateEntry(DataGridViewRow^ row, int index) {
+		dgPhonebookEntries->Rows[index]->Cells[0]->Value = row->Cells[0]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[1]->Value = row->Cells[1]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[2]->Value = row->Cells[2]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[3]->Value = row->Cells[3]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[4]->Value = row->Cells[4]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[5]->Value = row->Cells[5]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[6]->Value = row->Cells[6]->Value->ToString();
+		dgPhonebookEntries->Rows[index]->Cells[7]->Value = row->Cells[7]->Value->ToString();
 	}
 
 	void MainForm::updateAmountInfo() {

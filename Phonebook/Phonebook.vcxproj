@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddForm.cpp" />
+    <ClCompile Include="EditForm.cpp" />
     <ClCompile Include="HelpForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
@@ -145,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Helper.h" />
@@ -163,6 +167,9 @@
     <EmbeddedResource Include="AddForm.resx">
       <DependentUpon>AddForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.h</DependentUpon>
     </EmbeddedResource>
@@ -170,14 +177,18 @@
       <DependentUpon>MainForm.h</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resource.resx" />
+    <EmbeddedResource Include="Resource.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Pictures\add-focused.png" />
+    <Image Include="..\Pictures\edit-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
+    <Image Include="..\Pictures\remove_all-focused.png" />
     <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
     <Image Include="..\Pictures\show_all-focused.png" />

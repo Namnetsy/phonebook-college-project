@@ -24,7 +24,8 @@ namespace Phonebook {
 		}
 	private:
 		Point mouseLocation;
-		bool isDown;
+	private: System::Windows::Forms::ToolTip^  toolTip;
+			 bool isDown;
 
 	protected:
 		/// <summary>
@@ -81,13 +82,14 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::Panel^  panRightBorder;
+	private: System::ComponentModel::IContainer^  components;
 
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -96,6 +98,7 @@ namespace Phonebook {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(SearchForm::typeid));
 			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
 			this->picPhonebookIcon = (gcnew System::Windows::Forms::PictureBox());
@@ -117,6 +120,7 @@ namespace Phonebook {
 			this->picHelp = (gcnew System::Windows::Forms::PictureBox());
 			this->panBottomBorder2 = (gcnew System::Windows::Forms::Panel());
 			this->panRightBorder = (gcnew System::Windows::Forms::Panel());
+			this->toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->panControlButtons->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhonebookIcon))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
@@ -309,6 +313,7 @@ namespace Phonebook {
 			this->picHelp->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picHelp->TabIndex = 7;
 			this->picHelp->TabStop = false;
+			this->toolTip->SetToolTip(this->picHelp, L"Help");
 			// 
 			// panBottomBorder2
 			// 

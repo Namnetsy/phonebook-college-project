@@ -42,8 +42,16 @@ namespace PhonebookEntry {
 	// Load entries to DataGridView without clearing it from a previous data
 	bool addEntriesToGrid(vector<Entry> entries, DataGridView^ grid);
 
+	// Returns true if following file exists or false if not
 	bool isDataExists(string path);
 
+	// Exactly the same as above but instead of path variable will be used DEFAULT_PATH const
 	bool isDataExists();
+
+	// Remove file by the following path and returns true or false as a result of this operation
+	bool removeData(string path);
+
+	// Remove file by default path and so to speak the same as above
+	bool removeData();
 
 }
