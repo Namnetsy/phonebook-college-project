@@ -137,6 +137,8 @@ namespace Phonebook {
 
 	System::Void MainForm::picShowAll_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (PhonebookEntry::isDataExists()) {
+			dgPhonebookEntries->Rows->Clear();
+
 			PhonebookEntry::addEntriesToGrid(PhonebookEntry::getEntries(), dgPhonebookEntries);
 
 			updateAmountInfo();
