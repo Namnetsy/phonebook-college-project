@@ -84,15 +84,12 @@ namespace Phonebook {
 		int len = dgPhonebookEntries->SelectedRows->Count;
 
 		if (len > 0) {
-			int* rows = new int[len];
+			while (true) {
+				if (!(dgPhonebookEntries->SelectedRows->Count > 0))
+					break;
 
-			// getting indexes of selected entries into array
-			for (int i = 0; i < len; i++)
-				rows[i] = dgPhonebookEntries->SelectedRows[i]->Index;
-
-			// removing by array of indexes
-			for (int i = 0; i < len; i++)
-				dgPhonebookEntries->Rows->RemoveAt(rows[i]);
+				dgPhonebookEntries->Rows->RemoveAt(dgPhonebookEntries->SelectedRows[0]->Index);
+			}
 
 			updateAmountInfo();
 		} else {
