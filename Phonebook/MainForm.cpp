@@ -1,7 +1,6 @@
 #include "MainForm.h"
 #include "SearchForm.h"
 #include "HelpForm.h"
-#include "SettingsForm.h"
 
 #include "PhonebookEntry.h"
 
