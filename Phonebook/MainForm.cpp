@@ -1,8 +1,7 @@
 #include "MainForm.h"
-#include "AddForm.h"
 #include "SearchForm.h"
 #include "HelpForm.h"
-#include "EditForm.h"
+#include "SettingsForm.h"
 
 #include "PhonebookEntry.h"
 
@@ -116,6 +115,13 @@ namespace Phonebook {
 		} else {
 			MessageBox::Show("Sorry, but there's no data to save", "Info");
 		}
+	}
+
+	// Settings button' events
+
+	System::Void MainForm::picSettings_Click(System::Object^  sender, System::EventArgs^  e) {
+		SettingsForm^ settingsForm = gcnew SettingsForm();
+		settingsForm->Show();
 	}
 
 	// Remove all button' events

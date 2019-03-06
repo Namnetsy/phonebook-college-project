@@ -122,7 +122,7 @@ namespace Phonebook {
 			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbWindowTitle->ForeColor = System::Drawing::Color::White;
-			this->lbWindowTitle->Location = System::Drawing::Point(44, 13);
+			this->lbWindowTitle->Location = System::Drawing::Point(44, 11);
 			this->lbWindowTitle->Name = L"lbWindowTitle";
 			this->lbWindowTitle->Size = System::Drawing::Size(54, 25);
 			this->lbWindowTitle->TabIndex = 0;

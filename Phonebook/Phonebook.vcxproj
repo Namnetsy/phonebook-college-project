@@ -135,8 +135,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddForm.cpp" />
-    <ClCompile Include="EditForm.cpp" />
     <ClCompile Include="HelpForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
@@ -146,12 +144,6 @@
     <ClCompile Include="SettingsForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="EditForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Helper.h" />
     <ClInclude Include="HelpForm.h">
       <FileType>CppForm</FileType>
@@ -168,12 +160,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddForm.resx">
-      <DependentUpon>AddForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditForm.resx">
-      <DependentUpon>EditForm.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.h</DependentUpon>
     </EmbeddedResource>

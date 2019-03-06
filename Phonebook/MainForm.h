@@ -320,6 +320,7 @@ namespace Phonebook {
 			this->picSettings->TabIndex = 7;
 			this->picSettings->TabStop = false;
 			this->toolTip->SetToolTip(this->picSettings, L"Settings");
+			this->picSettings->Click += gcnew System::EventHandler(this, &MainForm::picSettings_Click);
 			this->picSettings->MouseEnter += gcnew System::EventHandler(this, &MainForm::picSettings_MouseEnter);
 			this->picSettings->MouseLeave += gcnew System::EventHandler(this, &MainForm::picSettings_MouseLeave);
 			// 
@@ -590,5 +591,6 @@ namespace Phonebook {
 	private: System::Void picAbout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e);
+	private: System::Void picSettings_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

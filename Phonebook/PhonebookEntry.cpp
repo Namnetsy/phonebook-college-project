@@ -151,7 +151,7 @@ namespace PhonebookEntry {
 		auto keywords = str->Split(' ');
 
 		for (int keywordIndex = 0; keywordIndex < keywords->Length; keywordIndex++) {
-			for (int rowIndex = 0; rowIndex < dg->Rows->Count; rowIndex++) {
+			for (int rowIndex = 0; rowIndex < dg->Rows->Count - 1; rowIndex++) {
 				for (int cellIndex = 0; cellIndex < dg->Rows[rowIndex]->Cells->Count; cellIndex++) {
 					String^ str = dg->Rows[rowIndex]->Cells[cellIndex]->Value->ToString()->ToLower();
 
