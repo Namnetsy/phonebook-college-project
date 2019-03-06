@@ -11,7 +11,7 @@ namespace PhonebookEntry {
 		vector<Entry> entries;
 		Entry entry;
 
-		for (int i = 0; i < grid->RowCount; i++) {
+		for (int i = 0; i < (grid->RowCount - 1); i++) { // iterate by whole datagrid except for last row because it's not contain any data
 			entry.fullName = Helper::toString(grid->Rows[i]->Cells[0]->Value->ToString());
 			entry.note = Helper::toString(grid->Rows[i]->Cells[1]->Value->ToString());
 			entry.workPhone = Helper::toString(grid->Rows[i]->Cells[2]->Value->ToString());

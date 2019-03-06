@@ -57,46 +57,6 @@ namespace Phonebook {
 		WindowState = FormWindowState::Minimized;
 	}
 
-	// Add entry button' events
-	System::Void MainForm::picAddEntry_Click(System::Object^  sender, System::EventArgs^  e) {
-		AddForm^ addForm = gcnew AddForm(this);
-		addForm->Show();
-	}
-
-	System::Void MainForm::picAddEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picAddEntry->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"add-focused")));
-	}
-
-	System::Void MainForm::picAddEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picAddEntry->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picAddEntry.Image")));
-	}
-
-	// Remove button's events
-	System::Void MainForm::picRemoveEntry_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picRemoveEntry->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"remove-focused")));
-	}
-	
-	System::Void MainForm::picRemoveEntry_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picRemoveEntry->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picRemoveEntry.Image")));
-	}
-
-	System::Void MainForm::picRemoveEntry_Click(System::Object^  sender, System::EventArgs^  e) {
-		int len = dgPhonebookEntries->SelectedRows->Count;
-
-		if (len > 0) {
-			while (true) {
-				if (!(dgPhonebookEntries->SelectedRows->Count > 0))
-					break;
-
-				dgPhonebookEntries->Rows->RemoveAt(dgPhonebookEntries->SelectedRows[0]->Index);
-			}
-
-			updateAmountInfo();
-		} else {
-			MessageBox::Show("Please, select rows to delete", "Info");
-		}
-	}
-
 	// Search button' events
 	System::Void MainForm::picSearch_Click(System::Object^  sender, System::EventArgs^  e) {
 		SearchForm^ searchForm = gcnew SearchForm(dgPhonebookEntries, this);
@@ -158,25 +118,6 @@ namespace Phonebook {
 		}
 	}
 
-	// Edit button' events
-
-	System::Void MainForm::picEdit_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picEdit->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"edit-focused")));
-	}
-	
-	System::Void MainForm::picEdit_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picEdit->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picEdit.Image")));
-	}
-
-	System::Void MainForm::picEdit_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (dgPhonebookEntries->SelectedRows->Count > 0) {
-			EditForm^ editForm = gcnew EditForm((DataGridViewRow^)dgPhonebookEntries->SelectedRows[0], this);
-			editForm->Show();
-		} else {
-			MessageBox::Show("Please, select a row to edit", "Info");
-		}
-	}
-
 	// Remove all button' events
 
 	System::Void MainForm::picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
@@ -190,6 +131,8 @@ namespace Phonebook {
 	System::Void MainForm::picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (!PhonebookEntry::removeData()) {
 			MessageBox::Show("There's nothing to remove", "Info");
+		} else {
+			dgPhonebookEntries->Rows->Clear();
 		}
 	}
 
@@ -211,6 +154,12 @@ namespace Phonebook {
 
 	System::Void MainForm::picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
 		picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picAbout.Image")));
+	}
+
+	// DataGridView' events
+
+	System::Void MainForm::dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e) {
+		updateAmountInfo();
 	}
 
 	// Other
@@ -236,7 +185,7 @@ namespace Phonebook {
 	}
 
 	void MainForm::updateAmountInfo() {
-		lbAmountEntries->Text = "Amount of entries: " + dgPhonebookEntries->RowCount;
+		lbAmountEntries->Text = "Amount of entries: " + (dgPhonebookEntries->RowCount - 1);
 	}
 
 	bool MainForm::resetDataGridStyle() {
