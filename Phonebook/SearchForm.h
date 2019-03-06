@@ -165,51 +165,55 @@ namespace Phonebook {
 			// lbWindowTitle
 			// 
 			this->lbWindowTitle->AutoSize = true;
-			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbWindowTitle->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->lbWindowTitle->Location = System::Drawing::Point(44, 13);
+			this->lbWindowTitle->Location = System::Drawing::Point(44, 11);
 			this->lbWindowTitle->Name = L"lbWindowTitle";
-			this->lbWindowTitle->Size = System::Drawing::Size(70, 24);
+			this->lbWindowTitle->Size = System::Drawing::Size(71, 25);
 			this->lbWindowTitle->TabIndex = 0;
 			this->lbWindowTitle->Text = L"Search";
 			this->lbWindowTitle->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// tbSearch
 			// 
+			this->tbSearch->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbSearch->Location = System::Drawing::Point(48, 86);
 			this->tbSearch->Name = L"tbSearch";
-			this->tbSearch->Size = System::Drawing::Size(254, 20);
+			this->tbSearch->Size = System::Drawing::Size(254, 22);
 			this->tbSearch->TabIndex = 3;
 			// 
 			// lbSearch
 			// 
 			this->lbSearch->AutoSize = true;
-			this->lbSearch->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbSearch->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbSearch->Location = System::Drawing::Point(31, 60);
 			this->lbSearch->Name = L"lbSearch";
-			this->lbSearch->Size = System::Drawing::Size(199, 16);
+			this->lbSearch->Size = System::Drawing::Size(173, 17);
 			this->lbSearch->TabIndex = 4;
 			this->lbSearch->Text = L"Basic search (by keywords)";
 			// 
 			// lbAdvancedOptions
 			// 
 			this->lbAdvancedOptions->AutoSize = true;
-			this->lbAdvancedOptions->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbAdvancedOptions->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbAdvancedOptions->Location = System::Drawing::Point(34, 128);
+			this->lbAdvancedOptions->Location = System::Drawing::Point(31, 124);
 			this->lbAdvancedOptions->Name = L"lbAdvancedOptions";
-			this->lbAdvancedOptions->Size = System::Drawing::Size(184, 16);
+			this->lbAdvancedOptions->Size = System::Drawing::Size(162, 17);
 			this->lbAdvancedOptions->TabIndex = 5;
 			this->lbAdvancedOptions->Text = L"Advanced search options";
 			// 
 			// chbFullName
 			// 
 			this->chbFullName->AutoSize = true;
+			this->chbFullName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->chbFullName->Location = System::Drawing::Point(48, 157);
 			this->chbFullName->Name = L"chbFullName";
-			this->chbFullName->Size = System::Drawing::Size(119, 17);
+			this->chbFullName->Size = System::Drawing::Size(126, 17);
 			this->chbFullName->TabIndex = 6;
 			this->chbFullName->Text = L"Search by full name";
 			this->chbFullName->UseVisualStyleBackColor = true;
@@ -217,9 +221,11 @@ namespace Phonebook {
 			// chbEmail
 			// 
 			this->chbEmail->AutoSize = true;
+			this->chbEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->chbEmail->Location = System::Drawing::Point(48, 183);
 			this->chbEmail->Name = L"chbEmail";
-			this->chbEmail->Size = System::Drawing::Size(101, 17);
+			this->chbEmail->Size = System::Drawing::Size(105, 17);
 			this->chbEmail->TabIndex = 7;
 			this->chbEmail->Text = L"Search by email";
 			this->chbEmail->UseVisualStyleBackColor = true;
@@ -227,9 +233,11 @@ namespace Phonebook {
 			// chbPhoneNumber
 			// 
 			this->chbPhoneNumber->AutoSize = true;
+			this->chbPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->chbPhoneNumber->Location = System::Drawing::Point(48, 206);
 			this->chbPhoneNumber->Name = L"chbPhoneNumber";
-			this->chbPhoneNumber->Size = System::Drawing::Size(150, 17);
+			this->chbPhoneNumber->Size = System::Drawing::Size(160, 17);
 			this->chbPhoneNumber->TabIndex = 8;
 			this->chbPhoneNumber->Text = L"Search by phone numbers";
 			this->chbPhoneNumber->UseVisualStyleBackColor = true;
@@ -237,9 +245,11 @@ namespace Phonebook {
 			// chbAddress
 			// 
 			this->chbAddress->AutoSize = true;
+			this->chbAddress->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->chbAddress->Location = System::Drawing::Point(48, 229);
 			this->chbAddress->Name = L"chbAddress";
-			this->chbAddress->Size = System::Drawing::Size(114, 17);
+			this->chbAddress->Size = System::Drawing::Size(118, 17);
 			this->chbAddress->TabIndex = 9;
 			this->chbAddress->Text = L"Search by address";
 			this->chbAddress->UseVisualStyleBackColor = true;
@@ -247,15 +257,19 @@ namespace Phonebook {
 			// chbCity
 			// 
 			this->chbCity->AutoSize = true;
+			this->chbCity->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->chbCity->Location = System::Drawing::Point(48, 252);
 			this->chbCity->Name = L"chbCity";
-			this->chbCity->Size = System::Drawing::Size(93, 17);
+			this->chbCity->Size = System::Drawing::Size(95, 17);
 			this->chbCity->TabIndex = 10;
 			this->chbCity->Text = L"Search by city";
 			this->chbCity->UseVisualStyleBackColor = true;
 			// 
 			// btnSearch
 			// 
+			this->btnSearch->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->btnSearch->Location = System::Drawing::Point(217, 285);
 			this->btnSearch->Name = L"btnSearch";
 			this->btnSearch->Size = System::Drawing::Size(112, 37);
@@ -293,6 +307,8 @@ namespace Phonebook {
 			// 
 			// lbinfo
 			// 
+			this->lbinfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->lbinfo->Location = System::Drawing::Point(7, 3);
 			this->lbinfo->Name = L"lbinfo";
 			this->lbinfo->Size = System::Drawing::Size(131, 13);

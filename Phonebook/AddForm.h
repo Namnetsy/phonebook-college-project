@@ -159,131 +159,161 @@ namespace Phonebook {
 			// lbFullName
 			// 
 			this->lbFullName->AutoSize = true;
-			this->lbFullName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbFullName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbFullName->Location = System::Drawing::Point(12, 58);
 			this->lbFullName->Name = L"lbFullName";
-			this->lbFullName->Size = System::Drawing::Size(64, 15);
+			this->lbFullName->Size = System::Drawing::Size(66, 17);
 			this->lbFullName->TabIndex = 0;
 			this->lbFullName->Text = L"Full Name";
 			// 
 			// tbFullName
 			// 
+			this->tbFullName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbFullName->Location = System::Drawing::Point(32, 83);
 			this->tbFullName->Name = L"tbFullName";
-			this->tbFullName->Size = System::Drawing::Size(163, 20);
+			this->tbFullName->Size = System::Drawing::Size(163, 22);
 			this->tbFullName->TabIndex = 1;
 			// 
 			// lbNote
 			// 
 			this->lbNote->AutoSize = true;
-			this->lbNote->Location = System::Drawing::Point(13, 116);
+			this->lbNote->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbNote->Location = System::Drawing::Point(13, 111);
 			this->lbNote->Name = L"lbNote";
-			this->lbNote->Size = System::Drawing::Size(30, 13);
+			this->lbNote->Size = System::Drawing::Size(37, 17);
 			this->lbNote->TabIndex = 2;
 			this->lbNote->Text = L"Note";
 			// 
 			// tbNote
 			// 
+			this->tbNote->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbNote->Location = System::Drawing::Point(32, 135);
 			this->tbNote->Name = L"tbNote";
-			this->tbNote->Size = System::Drawing::Size(163, 20);
+			this->tbNote->Size = System::Drawing::Size(163, 22);
 			this->tbNote->TabIndex = 3;
 			// 
 			// lbHomePhone
 			// 
 			this->lbHomePhone->AutoSize = true;
+			this->lbHomePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->lbHomePhone->Location = System::Drawing::Point(13, 166);
 			this->lbHomePhone->Name = L"lbHomePhone";
-			this->lbHomePhone->Size = System::Drawing::Size(69, 13);
+			this->lbHomePhone->Size = System::Drawing::Size(83, 17);
 			this->lbHomePhone->TabIndex = 6;
 			this->lbHomePhone->Text = L"Home Phone";
 			// 
 			// tbHomePhone
 			// 
+			this->tbHomePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbHomePhone->Location = System::Drawing::Point(32, 191);
 			this->tbHomePhone->Name = L"tbHomePhone";
-			this->tbHomePhone->Size = System::Drawing::Size(163, 20);
+			this->tbHomePhone->Size = System::Drawing::Size(163, 22);
 			this->tbHomePhone->TabIndex = 7;
 			// 
 			// lbWorkPhone
 			// 
 			this->lbWorkPhone->AutoSize = true;
-			this->lbWorkPhone->Location = System::Drawing::Point(13, 225);
+			this->lbWorkPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbWorkPhone->Location = System::Drawing::Point(13, 224);
 			this->lbWorkPhone->Name = L"lbWorkPhone";
-			this->lbWorkPhone->Size = System::Drawing::Size(67, 13);
+			this->lbWorkPhone->Size = System::Drawing::Size(78, 17);
 			this->lbWorkPhone->TabIndex = 8;
 			this->lbWorkPhone->Text = L"Work Phone";
 			// 
 			// tbWorkPhone
 			// 
+			this->tbWorkPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbWorkPhone->Location = System::Drawing::Point(32, 248);
 			this->tbWorkPhone->Name = L"tbWorkPhone";
-			this->tbWorkPhone->Size = System::Drawing::Size(163, 20);
+			this->tbWorkPhone->Size = System::Drawing::Size(163, 22);
 			this->tbWorkPhone->TabIndex = 9;
 			// 
 			// lbMobilePhone
 			// 
 			this->lbMobilePhone->AutoSize = true;
-			this->lbMobilePhone->Location = System::Drawing::Point(240, 60);
+			this->lbMobilePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbMobilePhone->Location = System::Drawing::Point(240, 58);
 			this->lbMobilePhone->Name = L"lbMobilePhone";
-			this->lbMobilePhone->Size = System::Drawing::Size(72, 13);
+			this->lbMobilePhone->Size = System::Drawing::Size(89, 17);
 			this->lbMobilePhone->TabIndex = 10;
 			this->lbMobilePhone->Text = L"Mobile Phone";
 			// 
 			// tbMobilePhone
 			// 
+			this->tbMobilePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbMobilePhone->Location = System::Drawing::Point(268, 83);
 			this->tbMobilePhone->Name = L"tbMobilePhone";
-			this->tbMobilePhone->Size = System::Drawing::Size(163, 20);
+			this->tbMobilePhone->Size = System::Drawing::Size(163, 22);
 			this->tbMobilePhone->TabIndex = 11;
 			// 
 			// lbEmail
 			// 
 			this->lbEmail->AutoSize = true;
-			this->lbEmail->Location = System::Drawing::Point(240, 116);
+			this->lbEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbEmail->Location = System::Drawing::Point(240, 111);
 			this->lbEmail->Name = L"lbEmail";
-			this->lbEmail->Size = System::Drawing::Size(32, 13);
+			this->lbEmail->Size = System::Drawing::Size(39, 17);
 			this->lbEmail->TabIndex = 12;
 			this->lbEmail->Text = L"Email";
 			// 
 			// tbEmail
 			// 
+			this->tbEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbEmail->Location = System::Drawing::Point(268, 135);
 			this->tbEmail->Name = L"tbEmail";
-			this->tbEmail->Size = System::Drawing::Size(163, 20);
+			this->tbEmail->Size = System::Drawing::Size(163, 22);
 			this->tbEmail->TabIndex = 13;
 			// 
 			// lbAddress
 			// 
 			this->lbAddress->AutoSize = true;
+			this->lbAddress->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->lbAddress->Location = System::Drawing::Point(240, 166);
 			this->lbAddress->Name = L"lbAddress";
-			this->lbAddress->Size = System::Drawing::Size(45, 13);
+			this->lbAddress->Size = System::Drawing::Size(56, 17);
 			this->lbAddress->TabIndex = 14;
 			this->lbAddress->Text = L"Address";
 			// 
 			// tbAddress
 			// 
+			this->tbAddress->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbAddress->Location = System::Drawing::Point(268, 189);
 			this->tbAddress->Name = L"tbAddress";
-			this->tbAddress->Size = System::Drawing::Size(163, 20);
+			this->tbAddress->Size = System::Drawing::Size(163, 22);
 			this->tbAddress->TabIndex = 15;
 			// 
 			// lbCity
 			// 
 			this->lbCity->AutoSize = true;
-			this->lbCity->Location = System::Drawing::Point(240, 221);
+			this->lbCity->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbCity->Location = System::Drawing::Point(240, 224);
 			this->lbCity->Name = L"lbCity";
-			this->lbCity->Size = System::Drawing::Size(24, 13);
+			this->lbCity->Size = System::Drawing::Size(29, 17);
 			this->lbCity->TabIndex = 16;
 			this->lbCity->Text = L"City";
 			// 
 			// tbCity
 			// 
+			this->tbCity->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->tbCity->Location = System::Drawing::Point(268, 246);
 			this->tbCity->Name = L"tbCity";
-			this->tbCity->Size = System::Drawing::Size(163, 20);
+			this->tbCity->Size = System::Drawing::Size(163, 22);
 			this->tbCity->TabIndex = 17;
 			// 
 			// panControlButtons
@@ -327,18 +357,19 @@ namespace Phonebook {
 			// lbWindowTitle
 			// 
 			this->lbWindowTitle->AutoSize = true;
-			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold));
 			this->lbWindowTitle->ForeColor = System::Drawing::SystemColors::ControlLightLight;
-			this->lbWindowTitle->Location = System::Drawing::Point(44, 13);
+			this->lbWindowTitle->Location = System::Drawing::Point(44, 12);
 			this->lbWindowTitle->Name = L"lbWindowTitle";
-			this->lbWindowTitle->Size = System::Drawing::Size(137, 24);
+			this->lbWindowTitle->Size = System::Drawing::Size(147, 25);
 			this->lbWindowTitle->TabIndex = 0;
 			this->lbWindowTitle->Text = L"Add New Entry";
 			this->lbWindowTitle->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// btnAddEntry
 			// 
+			this->btnAddEntry->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->btnAddEntry->Location = System::Drawing::Point(333, 294);
 			this->btnAddEntry->Name = L"btnAddEntry";
 			this->btnAddEntry->Size = System::Drawing::Size(116, 23);
@@ -386,9 +417,11 @@ namespace Phonebook {
 			// lbInfo
 			// 
 			this->lbInfo->AutoSize = true;
+			this->lbInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->lbInfo->Location = System::Drawing::Point(9, 5);
 			this->lbInfo->Name = L"lbInfo";
-			this->lbInfo->Size = System::Drawing::Size(153, 13);
+			this->lbInfo->Size = System::Drawing::Size(170, 13);
 			this->lbInfo->TabIndex = 8;
 			this->lbInfo->Text = L"Please, fill out all of these fileds";
 			// 
@@ -415,6 +448,8 @@ namespace Phonebook {
 			// 
 			// btnReset
 			// 
+			this->btnReset->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->btnReset->Location = System::Drawing::Point(196, 294);
 			this->btnReset->Name = L"btnReset";
 			this->btnReset->Size = System::Drawing::Size(116, 23);

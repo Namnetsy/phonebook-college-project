@@ -119,12 +119,12 @@ namespace Phonebook {
 			// lbWindowTitle
 			// 
 			this->lbWindowTitle->AutoSize = true;
-			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbWindowTitle->ForeColor = System::Drawing::Color::White;
 			this->lbWindowTitle->Location = System::Drawing::Point(44, 13);
 			this->lbWindowTitle->Name = L"lbWindowTitle";
-			this->lbWindowTitle->Size = System::Drawing::Size(50, 24);
+			this->lbWindowTitle->Size = System::Drawing::Size(54, 25);
 			this->lbWindowTitle->TabIndex = 0;
 			this->lbWindowTitle->Text = L"Help";
 			this->lbWindowTitle->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -158,7 +158,7 @@ namespace Phonebook {
 			// 
 			// lbInfo
 			// 
-			this->lbInfo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbInfo->Location = System::Drawing::Point(3, 49);
 			this->lbInfo->Name = L"lbInfo";

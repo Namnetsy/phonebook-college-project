@@ -143,6 +143,7 @@
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PhonebookEntry.cpp" />
     <ClCompile Include="SearchForm.cpp" />
+    <ClCompile Include="SettingsForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddForm.h">
@@ -160,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="PhonebookEntry.h" />
     <ClInclude Include="SearchForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SettingsForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -182,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
