@@ -72,7 +72,7 @@ namespace Phonebook {
 
 	// Show all button' events
 	System::Void MainForm::picShowAll_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"show_all-focused")));
+		picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"open-focused")));
 	}
 
 	System::Void MainForm::picShowAll_MouseLeave(System::Object^  sender, System::EventArgs^  e) {

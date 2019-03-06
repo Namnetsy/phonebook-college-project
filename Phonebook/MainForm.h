@@ -299,7 +299,7 @@ namespace Phonebook {
 			// 
 			this->picAbout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAbout.Image")));
-			this->picAbout->Location = System::Drawing::Point(266, 4);
+			this->picAbout->Location = System::Drawing::Point(253, 4);
 			this->picAbout->Name = L"picAbout";
 			this->picAbout->Size = System::Drawing::Size(45, 25);
 			this->picAbout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -313,7 +313,7 @@ namespace Phonebook {
 			// 
 			this->picSettings->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSettings->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSettings.Image")));
-			this->picSettings->Location = System::Drawing::Point(215, 4);
+			this->picSettings->Location = System::Drawing::Point(202, 4);
 			this->picSettings->Name = L"picSettings";
 			this->picSettings->Size = System::Drawing::Size(45, 25);
 			this->picSettings->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -328,7 +328,7 @@ namespace Phonebook {
 			// 
 			this->picRemoveAll->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picRemoveAll.Image")));
-			this->picRemoveAll->Location = System::Drawing::Point(113, 4);
+			this->picRemoveAll->Location = System::Drawing::Point(100, 4);
 			this->picRemoveAll->Name = L"picRemoveAll";
 			this->picRemoveAll->Size = System::Drawing::Size(45, 25);
 			this->picRemoveAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -343,7 +343,7 @@ namespace Phonebook {
 			// 
 			this->picSave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSave.Image")));
-			this->picSave->Location = System::Drawing::Point(64, 4);
+			this->picSave->Location = System::Drawing::Point(51, 4);
 			this->picSave->Name = L"picSave";
 			this->picSave->Size = System::Drawing::Size(45, 25);
 			this->picSave->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -360,7 +360,7 @@ namespace Phonebook {
 			this->picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picShowAll.Image")));
 			this->picShowAll->Location = System::Drawing::Point(13, 4);
 			this->picShowAll->Name = L"picShowAll";
-			this->picShowAll->Size = System::Drawing::Size(45, 25);
+			this->picShowAll->Size = System::Drawing::Size(30, 25);
 			this->picShowAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picShowAll->TabIndex = 3;
 			this->picShowAll->TabStop = false;
@@ -373,7 +373,7 @@ namespace Phonebook {
 			// 
 			this->picSearch->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSearch->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSearch.Image")));
-			this->picSearch->Location = System::Drawing::Point(164, 4);
+			this->picSearch->Location = System::Drawing::Point(151, 4);
 			this->picSearch->Name = L"picSearch";
 			this->picSearch->Size = System::Drawing::Size(45, 25);
 			this->picSearch->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;

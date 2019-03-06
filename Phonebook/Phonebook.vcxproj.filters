@@ -58,9 +58,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
@@ -71,9 +68,6 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsForm.resx">
@@ -109,6 +103,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Pictures\about-focused.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\Pictures\open-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
