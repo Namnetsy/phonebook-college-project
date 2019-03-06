@@ -141,7 +141,6 @@
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PhonebookEntry.cpp" />
     <ClCompile Include="SearchForm.cpp" />
-    <ClCompile Include="SettingsForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helper.h" />
@@ -153,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="PhonebookEntry.h" />
     <ClInclude Include="SearchForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="SettingsForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -173,21 +169,15 @@
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Pictures\about-focused.png" />
-    <Image Include="..\Pictures\add-focused.png" />
-    <Image Include="..\Pictures\edit-focused.png" />
     <Image Include="..\Pictures\open-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
     <Image Include="..\Pictures\remove_all-focused.png" />
     <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
     <Image Include="..\Pictures\settings-focused.png" />
-    <Image Include="..\Pictures\show_all-focused.png" />
     <Image Include="..\Pictures\x_out-focused.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

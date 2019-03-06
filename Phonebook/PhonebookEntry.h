@@ -8,7 +8,7 @@ using namespace System::Windows::Forms;
 
 namespace PhonebookEntry {
 	// Default path for storing phonebook's entries
-	const string DEFAULT_PATH = "Phonebook_entries.pbe";
+	const string DEFAULT_PATH = "Phonebook_entries.pb";
 
 	// Represents an entry in the phonebook
 	struct Entry {

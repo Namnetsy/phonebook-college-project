@@ -120,8 +120,6 @@ namespace Phonebook {
 	// Settings button' events
 
 	System::Void MainForm::picSettings_Click(System::Object^  sender, System::EventArgs^  e) {
-		SettingsForm^ settingsForm = gcnew SettingsForm();
-		settingsForm->Show();
 	}
 
 	// Remove all button' events

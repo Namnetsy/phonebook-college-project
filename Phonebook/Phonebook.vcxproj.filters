@@ -33,9 +33,6 @@
     <ClCompile Include="HelpForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhonebookEntry.h">
@@ -51,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -81,19 +75,10 @@
     <Image Include="..\Pictures\remove-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\Pictures\add-focused.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\Pictures\search-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\Pictures\show_all-focused.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="..\Pictures\save-focused.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\Pictures\edit-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Pictures\remove_all-focused.png">
