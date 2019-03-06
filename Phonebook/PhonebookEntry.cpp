@@ -146,4 +146,23 @@ namespace PhonebookEntry {
 	bool removeData() {
 		return removeData(DEFAULT_PATH);
 	}
+
+	bool search(DataGridView^ dg, System::String^ str) {
+		auto keywords = str->Split(' ');
+
+		for (int keywordIndex = 0; keywordIndex < keywords->Length; keywordIndex++) {
+			for (int rowIndex = 0; rowIndex < dg->Rows->Count; rowIndex++) {
+				for (int cellIndex = 0; cellIndex < dg->Rows[rowIndex]->Cells->Count; cellIndex++) {
+					String^ str = dg->Rows[rowIndex]->Cells[cellIndex]->Value->ToString()->ToLower();
+
+					if (str->Contains(keywords[keywordIndex]->ToLower())) {
+						dg->Rows[rowIndex]->Cells[cellIndex]->Style->BackColor = System::Drawing::Color::DarkCyan;
+						dg->Rows[rowIndex]->Cells[cellIndex]->Style->ForeColor = System::Drawing::Color::White;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
 }

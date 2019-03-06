@@ -15,16 +15,7 @@ namespace Phonebook {
 	public ref class HelpForm : public System::Windows::Forms::Form
 	{
 	public:
-		HelpForm(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
-	private:
-		Point mouseLocation;
-		bool isDown = false;
+		HelpForm(void);
 
 	protected:
 		/// <summary>
@@ -100,7 +91,6 @@ namespace Phonebook {
 			this->panControlButtons->TabIndex = 1;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &HelpForm::panel1_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &HelpForm::panel1_MouseMove);
-			this->panControlButtons->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &HelpForm::panel1_MouseUp);
 			// 
 			// picPhonebookIcon
 			// 
@@ -198,8 +188,12 @@ namespace Phonebook {
 
 		}
 #pragma endregion
+	private:
+		Point mouseLocation;
+		Resources::ResourceManager^ rmHelpForm;
+		Resources::ResourceManager^ rmGlobal;
+
 	private: System::Void panel1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void panel1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void panel1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);

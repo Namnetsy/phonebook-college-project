@@ -54,4 +54,7 @@ namespace PhonebookEntry {
 	// Remove file by default path and so to speak the same as above
 	bool removeData();
 
+	// Search by keywords and mark searched data in DataGridView
+	bool search(DataGridView^ dataGrid, System::String^ value);
+
 }

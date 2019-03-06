@@ -18,11 +18,6 @@ namespace Phonebook {
 	{
 	public:
 		EditForm(DataGridViewRow^ row, MainForm^ mainForm);
-	private:
-		Point mouseLocation;
-		bool isDown;
-		MainForm^ mainForm;
-		DataGridViewRow^ row;
 
 	protected:
 		/// <summary>
@@ -35,6 +30,7 @@ namespace Phonebook {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::ToolTip^  toolTip;
 	protected:
 	private: System::Windows::Forms::PictureBox^  picHelp;
@@ -257,7 +253,6 @@ namespace Phonebook {
 			this->panControlButtons->TabIndex = 44;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &EditForm::panControlButtons_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &EditForm::panControlButtons_MouseMove);
-			this->panControlButtons->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &EditForm::panControlButtons_MouseUp);
 			// 
 			// tbCity
 			// 
@@ -434,9 +429,15 @@ namespace Phonebook {
 
 		}
 #pragma endregion
+	private:
+		Point mouseLocation;
+		MainForm^ mainForm;
+		DataGridViewRow^ row;
+		Resources::ResourceManager^ rmEditForm;
+		Resources::ResourceManager^ rmGlobal;
+
 	private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);

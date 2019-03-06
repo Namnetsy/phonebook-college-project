@@ -108,5 +108,11 @@
     <Image Include="..\Pictures\remove_all-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\Pictures\settings-focused.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\Pictures\about-focused.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

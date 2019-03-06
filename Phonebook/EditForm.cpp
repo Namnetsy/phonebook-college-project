@@ -16,6 +16,9 @@ namespace Phonebook {
 		tbEmail->Text = row->Cells[5]->Value->ToString();
 		tbAddress->Text = row->Cells[6]->Value->ToString();
 		tbCity->Text = row->Cells[7]->Value->ToString();
+
+		rmEditForm = gcnew Resources::ResourceManager(L"Phonebook.EditForm", this->GetType()->Assembly);
+		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
 	}
 
 	// Top panel' event
@@ -23,32 +26,24 @@ namespace Phonebook {
 	System::Void EditForm::panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		mouseLocation.X = -e->X;
 		mouseLocation.Y = -e->Y;
-
-		isDown = true;
 	}
 	
 	System::Void EditForm::panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		if (isDown) {
+		if (e->Button == ::MouseButtons::Left) {
 			Point mousePos = Control::MousePosition;
 			mousePos.Offset(mouseLocation.X, mouseLocation.Y);
 			Location = mousePos;
 		}
 	}
-	
-	System::Void EditForm::panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		isDown = false;
-	}
 
 	// X out events
 
 	System::Void EditForm::picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
-		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"x_out-focused")));
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"x_out-focused")));
 	}
 	
 	System::Void EditForm::picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.EditForm", this->GetType()->Assembly);
-		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"picXout.Image")));
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmEditForm->GetObject(L"picXout.Image")));
 	}
 	
 	System::Void EditForm::picXout_Click(System::Object^  sender, System::EventArgs^  e) {

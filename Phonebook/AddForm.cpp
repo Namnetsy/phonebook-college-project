@@ -9,27 +9,24 @@ namespace Phonebook {
 		InitializeComponent();
 
 		this->form = form;
+
+		rmAddForm = gcnew Resources::ResourceManager(L"Phonebook.AddForm", this->GetType()->Assembly);
+		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
 	}
 
 	// Top panel' events
 
 	System::Void AddForm::panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		isDown = true;
-
 		mouseLocation.X = -e->X;
 		mouseLocation.Y = -e->Y;
 	}
 	
 	System::Void AddForm::panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		if (isDown) {
+		if (e->Button == ::MouseButtons::Left) {
 			Point mousePos = Control::MousePosition;
 			mousePos.Offset(mouseLocation.X, mouseLocation.Y);
 			Location = mousePos;
 		}
-	}
-	
-	System::Void AddForm::panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-		isDown = false;
 	}
 
 	// X out events
@@ -38,13 +35,11 @@ namespace Phonebook {
 	}
 
 	System::Void AddForm::picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
-		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"x_out-focused")));
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"x_out-focused")));
 	}
 
 	System::Void AddForm::picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		Resources::ResourceManager^ rm = gcnew Resources::ResourceManager(L"Phonebook.AddForm", this->GetType()->Assembly);
-		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rm->GetObject(L"picXout.Image")));
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmAddForm->GetObject(L"picXout.Image")));
 	}
 
 	// Add entry event

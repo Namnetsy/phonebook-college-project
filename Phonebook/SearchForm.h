@@ -1,5 +1,8 @@
 #pragma once
 
+#include "MainForm.h"
+#include "PhonebookEntry.h"
+
 namespace Phonebook {
 
 	using namespace System;
@@ -15,17 +18,9 @@ namespace Phonebook {
 	public ref class SearchForm : public System::Windows::Forms::Form
 	{
 	public:
-		SearchForm(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
-	private:
-		Point mouseLocation;
+		SearchForm(DataGridView^ dg, MainForm^ mainForm);
+
 	private: System::Windows::Forms::ToolTip^  toolTip;
-			 bool isDown;
 
 	protected:
 		/// <summary>
@@ -59,6 +54,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::CheckBox^  chbPhoneNumber;
 	private: System::Windows::Forms::CheckBox^  chbAddress;
 	private: System::Windows::Forms::CheckBox^  chbCity;
+	private: System::Windows::Forms::Button^  btnSearch;
 
 
 
@@ -68,7 +64,7 @@ namespace Phonebook {
 
 
 
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::Panel^  panLeftBottom;
 	private: System::Windows::Forms::Panel^  panBottomBorder;
 
@@ -112,7 +108,7 @@ namespace Phonebook {
 			this->chbPhoneNumber = (gcnew System::Windows::Forms::CheckBox());
 			this->chbAddress = (gcnew System::Windows::Forms::CheckBox());
 			this->chbCity = (gcnew System::Windows::Forms::CheckBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btnSearch = (gcnew System::Windows::Forms::Button());
 			this->panLeftBottom = (gcnew System::Windows::Forms::Panel());
 			this->panBottomBorder = (gcnew System::Windows::Forms::Panel());
 			this->panInfo = (gcnew System::Windows::Forms::Panel());
@@ -141,7 +137,6 @@ namespace Phonebook {
 			this->panControlButtons->TabIndex = 2;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &SearchForm::panControlButtons_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &SearchForm::panControlButtons_MouseMove);
-			this->panControlButtons->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &SearchForm::panControlButtons_MouseUp);
 			// 
 			// picPhonebookIcon
 			// 
@@ -259,14 +254,15 @@ namespace Phonebook {
 			this->chbCity->Text = L"Search by city";
 			this->chbCity->UseVisualStyleBackColor = true;
 			// 
-			// button1
+			// btnSearch
 			// 
-			this->button1->Location = System::Drawing::Point(217, 285);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(112, 37);
-			this->button1->TabIndex = 11;
-			this->button1->Text = L"Search";
-			this->button1->UseVisualStyleBackColor = true;
+			this->btnSearch->Location = System::Drawing::Point(217, 285);
+			this->btnSearch->Name = L"btnSearch";
+			this->btnSearch->Size = System::Drawing::Size(112, 37);
+			this->btnSearch->TabIndex = 11;
+			this->btnSearch->Text = L"Search";
+			this->btnSearch->UseVisualStyleBackColor = true;
+			this->btnSearch->Click += gcnew System::EventHandler(this, &SearchForm::btnSearch_Click);
 			// 
 			// panLeftBottom
 			// 
@@ -343,7 +339,7 @@ namespace Phonebook {
 			this->Controls->Add(this->panInfo);
 			this->Controls->Add(this->panBottomBorder);
 			this->Controls->Add(this->panLeftBottom);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnSearch);
 			this->Controls->Add(this->chbCity);
 			this->Controls->Add(this->chbAddress);
 			this->Controls->Add(this->chbPhoneNumber);
@@ -367,11 +363,18 @@ namespace Phonebook {
 
 		}
 #pragma endregion
+private:
+	Point mouseLocation;
+	MainForm^ mainForm;
+	DataGridView^ dg;
+	Resources::ResourceManager^ rmSearchForm;
+	Resources::ResourceManager^ rmGlobal;
+
 private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+private: System::Void btnSearch_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

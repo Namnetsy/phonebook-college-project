@@ -19,10 +19,6 @@ namespace Phonebook {
 	public:
 		AddForm(MainForm^ form);
 
-	private:
-		MainForm^ form;
-		Point mouseLocation;
-		bool isDown = false;
 	private: System::Windows::Forms::ToolTip^  toolTip;
 
 	private: System::Windows::Forms::Button^  btnReset;
@@ -38,6 +34,7 @@ namespace Phonebook {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::Label^  lbFullName;
 	private: System::Windows::Forms::TextBox^  tbFullName;
 	private: System::Windows::Forms::Label^  lbNote;
@@ -302,7 +299,6 @@ namespace Phonebook {
 			this->panControlButtons->TabIndex = 20;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &AddForm::panControlButtons_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AddForm::panControlButtons_MouseMove);
-			this->panControlButtons->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &AddForm::panControlButtons_MouseUp);
 			// 
 			// picPhonebookIcon
 			// 
@@ -472,11 +468,16 @@ namespace Phonebook {
 
 		}
 #pragma endregion
-private: bool checkFields(Label^ label);
+private:
+	MainForm^ form;
+	Point mouseLocation;
+	Resources::ResourceManager^ rmAddForm;
+	Resources::ResourceManager^ rmGlobal;
+
+	bool checkFields(Label^ label);
 
 private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-private: System::Void panControlButtons_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void btnAddEntry_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void btnReset_Click(System::Object^  sender, System::EventArgs^  e);

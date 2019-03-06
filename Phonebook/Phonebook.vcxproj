@@ -185,12 +185,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\Pictures\about-focused.png" />
     <Image Include="..\Pictures\add-focused.png" />
     <Image Include="..\Pictures\edit-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
     <Image Include="..\Pictures\remove_all-focused.png" />
     <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
+    <Image Include="..\Pictures\settings-focused.png" />
     <Image Include="..\Pictures\show_all-focused.png" />
     <Image Include="..\Pictures\x_out-focused.png" />
   </ItemGroup>
