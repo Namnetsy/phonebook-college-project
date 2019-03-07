@@ -434,6 +434,8 @@ namespace Phonebook {
 			this->dgPhonebookEntries->Name = L"dgPhonebookEntries";
 			this->dgPhonebookEntries->Size = System::Drawing::Size(1069, 479);
 			this->dgPhonebookEntries->TabIndex = 6;
+			this->dgPhonebookEntries->CellStateChanged += gcnew System::Windows::Forms::DataGridViewCellStateChangedEventHandler(this, &MainForm::dgPhonebookEntries_CellStateChanged);
+			this->dgPhonebookEntries->RowsAdded += gcnew System::Windows::Forms::DataGridViewRowsAddedEventHandler(this, &MainForm::dgPhonebookEntries_RowsAdded);
 			this->dgPhonebookEntries->RowsRemoved += gcnew System::Windows::Forms::DataGridViewRowsRemovedEventHandler(this, &MainForm::dgPhonebookEntries_RowsRemoved);
 			// 
 			// fullName
@@ -592,5 +594,7 @@ namespace Phonebook {
 	private: System::Void picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e);
 	private: System::Void picSettings_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void dgPhonebookEntries_CellStateChanged(System::Object^  sender, System::Windows::Forms::DataGridViewCellStateChangedEventArgs^  e);
+	private: System::Void dgPhonebookEntries_RowsAdded(System::Object^  sender, System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e);
 };
 }

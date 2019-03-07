@@ -109,10 +109,14 @@ namespace Phonebook {
 	}
 
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries))) {
-			MessageBox::Show("Saved", "Info");
-		} else {
-			MessageBox::Show("Sorry, but there's no data to save", "Info");
+		if (PhonebookEntry::isValidate(dgPhonebookEntries)) {
+			if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries)))
+				MessageBox::Show("Saved", "Info");
+			else
+				MessageBox::Show("Something went wrong ;(", "Info");
+		}
+		else {
+			MessageBox::Show("Please, fill out each of this fields!");
 		}
 	}
 
@@ -162,6 +166,17 @@ namespace Phonebook {
 	// DataGridView' events
 
 	System::Void MainForm::dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e) {
+		updateAmountInfo();
+	}
+
+	System::Void MainForm::dgPhonebookEntries_CellStateChanged(System::Object^  sender, System::Windows::Forms::DataGridViewCellStateChangedEventArgs^  e) {
+		if (e->StateChanged == DataGridViewElementStates::Selected) {
+			e->Cell->Style->BackColor = Color::White;
+			e->Cell->Style->ForeColor = Color::Black;
+		}
+	}
+
+	System::Void MainForm::dgPhonebookEntries_RowsAdded(System::Object^  sender, System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
 		updateAmountInfo();
 	}
 

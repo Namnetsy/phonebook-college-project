@@ -57,4 +57,7 @@ namespace PhonebookEntry {
 	// Search by keywords and mark searched data in DataGridView
 	bool search(DataGridView^ dataGrid, System::String^ value);
 
+	// Check if data from DataGridView is not empty
+	bool isValidate(DataGridView^ dataGrid);
+
 }

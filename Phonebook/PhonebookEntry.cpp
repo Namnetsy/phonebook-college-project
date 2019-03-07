@@ -165,4 +165,16 @@ namespace PhonebookEntry {
 
 		return true;
 	}
+
+	bool isValidate(DataGridView^ dataGrid) {
+		for (int rowIndex = 0; rowIndex < dataGrid->Rows->Count - 1; rowIndex++) {
+			for (int cellIndex = 0; cellIndex < dataGrid->Rows[rowIndex]->Cells->Count; cellIndex++) {
+				if (!dataGrid->Rows[rowIndex]->Cells[cellIndex]->Value) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
 }
