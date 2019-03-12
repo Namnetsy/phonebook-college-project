@@ -135,12 +135,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AboutForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PhonebookEntry.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AboutForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Helper.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
@@ -148,6 +152,9 @@
     <ClInclude Include="PhonebookEntry.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -164,7 +171,6 @@
     <Image Include="..\Pictures\remove_all-focused.png" />
     <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
-    <Image Include="..\Pictures\settings-focused.png" />
     <Image Include="..\Pictures\x_out-focused.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

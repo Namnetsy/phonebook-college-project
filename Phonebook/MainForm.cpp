@@ -58,10 +58,15 @@ namespace Phonebook {
 
 	// Search button' events
 	System::Void MainForm::picSearch_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (PhonebookEntry::search(dgPhonebookEntries, tbSearch->Text))
-			picHide->Visible = true;
-		else
-			lbInfo->Text = "Not found", "Info";
+		if (tbSearch->Text != tbSearch->Text->Empty) {
+			if (PhonebookEntry::search(dgPhonebookEntries, tbSearch->Text)) {
+				picHide->Visible = true;
+			} else {
+				lbInfo->Text = "Not found";
+			}
+		} else {
+			lbInfo->Text = "Enter some text for searching";
+		}
 	}
 
 	System::Void MainForm::picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
@@ -130,7 +135,7 @@ namespace Phonebook {
 	
 	System::Void MainForm::picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (!PhonebookEntry::removeData()) {
-			lbInfo->Text = "There's nothing to remove", "Info";
+			lbInfo->Text = "There's nothing to remove";
 		} else {
 			dgPhonebookEntries->Rows->Clear();
 		}
@@ -144,6 +149,13 @@ namespace Phonebook {
 
 	System::Void MainForm::picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
 		picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picAbout.Image")));
+	}
+
+	System::Void MainForm::picAbout_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (Application::OpenForms->Count == 1) {
+			AboutForm^ aboutForm = gcnew AboutForm();
+			aboutForm->Show();
+		}
 	}
 
 	// DataGridView' events

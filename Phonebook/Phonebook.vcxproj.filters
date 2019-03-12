@@ -27,6 +27,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AboutForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhonebookEntry.h">
@@ -38,15 +41,12 @@
     <ClInclude Include="Helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AboutForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SearchForm.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelpForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
@@ -67,9 +67,6 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Pictures\remove_all-focused.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\Pictures\settings-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Pictures\about-focused.png">

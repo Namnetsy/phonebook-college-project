@@ -1,6 +1,9 @@
 #pragma once
 
 #include <vector>
+
+#include "AboutForm.h"
+
 #include "PhonebookEntry.h"
 
 namespace Phonebook {
@@ -357,6 +360,7 @@ namespace Phonebook {
 			this->picAbout->TabIndex = 8;
 			this->picAbout->TabStop = false;
 			this->toolTip->SetToolTip(this->picAbout, L"About");
+			this->picAbout->Click += gcnew System::EventHandler(this, &MainForm::picAbout_Click);
 			this->picAbout->MouseEnter += gcnew System::EventHandler(this, &MainForm::picAbout_MouseEnter);
 			this->picAbout->MouseLeave += gcnew System::EventHandler(this, &MainForm::picAbout_MouseLeave);
 			// 
@@ -609,5 +613,6 @@ namespace Phonebook {
 	private: System::Void picHide_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picHide_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void dgPhonebookEntries_CellEndEdit(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e);
+	private: System::Void picAbout_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }
