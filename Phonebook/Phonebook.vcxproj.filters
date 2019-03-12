@@ -24,13 +24,7 @@
     <ClCompile Include="MainForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SearchForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HelpForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,12 +33,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SearchForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HelpForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helper.h">
@@ -62,9 +50,6 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
@@ -91,6 +76,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Pictures\open-focused.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\Pictures\hide-focused.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

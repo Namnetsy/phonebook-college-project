@@ -149,6 +149,7 @@ namespace PhonebookEntry {
 
 	bool search(DataGridView^ dg, System::String^ str) {
 		auto keywords = str->Split(' ');
+		bool isSearched = false;
 
 		for (int keywordIndex = 0; keywordIndex < keywords->Length; keywordIndex++) {
 			for (int rowIndex = 0; rowIndex < dg->Rows->Count - 1; rowIndex++) {
@@ -156,6 +157,8 @@ namespace PhonebookEntry {
 					String^ str = dg->Rows[rowIndex]->Cells[cellIndex]->Value->ToString()->ToLower();
 
 					if (str->Contains(keywords[keywordIndex]->ToLower())) {
+						isSearched = true;
+
 						dg->Rows[rowIndex]->Cells[cellIndex]->Style->BackColor = System::Drawing::Color::DarkCyan;
 						dg->Rows[rowIndex]->Cells[cellIndex]->Style->ForeColor = System::Drawing::Color::White;
 					}
@@ -163,7 +166,7 @@ namespace PhonebookEntry {
 			}
 		}
 
-		return true;
+		return isSearched;
 	}
 
 	bool isValidate(DataGridView^ dataGrid) {

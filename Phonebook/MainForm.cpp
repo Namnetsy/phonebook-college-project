@@ -1,6 +1,4 @@
 #include "MainForm.h"
-#include "SearchForm.h"
-#include "HelpForm.h"
 
 #include "PhonebookEntry.h"
 
@@ -8,6 +6,9 @@ namespace Phonebook {
 
 	MainForm::MainForm(void) {
 		InitializeComponent();
+
+		tbSearch->AutoSize = false;
+		tbSearch->Height = 23;
 
 		rmMainForm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
 		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
@@ -57,8 +58,10 @@ namespace Phonebook {
 
 	// Search button' events
 	System::Void MainForm::picSearch_Click(System::Object^  sender, System::EventArgs^  e) {
-		SearchForm^ searchForm = gcnew SearchForm(dgPhonebookEntries, this);
-		searchForm->Show();
+		if (PhonebookEntry::search(dgPhonebookEntries, tbSearch->Text))
+			picHide->Visible = true;
+		else
+			lbInfo->Text = "Not found", "Info";
 	}
 
 	System::Void MainForm::picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
@@ -86,16 +89,10 @@ namespace Phonebook {
 
 			updateAmountInfo();
 
-			MessageBox::Show("Loaded", "Info");
+			lbInfo->Text = "Successfully loaded";
 		} else {
-			MessageBox::Show("There's nothing to load", "Info");
+			lbInfo->Text = "There's nothing to load";
 		}
-	}
-
-	// Help button' events
-	System::Void MainForm::picHelp_Click(System::Object^  sender, System::EventArgs^  e) {
-		HelpForm^ helpForm = gcnew HelpForm();
-		helpForm->Show();
 	}
 
 	// Save button' events
@@ -110,19 +107,15 @@ namespace Phonebook {
 
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (PhonebookEntry::isValidate(dgPhonebookEntries)) {
-			if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries)))
-				MessageBox::Show("Saved", "Info");
-			else
-				MessageBox::Show("Something went wrong ;(", "Info");
+			if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries))) {
+				lbInfo->Text = "Successfully saved";
+			} else {
+				lbInfo->Text = "Something went wrong ;(", "Info";
+			}
 		}
 		else {
-			MessageBox::Show("Please, fill out each of this fields!");
+			lbInfo->Text = "Please, fill out each of this fields!";
 		}
-	}
-
-	// Settings button' events
-
-	System::Void MainForm::picSettings_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 
 	// Remove all button' events
@@ -137,20 +130,10 @@ namespace Phonebook {
 	
 	System::Void MainForm::picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (!PhonebookEntry::removeData()) {
-			MessageBox::Show("There's nothing to remove", "Info");
+			lbInfo->Text = "There's nothing to remove", "Info";
 		} else {
 			dgPhonebookEntries->Rows->Clear();
 		}
-	}
-
-	// Settings button' events
-
-	System::Void MainForm::picSettings_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picSettings->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"settings-focused")));
-	}
-
-	System::Void MainForm::picSettings_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picSettings->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picSettings.Image")));
 	}
 
 	// About button' events
@@ -169,38 +152,33 @@ namespace Phonebook {
 		updateAmountInfo();
 	}
 
-	System::Void MainForm::dgPhonebookEntries_CellStateChanged(System::Object^  sender, System::Windows::Forms::DataGridViewCellStateChangedEventArgs^  e) {
-		if (e->StateChanged == DataGridViewElementStates::Selected) {
-			e->Cell->Style->BackColor = Color::White;
-			e->Cell->Style->ForeColor = Color::Black;
-		}
-	}
-
 	System::Void MainForm::dgPhonebookEntries_RowsAdded(System::Object^  sender, System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
 		updateAmountInfo();
 	}
 
+	// Hide button' events
+
+	System::Void MainForm::picHide_Click(System::Object^  sender, System::EventArgs^  e) {
+		resetDataGridStyle();
+
+		picHide->Visible = false;
+	}
+	
+	System::Void MainForm::picHide_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+		picHide->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"hide-focused")));
+	}
+	
+	System::Void MainForm::picHide_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+		picHide->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picHide.Image")));
+	}
+
+	// Info label' events
+	
+	System::Void MainForm::dgPhonebookEntries_CellEndEdit(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		lbInfo->Text = "Don't forget to save after editing";
+	}
+
 	// Other
-
-	void MainForm::addEntry(PhonebookEntry::Entry entry) {
-		dgPhonebookEntries->Rows->Add(gcnew String(entry.fullName.c_str()), gcnew String(entry.note.c_str()),
-			gcnew String(entry.homePhone.c_str()), gcnew String(entry.workPhone.c_str()),
-			gcnew String(entry.mobilePhone.c_str()), gcnew String(entry.email.c_str()),
-			gcnew String(entry.address.c_str()), gcnew String(entry.city.c_str()));
-
-		updateAmountInfo();
-	}
-
-	void MainForm::updateEntry(DataGridViewRow^ row, int index) {
-		dgPhonebookEntries->Rows[index]->Cells[0]->Value = row->Cells[0]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[1]->Value = row->Cells[1]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[2]->Value = row->Cells[2]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[3]->Value = row->Cells[3]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[4]->Value = row->Cells[4]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[5]->Value = row->Cells[5]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[6]->Value = row->Cells[6]->Value->ToString();
-		dgPhonebookEntries->Rows[index]->Cells[7]->Value = row->Cells[7]->Value->ToString();
-	}
 
 	void MainForm::updateAmountInfo() {
 		lbAmountEntries->Text = "Amount of entries: " + (dgPhonebookEntries->RowCount - 1);

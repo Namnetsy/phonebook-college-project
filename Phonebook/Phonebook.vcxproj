@@ -135,30 +135,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HelpForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PhonebookEntry.cpp" />
-    <ClCompile Include="SearchForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="HelpForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PhonebookEntry.h" />
-    <ClInclude Include="SearchForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HelpForm.resx">
-      <DependentUpon>HelpForm.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
       <SubType>Designer</SubType>
@@ -166,12 +155,10 @@
     <EmbeddedResource Include="Resource.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchForm.resx">
-      <DependentUpon>SearchForm.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Pictures\about-focused.png" />
+    <Image Include="..\Pictures\hide-focused.png" />
     <Image Include="..\Pictures\open-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
     <Image Include="..\Pictures\remove_all-focused.png" />
