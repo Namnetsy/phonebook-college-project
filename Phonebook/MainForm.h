@@ -350,9 +350,9 @@ namespace Phonebook {
 			// 
 			this->picAbout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAbout.Image")));
-			this->picAbout->Location = System::Drawing::Point(151, 4);
+			this->picAbout->Location = System::Drawing::Point(127, 4);
 			this->picAbout->Name = L"picAbout";
-			this->picAbout->Size = System::Drawing::Size(45, 25);
+			this->picAbout->Size = System::Drawing::Size(34, 25);
 			this->picAbout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAbout->TabIndex = 8;
 			this->picAbout->TabStop = false;
@@ -364,9 +364,9 @@ namespace Phonebook {
 			// 
 			this->picRemoveAll->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picRemoveAll.Image")));
-			this->picRemoveAll->Location = System::Drawing::Point(100, 4);
+			this->picRemoveAll->Location = System::Drawing::Point(92, 4);
 			this->picRemoveAll->Name = L"picRemoveAll";
-			this->picRemoveAll->Size = System::Drawing::Size(45, 25);
+			this->picRemoveAll->Size = System::Drawing::Size(29, 25);
 			this->picRemoveAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picRemoveAll->TabIndex = 6;
 			this->picRemoveAll->TabStop = false;
@@ -379,9 +379,9 @@ namespace Phonebook {
 			// 
 			this->picSave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSave.Image")));
-			this->picSave->Location = System::Drawing::Point(51, 4);
+			this->picSave->Location = System::Drawing::Point(49, 4);
 			this->picSave->Name = L"picSave";
-			this->picSave->Size = System::Drawing::Size(45, 25);
+			this->picSave->Size = System::Drawing::Size(37, 25);
 			this->picSave->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSave->TabIndex = 4;
 			this->picSave->TabStop = false;
@@ -522,7 +522,7 @@ namespace Phonebook {
 			// 
 			this->lbInfo->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbInfo->Location = System::Drawing::Point(752, 2);
+			this->lbInfo->Location = System::Drawing::Point(752, 3);
 			this->lbInfo->Name = L"lbInfo";
 			this->lbInfo->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->lbInfo->Size = System::Drawing::Size(313, 13);
