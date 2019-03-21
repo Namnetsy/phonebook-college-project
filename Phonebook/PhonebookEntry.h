@@ -8,7 +8,7 @@ using namespace System::Windows::Forms;
 
 namespace PhonebookEntry {
 	// Default path for storing phonebook's entries
-	const string DEFAULT_PATH = "Phonebook_entries.pbe";
+	const string DEFAULT_PATH = "Phonebook_entries.pb";
 
 	// Represents an entry in the phonebook
 	struct Entry {
@@ -53,5 +53,8 @@ namespace PhonebookEntry {
 
 	// Remove file by default path and so to speak the same as above
 	bool removeData();
+
+	// Search by keywords and mark searched data in DataGridView
+	bool search(DataGridView^ dataGrid, System::String^ value);
 
 }

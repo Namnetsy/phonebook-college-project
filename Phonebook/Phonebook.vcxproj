@@ -135,43 +135,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddForm.cpp" />
-    <ClCompile Include="EditForm.cpp" />
-    <ClCompile Include="HelpForm.cpp" />
+    <ClCompile Include="AboutForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PhonebookEntry.cpp" />
-    <ClCompile Include="SearchForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="EditForm.h">
+    <ClInclude Include="AboutForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="HelpForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PhonebookEntry.h" />
-    <ClInclude Include="SearchForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddForm.resx">
-      <DependentUpon>AddForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditForm.resx">
-      <DependentUpon>EditForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelpForm.resx">
-      <DependentUpon>HelpForm.h</DependentUpon>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
@@ -180,18 +162,15 @@
     <EmbeddedResource Include="Resource.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchForm.resx">
-      <DependentUpon>SearchForm.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Pictures\add-focused.png" />
-    <Image Include="..\Pictures\edit-focused.png" />
+    <Image Include="..\Pictures\about-focused.png" />
+    <Image Include="..\Pictures\hide-focused.png" />
+    <Image Include="..\Pictures\open-focused.png" />
     <Image Include="..\Pictures\remove-focused.png" />
     <Image Include="..\Pictures\remove_all-focused.png" />
     <Image Include="..\Pictures\save-focused.png" />
     <Image Include="..\Pictures\search-focused.png" />
-    <Image Include="..\Pictures\show_all-focused.png" />
     <Image Include="..\Pictures\x_out-focused.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

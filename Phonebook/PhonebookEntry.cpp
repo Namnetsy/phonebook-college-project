@@ -11,7 +11,7 @@ namespace PhonebookEntry {
 		vector<Entry> entries;
 		Entry entry;
 
-		for (int i = 0; i < grid->RowCount; i++) {
+		for (int i = 0; i < (grid->RowCount - 1); i++) { // iterate by whole datagrid except for last row because it's not contain any data
 			entry.fullName = Helper::toString(grid->Rows[i]->Cells[0]->Value->ToString());
 			entry.note = Helper::toString(grid->Rows[i]->Cells[1]->Value->ToString());
 			entry.workPhone = Helper::toString(grid->Rows[i]->Cells[2]->Value->ToString());
@@ -145,5 +145,27 @@ namespace PhonebookEntry {
 
 	bool removeData() {
 		return removeData(DEFAULT_PATH);
+	}
+
+	bool search(DataGridView^ dg, System::String^ str) {
+		auto keywords = str->Split(' ');
+		bool isSearched = false;
+
+		for (int keywordIndex = 0; keywordIndex < keywords->Length; keywordIndex++) {
+			for (int rowIndex = 0; rowIndex < dg->Rows->Count - 1; rowIndex++) {
+				for (int cellIndex = 0; cellIndex < dg->Rows[rowIndex]->Cells->Count; cellIndex++) {
+					String^ str = dg->Rows[rowIndex]->Cells[cellIndex]->Value->ToString()->ToLower();
+
+					if (str->Contains(keywords[keywordIndex]->ToLower())) {
+						isSearched = true;
+
+						dg->Rows[rowIndex]->Cells[cellIndex]->Style->BackColor = System::Drawing::Color::DarkCyan;
+						dg->Rows[rowIndex]->Cells[cellIndex]->Style->ForeColor = System::Drawing::Color::White;
+					}
+				}
+			}
+		}
+
+		return isSearched;
 	}
 }
