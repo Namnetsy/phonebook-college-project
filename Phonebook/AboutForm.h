@@ -15,13 +15,7 @@ namespace Phonebook {
 	public ref class AboutForm : public System::Windows::Forms::Form
 	{
 	public:
-		AboutForm(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+		AboutForm(void);
 
 	protected:
 		/// <summary>
@@ -110,6 +104,8 @@ namespace Phonebook {
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
 			this->picXout->Click += gcnew System::EventHandler(this, &AboutForm::picXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &AboutForm::picXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &AboutForm::picXout_MouseLeave);
 			// 
 			// lbWindowTitle
 			// 
@@ -156,7 +152,7 @@ namespace Phonebook {
 			this->lbHeading->Name = L"lbHeading";
 			this->lbHeading->Size = System::Drawing::Size(166, 23);
 			this->lbHeading->TabIndex = 5;
-			this->lbHeading->Text = L"Phonebook 1.0.4";
+			this->lbHeading->Text = L"Phonebook 1.0.5";
 			// 
 			// lbContent
 			// 
@@ -194,9 +190,13 @@ namespace Phonebook {
 #pragma endregion
 private:
 	Point mouseLocation;
+	Resources::ResourceManager^ rmAboutForm;
+	Resources::ResourceManager^ rmGlobal;
 
 private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 };
 }
