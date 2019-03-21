@@ -142,6 +142,7 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::Panel^  panBottomBorder2;
+private: System::Windows::Forms::PictureBox^  picOpen;
 
 
 
@@ -163,7 +164,7 @@ namespace Phonebook {
 
 
 
-	private: System::Windows::Forms::PictureBox^  picShowAll;
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -197,7 +198,7 @@ namespace Phonebook {
 			this->picAbout = (gcnew System::Windows::Forms::PictureBox());
 			this->picRemoveAll = (gcnew System::Windows::Forms::PictureBox());
 			this->picSave = (gcnew System::Windows::Forms::PictureBox());
-			this->picShowAll = (gcnew System::Windows::Forms::PictureBox());
+			this->picOpen = (gcnew System::Windows::Forms::PictureBox());
 			this->panTopBorder = (gcnew System::Windows::Forms::Panel());
 			this->panLeftBorder = (gcnew System::Windows::Forms::Panel());
 			this->panBottomBorder = (gcnew System::Windows::Forms::Panel());
@@ -226,7 +227,7 @@ namespace Phonebook {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAbout))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picRemoveAll))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowAll))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picOpen))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPhonebookEntries))->BeginInit();
 			this->panInfo->SuspendLayout();
 			this->SuspendLayout();
@@ -260,7 +261,7 @@ namespace Phonebook {
 			// 
 			this->picMinimize->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picMinimize->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picMinimize.Image")));
-			this->picMinimize->Location = System::Drawing::Point(990, 8);
+			this->picMinimize->Location = System::Drawing::Point(991, 6);
 			this->picMinimize->Name = L"picMinimize";
 			this->picMinimize->Size = System::Drawing::Size(37, 33);
 			this->picMinimize->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -272,7 +273,7 @@ namespace Phonebook {
 			// 
 			this->picXout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picXout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picXout.Image")));
-			this->picXout->Location = System::Drawing::Point(1032, 8);
+			this->picXout->Location = System::Drawing::Point(1033, 6);
 			this->picXout->Name = L"picXout";
 			this->picXout->Size = System::Drawing::Size(37, 33);
 			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -303,7 +304,7 @@ namespace Phonebook {
 			this->panToolbar->Controls->Add(this->picAbout);
 			this->panToolbar->Controls->Add(this->picRemoveAll);
 			this->panToolbar->Controls->Add(this->picSave);
-			this->panToolbar->Controls->Add(this->picShowAll);
+			this->panToolbar->Controls->Add(this->picOpen);
 			this->panToolbar->Location = System::Drawing::Point(0, 47);
 			this->panToolbar->Name = L"panToolbar";
 			this->panToolbar->Size = System::Drawing::Size(1071, 33);
@@ -394,20 +395,20 @@ namespace Phonebook {
 			this->picSave->MouseEnter += gcnew System::EventHandler(this, &MainForm::picSave_MouseEnter);
 			this->picSave->MouseLeave += gcnew System::EventHandler(this, &MainForm::picSave_MouseLeave);
 			// 
-			// picShowAll
+			// picOpen
 			// 
-			this->picShowAll->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picShowAll.Image")));
-			this->picShowAll->Location = System::Drawing::Point(13, 4);
-			this->picShowAll->Name = L"picShowAll";
-			this->picShowAll->Size = System::Drawing::Size(30, 25);
-			this->picShowAll->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->picShowAll->TabIndex = 3;
-			this->picShowAll->TabStop = false;
-			this->toolTip->SetToolTip(this->picShowAll, L"Open from disk");
-			this->picShowAll->Click += gcnew System::EventHandler(this, &MainForm::picShowAll_Click);
-			this->picShowAll->MouseEnter += gcnew System::EventHandler(this, &MainForm::picShowAll_MouseEnter);
-			this->picShowAll->MouseLeave += gcnew System::EventHandler(this, &MainForm::picShowAll_MouseLeave);
+			this->picOpen->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picOpen.Image")));
+			this->picOpen->Location = System::Drawing::Point(13, 4);
+			this->picOpen->Name = L"picOpen";
+			this->picOpen->Size = System::Drawing::Size(30, 25);
+			this->picOpen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picOpen->TabIndex = 3;
+			this->picOpen->TabStop = false;
+			this->toolTip->SetToolTip(this->picOpen, L"Open from disk");
+			this->picOpen->Click += gcnew System::EventHandler(this, &MainForm::picOpen_Click);
+			this->picOpen->MouseEnter += gcnew System::EventHandler(this, &MainForm::picOpen_MouseEnter);
+			this->picOpen->MouseLeave += gcnew System::EventHandler(this, &MainForm::picOpen_MouseLeave);
 			// 
 			// panTopBorder
 			// 
@@ -558,6 +559,7 @@ namespace Phonebook {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MainForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Category Manager";
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
@@ -571,7 +573,7 @@ namespace Phonebook {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAbout))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picRemoveAll))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowAll))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picOpen))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPhonebookEntries))->EndInit();
 			this->panInfo->ResumeLayout(false);
 			this->ResumeLayout(false);
@@ -593,12 +595,9 @@ namespace Phonebook {
 	private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void picShowAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void picShowAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picSave_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picSave_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void picShowAll_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picRemoveAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e);
@@ -614,5 +613,8 @@ namespace Phonebook {
 	private: System::Void picHide_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void dgPhonebookEntries_CellEndEdit(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e);
 	private: System::Void picAbout_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picOpen_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picOpen_MouseEnter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picOpen_MouseLeave(System::Object^  sender, System::EventArgs^  e);
 };
 }

@@ -77,16 +77,16 @@ namespace Phonebook {
 		picSearch->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picSearch.Image")));
 	}
 
-	// Show all button' events
-	System::Void MainForm::picShowAll_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"open-focused")));
+	// Open button' events
+	System::Void MainForm::picOpen_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+		picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"open-focused")));
 	}
 
-	System::Void MainForm::picShowAll_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picShowAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picShowAll.Image")));
+	System::Void MainForm::picOpen_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+		picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picOpen.Image")));
 	}
 
-	System::Void MainForm::picShowAll_Click(System::Object^  sender, System::EventArgs^  e) {
+	System::Void MainForm::picOpen_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (PhonebookEntry::isDataExists()) {
 			dgPhonebookEntries->Rows->Clear();
 
@@ -111,15 +111,10 @@ namespace Phonebook {
 	}
 
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (PhonebookEntry::isValidate(dgPhonebookEntries)) {
-			if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries))) {
-				lbInfo->Text = "Successfully saved";
-			} else {
-				lbInfo->Text = "Something went wrong ;(", "Info";
-			}
-		}
-		else {
-			lbInfo->Text = "Please, fill out each of this fields!";
+		if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries))) {
+			lbInfo->Text = "Successfully saved";
+		} else {
+			lbInfo->Text = "Something went wrong ;(", "Info";
 		}
 	}
 

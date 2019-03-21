@@ -182,6 +182,7 @@ namespace Phonebook {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AboutForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AboutForm";
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
