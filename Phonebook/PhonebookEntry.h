@@ -13,12 +13,11 @@ namespace PhonebookEntry {
 	// Represents an entry in the phonebook
 	struct Entry {
 		string fullName;
-		string note;
 		string homePhone;
 		string workPhone;
 		string mobilePhone;
 		string email;
-		string address;
+		string country;
 		string city;
 	};
 

@@ -13,12 +13,10 @@ namespace PhonebookEntry {
 
 		for (int i = 0; i < (grid->RowCount - 1); i++) { // iterate by whole datagrid except for last row because it's not contain any data
 			entry.fullName = Helper::toString(grid->Rows[i]->Cells[0]->Value->ToString());
-			entry.note = Helper::toString(grid->Rows[i]->Cells[1]->Value->ToString());
 			entry.workPhone = Helper::toString(grid->Rows[i]->Cells[2]->Value->ToString());
 			entry.homePhone= Helper::toString(grid->Rows[i]->Cells[3]->Value->ToString());
 			entry.mobilePhone = Helper::toString(grid->Rows[i]->Cells[4]->Value->ToString());
 			entry.email = Helper::toString(grid->Rows[i]->Cells[5]->Value->ToString());
-			entry.address = Helper::toString(grid->Rows[i]->Cells[6]->Value->ToString());
 			entry.city = Helper::toString(grid->Rows[i]->Cells[7]->Value->ToString());
 
 			entries.push_back(entry);
@@ -36,10 +34,8 @@ namespace PhonebookEntry {
 		for (auto i = entries.begin(); i != entries.end(); ++i) {
 			entry = *i;
 
-			grid->Rows->Add(gcnew String(entry.fullName.c_str()), gcnew String(entry.note.c_str()),
-							gcnew String(entry.homePhone.c_str()), gcnew String(entry.workPhone.c_str()),
-							gcnew String(entry.mobilePhone.c_str()), gcnew String(entry.email.c_str()),
-							gcnew String(entry.address.c_str()), gcnew String(entry.city.c_str()));
+			grid->Rows->Add(gcnew String(entry.homePhone.c_str()), gcnew String(entry.workPhone.c_str()),
+							gcnew String(entry.mobilePhone.c_str()), gcnew String(entry.email.c_str()),);
 		}
 
 		return true;
@@ -62,9 +58,6 @@ namespace PhonebookEntry {
 			storedData.write(entry.fullName.c_str(), entry.fullName.size());
 			storedData.write("\0", sizeof(char)); // For easily detecting end of a string
 
-			storedData.write(entry.note.c_str(), entry.note.size());
-			storedData.write("\0", sizeof(char));
-
 			storedData.write(entry.homePhone.c_str(), entry.homePhone.size());
 			storedData.write("\0", sizeof(char));
 
@@ -75,9 +68,6 @@ namespace PhonebookEntry {
 			storedData.write("\0", sizeof(char));
 
 			storedData.write(entry.email.c_str(), entry.email.size());
-			storedData.write("\0", sizeof(char));
-
-			storedData.write(entry.address.c_str(), entry.address.size());
 			storedData.write("\0", sizeof(char));
 
 			storedData.write(entry.city.c_str(), entry.city.size());
@@ -103,12 +93,10 @@ namespace PhonebookEntry {
 
 		for (int i = 0; i < entriesCount; i++) {
 			getline(storedData, entry.fullName, '\0');
-			getline(storedData, entry.note, '\0');
 			getline(storedData, entry.homePhone, '\0');
 			getline(storedData, entry.workPhone, '\0');
 			getline(storedData, entry.mobilePhone, '\0');
 			getline(storedData, entry.email, '\0');
-			getline(storedData, entry.address, '\0');
 			getline(storedData, entry.city, '\0');
 
 			entries.push_back(entry);

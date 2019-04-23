@@ -7,12 +7,12 @@ namespace Phonebook {
 	MainForm::MainForm(void) {
 		InitializeComponent();
 
-		tbSearch->AutoSize = false;
-		tbSearch->Height = 23;
+		// tbSearch->AutoSize = false;
+		// tbSearch->Height = 23;
 
 		rmMainForm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
 		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
-
+		/*
 		for (int i = 0; i < dgPhonebookEntries->ColumnCount; i++) {
 			dgPhonebookEntries->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
 		}
@@ -21,7 +21,15 @@ namespace Phonebook {
 			PhonebookEntry::addEntriesToGrid(PhonebookEntry::getEntries(), dgPhonebookEntries);
 		}
 
-		updateAmountInfo();
+		updateAmountInfo();*/
+
+		PhonebookControls::EntryControl^ entry = gcnew PhonebookControls::EntryControl();
+		PhonebookControls::EntryControl^ entry1 = gcnew PhonebookControls::EntryControl();
+		PhonebookControls::EntryControl^ entry2 = gcnew PhonebookControls::EntryControl();
+
+		flpEntries->Controls->Add(entry);
+		flpEntries->Controls->Add(entry1);
+		flpEntries->Controls->Add(entry2);
 	}
 
 	// top panel' events
@@ -55,7 +63,7 @@ namespace Phonebook {
 	System::Void MainForm::picMinimize_Click(System::Object^  sender, System::EventArgs^  e) {
 		WindowState = FormWindowState::Minimized;
 	}
-
+	/*
 	// Search button' events
 	System::Void MainForm::picSearch_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (tbSearch->Text != tbSearch->Text->Empty) {
@@ -205,5 +213,17 @@ namespace Phonebook {
 
 		return false;
 	}
+	*/
 
+	vector<PhonebookEntry::Entry> MainForm::getEntries() {
+		vector<PhonebookEntry::Entry> entries;
+		PhonebookEntry::Entry entry;
+		auto enumerator = flpEntries->Controls->GetEnumerator();
+
+		while (enumerator->MoveNext()) {
+			entries.push_back(entry);
+		}
+
+		return entries;
+	}
 }
