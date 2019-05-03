@@ -4,7 +4,7 @@
 
 #include "AboutForm.h"
 
-#include "PhonebookEntry.h"
+#include "Entry.h"
 
 namespace Phonebook {
 
@@ -44,6 +44,13 @@ namespace Phonebook {
 
 	private: System::Windows::Forms::PictureBox^  picAdd;
 	private: System::Windows::Forms::PictureBox^  picSettings;
+	private: System::Windows::Forms::PictureBox^  picSave;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::PictureBox^  picOpen;
+	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+
+
+
 
 
 
@@ -231,6 +238,8 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picAccount = (gcnew System::Windows::Forms::PictureBox());
 			this->lbUsername = (gcnew System::Windows::Forms::Label());
 			this->panSidebar = (gcnew System::Windows::Forms::Panel());
+			this->picOpen = (gcnew System::Windows::Forms::PictureBox());
+			this->picSave = (gcnew System::Windows::Forms::PictureBox());
 			this->picAdd = (gcnew System::Windows::Forms::PictureBox());
 			this->picAbout = (gcnew System::Windows::Forms::PictureBox());
 			this->picSettings = (gcnew System::Windows::Forms::PictureBox());
@@ -238,11 +247,15 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->flpEntries = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->panBottomBorder2 = (gcnew System::Windows::Forms::Panel());
 			this->directoryEntry1 = (gcnew System::DirectoryServices::DirectoryEntry());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->panControlButtons->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMinimize))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAccount))->BeginInit();
 			this->panSidebar->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picOpen))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAdd))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAbout))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSettings))->BeginInit();
@@ -307,15 +320,17 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->lbUsername->ForeColor = System::Drawing::Color::White;
 			this->lbUsername->Location = System::Drawing::Point(45, 10);
 			this->lbUsername->Name = L"lbUsername";
-			this->lbUsername->Size = System::Drawing::Size(63, 25);
+			this->lbUsername->Size = System::Drawing::Size(101, 25);
 			this->lbUsername->TabIndex = 0;
-			this->lbUsername->Text = L"Roma";
+			this->lbUsername->Text = L"Username";
 			this->lbUsername->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// panSidebar
 			// 
 			this->panSidebar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
 				static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->panSidebar->Controls->Add(this->picOpen);
+			this->panSidebar->Controls->Add(this->picSave);
 			this->panSidebar->Controls->Add(this->picAdd);
 			this->panSidebar->Controls->Add(this->picAbout);
 			this->panSidebar->Controls->Add(this->picSettings);
@@ -325,15 +340,38 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->panSidebar->Size = System::Drawing::Size(46, 527);
 			this->panSidebar->TabIndex = 3;
 			// 
+			// picOpen
+			// 
+			this->picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picOpen.Image")));
+			this->picOpen->Location = System::Drawing::Point(5, 7);
+			this->picOpen->Name = L"picOpen";
+			this->picOpen->Size = System::Drawing::Size(36, 26);
+			this->picOpen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picOpen->TabIndex = 12;
+			this->picOpen->TabStop = false;
+			this->picOpen->Click += gcnew System::EventHandler(this, &MainForm::picOpen_Click);
+			// 
+			// picSave
+			// 
+			this->picSave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSave.Image")));
+			this->picSave->Location = System::Drawing::Point(5, 41);
+			this->picSave->Name = L"picSave";
+			this->picSave->Size = System::Drawing::Size(36, 26);
+			this->picSave->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picSave->TabIndex = 11;
+			this->picSave->TabStop = false;
+			this->picSave->Click += gcnew System::EventHandler(this, &MainForm::picSave_Click);
+			// 
 			// picAdd
 			// 
 			this->picAdd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAdd.Image")));
-			this->picAdd->Location = System::Drawing::Point(5, 9);
+			this->picAdd->Location = System::Drawing::Point(5, 73);
 			this->picAdd->Name = L"picAdd";
 			this->picAdd->Size = System::Drawing::Size(36, 26);
 			this->picAdd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAdd->TabIndex = 10;
 			this->picAdd->TabStop = false;
+			this->picAdd->Click += gcnew System::EventHandler(this, &MainForm::picAdd_Click);
 			// 
 			// picAbout
 			// 
@@ -348,7 +386,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			// picSettings
 			// 
 			this->picSettings->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSettings.Image")));
-			this->picSettings->Location = System::Drawing::Point(6, 44);
+			this->picSettings->Location = System::Drawing::Point(6, 105);
 			this->picSettings->Name = L"picSettings";
 			this->picSettings->Size = System::Drawing::Size(36, 26);
 			this->picSettings->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -357,6 +395,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			// 
 			// flpEntries
 			// 
+			this->flpEntries->AutoScroll = true;
 			this->flpEntries->Location = System::Drawing::Point(45, 46);
 			this->flpEntries->Margin = System::Windows::Forms::Padding(0);
 			this->flpEntries->Name = L"flpEntries";
@@ -371,6 +410,10 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->panBottomBorder2->Name = L"panBottomBorder2";
 			this->panBottomBorder2->Size = System::Drawing::Size(1076, 3);
 			this->panBottomBorder2->TabIndex = 9;
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// MainForm
 			// 
@@ -394,6 +437,8 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAccount))->EndInit();
 			this->panSidebar->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picOpen))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSave))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAdd))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAbout))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picSettings))->EndInit();
@@ -406,10 +451,9 @@ private: System::Windows::Forms::Panel^  panSidebar;
 		Point mouseLocation;
 		Resources::ResourceManager^ rmMainForm;
 		Resources::ResourceManager^ rmGlobal;
-		vector<PhonebookEntry::Entry> getEntries();
-
-		// void updateAmountInfo();
-		// bool resetDataGridStyle();
+		void addEntry();
+		void addEntry(Entry::Entry entry);
+		std::vector<Entry::Entry> getEntries();
 
 	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picMinimize_Click(System::Object^  sender, System::EventArgs^  e);
@@ -417,26 +461,8 @@ private: System::Windows::Forms::Panel^  panSidebar;
 	private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void picXout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picXout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picSave_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picSave_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picRemoveAll_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picAbout_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e);
-	// private: System::Void dgPhonebookEntries_RowsAdded(System::Object^  sender, System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e);
-	// private: System::Void picSearch_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picSearch_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picHide_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picHide_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picHide_MouseLeave(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void dgPhonebookEntries_CellEndEdit(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e);
-	// private: System::Void picAbout_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picOpen_Click(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picOpen_MouseEnter(System::Object^  sender, System::EventArgs^  e);
-	// private: System::Void picOpen_MouseLeave(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picAdd_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picOpen_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

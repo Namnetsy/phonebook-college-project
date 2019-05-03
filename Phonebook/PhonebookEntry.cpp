@@ -35,7 +35,7 @@ namespace PhonebookEntry {
 			entry = *i;
 
 			grid->Rows->Add(gcnew String(entry.homePhone.c_str()), gcnew String(entry.workPhone.c_str()),
-							gcnew String(entry.mobilePhone.c_str()), gcnew String(entry.email.c_str()),);
+							gcnew String(entry.mobilePhone.c_str()), gcnew String(entry.email.c_str()));
 		}
 
 		return true;

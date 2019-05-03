@@ -1,35 +1,20 @@
 #include "MainForm.h"
-
-#include "PhonebookEntry.h"
+#include "EntryControl.h"
+#include "Config.h"
+#include "Helper.h"
 
 namespace Phonebook {
 
 	MainForm::MainForm(void) {
 		InitializeComponent();
 
-		// tbSearch->AutoSize = false;
-		// tbSearch->Height = 23;
-
 		rmMainForm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
 		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
-		/*
-		for (int i = 0; i < dgPhonebookEntries->ColumnCount; i++) {
-			dgPhonebookEntries->Columns[i]->AutoSizeMode = DataGridViewAutoSizeColumnMode::Fill;
-		}
 
-		if (PhonebookEntry::isDataExists()) {
-			PhonebookEntry::addEntriesToGrid(PhonebookEntry::getEntries(), dgPhonebookEntries);
-		}
+		Config::Config config;
+		config = config.getConfig();
 
-		updateAmountInfo();*/
-
-		PhonebookControls::EntryControl^ entry = gcnew PhonebookControls::EntryControl();
-		PhonebookControls::EntryControl^ entry1 = gcnew PhonebookControls::EntryControl();
-		PhonebookControls::EntryControl^ entry2 = gcnew PhonebookControls::EntryControl();
-
-		flpEntries->Controls->Add(entry);
-		flpEntries->Controls->Add(entry1);
-		flpEntries->Controls->Add(entry2);
+		lbUsername->Text = gcnew String(config.name.c_str());
 	}
 
 	// top panel' events
@@ -63,167 +48,55 @@ namespace Phonebook {
 	System::Void MainForm::picMinimize_Click(System::Object^  sender, System::EventArgs^  e) {
 		WindowState = FormWindowState::Minimized;
 	}
-	/*
-	// Search button' events
-	System::Void MainForm::picSearch_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (tbSearch->Text != tbSearch->Text->Empty) {
-			if (PhonebookEntry::search(dgPhonebookEntries, tbSearch->Text)) {
-				picHide->Visible = true;
-			} else {
-				lbInfo->Text = "Not found";
-			}
-		} else {
-			lbInfo->Text = "Enter some text for searching";
-		}
+
+	std::vector<Entry::Entry> MainForm::getEntries() {
+		std::vector<Entry::Entry> entries;
+		auto enumerator = flpEntries->Controls->GetEnumerator();
+
+		while (enumerator->MoveNext())
+			entries.push_back(((EntryControl^)enumerator->Current)->getEntry());
+
+		return entries;
 	}
 
-	System::Void MainForm::picSearch_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picSearch->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"search-focused")));
-	}
-	
-	System::Void MainForm::picSearch_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picSearch->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picSearch.Image")));
+	// add button' events
+	System::Void MainForm::picAdd_Click(System::Object^  sender, System::EventArgs^  e) {
+		addEntry();
 	}
 
-	// Open button' events
-	System::Void MainForm::picOpen_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"open-focused")));
-	}
-
-	System::Void MainForm::picOpen_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picOpen.Image")));
-	}
-
-	System::Void MainForm::picOpen_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (PhonebookEntry::isDataExists()) {
-			dgPhonebookEntries->Rows->Clear();
-
-			PhonebookEntry::addEntriesToGrid(PhonebookEntry::getEntries(), dgPhonebookEntries);
-
-			updateAmountInfo();
-
-			lbInfo->Text = "Successfully loaded";
-		} else {
-			lbInfo->Text = "There's nothing to load";
-		}
-	}
-
-	// Save button' events
-
-	System::Void MainForm::picSave_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picSave->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"save-focused")));
-	}
-	
-	System::Void MainForm::picSave_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picSave->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picSave.Image")));
-	}
-
+	// save button' events
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (PhonebookEntry::saveEntries(PhonebookEntry::gridToEntries(dgPhonebookEntries))) {
-			lbInfo->Text = "Successfully saved";
-		} else {
-			lbInfo->Text = "Something went wrong ;(", "Info";
+		if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+			Entry::Entry entry;
+			entry.set(getEntries(), Helper::toString(saveFileDialog1->FileName));
+			MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
 		}
 	}
 
-	// Remove all button' events
+	// open button' events
+	System::Void MainForm::picOpen_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (openFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+			Entry::Entry entry;
+			std::vector<Entry::Entry> entries = entry.get(Helper::toString(openFileDialog1->FileName));
+			// TODO: Remove all entries from list before loading new ones
+			for (auto i = entries.begin(); i != entries.end(); ++i) {
+				addEntry(*i);
+			}
 
-	System::Void MainForm::picRemoveAll_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"remove_all-focused")));
-	}
-	
-	System::Void MainForm::picRemoveAll_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picRemoveAll->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picRemoveAll.Image")));
-	}
-	
-	System::Void MainForm::picRemoveAll_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (!PhonebookEntry::removeData()) {
-			lbInfo->Text = "There's nothing to remove";
-		} else {
-			dgPhonebookEntries->Rows->Clear();
+			MessageBox::Show("Дані завантажено з " + openFileDialog1->FileName);
 		}
-	}
-
-	// About button' events
-
-	System::Void MainForm::picAbout_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"about-focused")));
-	}
-
-	System::Void MainForm::picAbout_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picAbout.Image")));
-	}
-
-	System::Void MainForm::picAbout_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (Application::OpenForms->Count == 1) {
-			AboutForm^ aboutForm = gcnew AboutForm();
-			aboutForm->Show();
-		}
-	}
-
-	// DataGridView' events
-
-	System::Void MainForm::dgPhonebookEntries_RowsRemoved(System::Object^  sender, System::Windows::Forms::DataGridViewRowsRemovedEventArgs^  e) {
-		updateAmountInfo();
-	}
-
-	System::Void MainForm::dgPhonebookEntries_RowsAdded(System::Object^  sender, System::Windows::Forms::DataGridViewRowsAddedEventArgs^  e) {
-		updateAmountInfo();
-	}
-
-	// Hide button' events
-
-	System::Void MainForm::picHide_Click(System::Object^  sender, System::EventArgs^  e) {
-		resetDataGridStyle();
-
-		picHide->Visible = false;
-	}
-	
-	System::Void MainForm::picHide_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-		picHide->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"hide-focused")));
-	}
-	
-	System::Void MainForm::picHide_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-		picHide->Image = (cli::safe_cast<System::Drawing::Image^>(rmMainForm->GetObject(L"picHide.Image")));
-	}
-
-	// Info label' events
-	
-	System::Void MainForm::dgPhonebookEntries_CellEndEdit(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-		lbInfo->Text = "Don't forget to save after editing";
 	}
 
 	// Other
-
-	void MainForm::updateAmountInfo() {
-		lbAmountEntries->Text = "Amount of entries: " + (dgPhonebookEntries->RowCount - 1);
+	void MainForm::addEntry() {
+		EntryControl^ control = gcnew EntryControl();
+		flpEntries->Controls->Add(control);
 	}
 
-	bool MainForm::resetDataGridStyle() {
-		if (dgPhonebookEntries->Rows->Count > 0) {
-			for (int rowIndex = 0; rowIndex < dgPhonebookEntries->Rows->Count; rowIndex++) {
-				for (int cellIndex = 0; cellIndex < dgPhonebookEntries->Rows[rowIndex]->Cells->Count; cellIndex++) {
-					dgPhonebookEntries->Rows[rowIndex]->Cells[cellIndex]->Style->BackColor = System::Drawing::Color::White;
-					dgPhonebookEntries->Rows[rowIndex]->Cells[cellIndex]->Style->ForeColor = System::Drawing::Color::Black;
-				}
-			}
+	void MainForm::addEntry(Entry::Entry entry) {
+		EntryControl^ control = gcnew EntryControl();
+		control->setEntry(entry);
 
-			return true;
-		}
-
-		return false;
-	}
-	*/
-
-	vector<PhonebookEntry::Entry> MainForm::getEntries() {
-		vector<PhonebookEntry::Entry> entries;
-		PhonebookEntry::Entry entry;
-		auto enumerator = flpEntries->Controls->GetEnumerator();
-
-		while (enumerator->MoveNext()) {
-			entries.push_back(entry);
-		}
-
-		return entries;
+		flpEntries->Controls->Add(control);
 	}
 }

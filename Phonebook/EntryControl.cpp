@@ -1,8 +1,9 @@
-#include "stdafx.h"
 #include "EntryControl.h"
-#include "../Phonebook/Helper.h"
+#include "Helper.h"
 
-namespace PhonebookControls {
+using namespace Helper;
+
+namespace Phonebook {
 
 	EntryControl::EntryControl() {
 		InitializeComponent();
@@ -58,7 +59,7 @@ namespace PhonebookControls {
 		if (e->KeyChar == (char)13)
 			editTextInLabel(rtbCountry, lbCountry);
 	}
-	
+
 	System::Void EntryControl::lbCountry_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 		rtbCountry->Text = lbCountry->Text;
 		rtbCountry->Show();
@@ -69,7 +70,7 @@ namespace PhonebookControls {
 		if (e->KeyChar == (char)13)
 			editTextInLabel(rtbCity, lbCity);
 	}
-	
+
 	System::Void EntryControl::lbCity_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 		rtbCity->Text = lbCity->Text;
 		rtbCity->Show();
@@ -89,10 +90,11 @@ namespace PhonebookControls {
 
 	// picShowMore' events
 	System::Void EntryControl::picShowMore_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (Height == 50)
+		if (Height == 50) {
 			Height += 50;
-		else
+		} else {
 			Height -= 50;
+		}
 	}
 
 	// Other
@@ -107,8 +109,8 @@ namespace PhonebookControls {
 		}
 	}
 
-	PhonebookEntry::Entry EntryControl::getEntry() {
-		PhonebookEntry::Entry entry;
+	Entry::Entry EntryControl::getEntry() {
+		Entry::Entry entry;
 		entry.fullName = Helper::toString(lbFullName->Text);
 		entry.homePhone = Helper::toString(lbHomePhone->Text);
 		entry.workPhone = Helper::toString(lbWorkPhone->Text);
@@ -116,8 +118,17 @@ namespace PhonebookControls {
 		entry.email = Helper::toString(lbEmail->Text);
 		entry.mobilePhone = Helper::toString(lbMobilePhone->Text);
 		entry.country = Helper::toString(lbCountry->Text);
-
 		return entry;
+	}
+
+	void EntryControl::setEntry(Entry::Entry entry) {
+		lbFullName->Text = toString(entry.fullName);
+		lbCity->Text = toString(entry.city);
+		lbCountry->Text = toString(entry.country);
+		lbEmail->Text = toString(entry.email);
+		lbWorkPhone->Text = toString(entry.workPhone);
+		lbMobilePhone->Text = toString(entry.mobilePhone);
+		lbHomePhone->Text = toString(entry.homePhone);
 	}
 
 }
