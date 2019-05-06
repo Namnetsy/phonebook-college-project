@@ -10,8 +10,7 @@ namespace Config {
 		BinaryWriter^ writer = gcnew BinaryWriter(gcnew FileStream(gcnew String(FILE_PATH.c_str()), FileMode::Create));
 
 		writer->Write(gcnew String(config.name.c_str()));
-		writer->Write(gcnew String(config.username.c_str()));
-		writer->Write(gcnew String(config.password.c_str()));
+		writer->Write(config.password);
 		writer->Write(config.autosaveWhenClosing);
 		writer->Write(config.autosaveAfterChanges);
 		writer->Write(config.askWhenClosing);
@@ -24,8 +23,7 @@ namespace Config {
 
 		Config config;
 		config.name = Helper::toString(reader->ReadString());
-		config.username = Helper::toString(reader->ReadString());
-		config.password = Helper::toString(reader->ReadString());
+		config.password = reader->ReadInt32();
 		config.autosaveWhenClosing = reader->ReadBoolean();
 		config.autosaveAfterChanges = reader->ReadBoolean();
 		config.askWhenClosing = reader->ReadBoolean();

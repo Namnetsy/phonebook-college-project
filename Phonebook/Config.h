@@ -8,8 +8,7 @@ namespace Config {
 
 	struct Config {
 		std::string name;
-		std::string username;
-		std::string password;
+		int password;
 		
 		bool autosaveWhenClosing;
 		bool autosaveAfterChanges;

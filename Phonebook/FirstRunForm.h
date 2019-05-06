@@ -80,9 +80,9 @@ namespace Phonebook {
 	private: System::Windows::Forms::Panel^  panel9;
 	private: System::Windows::Forms::Panel^  panel10;
 	private: System::Windows::Forms::Button^  btnApply;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::RichTextBox^  rtbUsername;
-	private: System::Windows::Forms::Panel^  panel3;
+
+
+
 
 
 
@@ -130,9 +130,6 @@ namespace Phonebook {
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->panel10 = (gcnew System::Windows::Forms::Panel());
 			this->btnApply = (gcnew System::Windows::Forms::Button());
-			this->panel3 = (gcnew System::Windows::Forms::Panel());
-			this->rtbUsername = (gcnew System::Windows::Forms::RichTextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->panTopPanel->SuspendLayout();
 			this->panCredentials->SuspendLayout();
 			this->SuspendLayout();
@@ -189,7 +186,7 @@ namespace Phonebook {
 			// 
 			this->panel4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel4->Location = System::Drawing::Point(383, 78);
+			this->panel4->Location = System::Drawing::Point(193, 78);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(139, 1);
 			this->panel4->TabIndex = 16;
@@ -201,7 +198,7 @@ namespace Phonebook {
 			this->rtbPassword->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->rtbPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->rtbPassword->Location = System::Drawing::Point(383, 56);
+			this->rtbPassword->Location = System::Drawing::Point(193, 56);
 			this->rtbPassword->Multiline = false;
 			this->rtbPassword->Name = L"rtbPassword";
 			this->rtbPassword->Size = System::Drawing::Size(138, 22);
@@ -212,7 +209,7 @@ namespace Phonebook {
 			// 
 			this->panel5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel5->Location = System::Drawing::Point(552, 78);
+			this->panel5->Location = System::Drawing::Point(362, 78);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(139, 1);
 			this->panel5->TabIndex = 19;
@@ -223,7 +220,7 @@ namespace Phonebook {
 				static_cast<System::Int32>(static_cast<System::Byte>(232)), static_cast<System::Int32>(static_cast<System::Byte>(211)));
 			this->rtbPasswordRetype->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->rtbPasswordRetype->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F));
-			this->rtbPasswordRetype->Location = System::Drawing::Point(552, 57);
+			this->rtbPasswordRetype->Location = System::Drawing::Point(362, 57);
 			this->rtbPasswordRetype->Multiline = false;
 			this->rtbPasswordRetype->Name = L"rtbPasswordRetype";
 			this->rtbPasswordRetype->Size = System::Drawing::Size(138, 22);
@@ -246,7 +243,7 @@ namespace Phonebook {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(364, 16);
+			this->label3->Location = System::Drawing::Point(174, 16);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(103, 30);
 			this->label3->TabIndex = 14;
@@ -257,7 +254,7 @@ namespace Phonebook {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(533, 16);
+			this->label5->Location = System::Drawing::Point(343, 16);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(177, 30);
 			this->label5->TabIndex = 17;
@@ -315,10 +312,7 @@ namespace Phonebook {
 			this->panCredentials->Controls->Add(this->cbAutosaveAfteChanges);
 			this->panCredentials->Controls->Add(this->panel2);
 			this->panCredentials->Controls->Add(this->cbAutosaveWhenClosing);
-			this->panCredentials->Controls->Add(this->label4);
 			this->panCredentials->Controls->Add(this->label7);
-			this->panCredentials->Controls->Add(this->rtbUsername);
-			this->panCredentials->Controls->Add(this->panel3);
 			this->panCredentials->Controls->Add(this->label3);
 			this->panCredentials->Controls->Add(this->rtbPassword);
 			this->panCredentials->Controls->Add(this->panel5);
@@ -368,40 +362,6 @@ namespace Phonebook {
 			this->btnApply->Text = L"Apply";
 			this->btnApply->UseVisualStyleBackColor = true;
 			this->btnApply->Click += gcnew System::EventHandler(this, &FirstRunForm::btnApply_Click);
-			// 
-			// panel3
-			// 
-			this->panel3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel3->Location = System::Drawing::Point(207, 78);
-			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(139, 1);
-			this->panel3->TabIndex = 13;
-			// 
-			// rtbUsername
-			// 
-			this->rtbUsername->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
-				static_cast<System::Int32>(static_cast<System::Byte>(211)));
-			this->rtbUsername->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbUsername->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->rtbUsername->Location = System::Drawing::Point(207, 56);
-			this->rtbUsername->Multiline = false;
-			this->rtbUsername->Name = L"rtbUsername";
-			this->rtbUsername->Size = System::Drawing::Size(138, 22);
-			this->rtbUsername->TabIndex = 12;
-			this->rtbUsername->Text = L"username";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(188, 16);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(109, 30);
-			this->label4->TabIndex = 11;
-			this->label4->Text = L"Username";
 			// 
 			// FirstRunForm
 			// 

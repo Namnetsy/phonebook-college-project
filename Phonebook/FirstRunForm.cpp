@@ -32,8 +32,7 @@ namespace Phonebook {
 
 		if (rtbPassword->Text == rtbPasswordRetype->Text) {
 			config.name = Helper::toString(rtbName->Text);
-			config.username = Helper::toString(rtbUsername->Text);
-			config.password = Helper::toString(rtbPassword->Text);
+			config.password = Helper::getHash(rtbPassword->Text);
 			config.askWhenClosing = cbAskWhenClosing->Checked;
 			config.autosaveAfterChanges = cbAutosaveAfteChanges->Checked;
 			config.autosaveWhenClosing = cbAutosaveWhenClosing->Checked;

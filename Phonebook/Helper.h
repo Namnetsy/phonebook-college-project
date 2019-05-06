@@ -9,4 +9,8 @@ namespace Helper {
 
 	System::String^ toString(std::string value);
 
+	int getHash(System::String^ value);
+
+	int getHash(std::string value);
+
 }
