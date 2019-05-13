@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AboutForm.cpp" />
+    <ClCompile Include="AskBeforeClosingDialog.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="EntryControl.cpp" />
     <ClCompile Include="Entry.cpp" />
@@ -145,9 +146,13 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="PasswordForm.cpp" />
+    <ClCompile Include="SettingsForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AskBeforeClosingDialog.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Config.h" />
@@ -165,10 +170,16 @@
     <ClInclude Include="PasswordForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SettingsForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AskBeforeClosingDialog.resx">
+      <DependentUpon>AskBeforeClosingDialog.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryControl.resx">
       <DependentUpon>EntryControl.h</DependentUpon>
@@ -185,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 #include "AboutForm.h"
 
 #include "Entry.h"
+#include "EntryControl.h"
 
 namespace Phonebook {
 
@@ -343,9 +344,9 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			// picOpen
 			// 
 			this->picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picOpen.Image")));
-			this->picOpen->Location = System::Drawing::Point(5, 7);
+			this->picOpen->Location = System::Drawing::Point(6, 7);
 			this->picOpen->Name = L"picOpen";
-			this->picOpen->Size = System::Drawing::Size(36, 26);
+			this->picOpen->Size = System::Drawing::Size(35, 26);
 			this->picOpen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picOpen->TabIndex = 12;
 			this->picOpen->TabStop = false;
@@ -392,6 +393,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picSettings->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSettings->TabIndex = 8;
 			this->picSettings->TabStop = false;
+			this->picSettings->Click += gcnew System::EventHandler(this, &MainForm::picSettings_Click);
 			// 
 			// flpEntries
 			// 
@@ -428,9 +430,11 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->Controls->Add(this->panControlButtons);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->KeyPreview = true;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Category Manager";
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picMinimize))->EndInit();
@@ -451,9 +455,16 @@ private: System::Windows::Forms::Panel^  panSidebar;
 		Point mouseLocation;
 		Resources::ResourceManager^ rmMainForm;
 		Resources::ResourceManager^ rmGlobal;
+
 		void addEntry();
 		void addEntry(Entry::Entry entry);
+		void clearTable();
+
+		void removeEntry();
+		
 		std::vector<Entry::Entry> getEntries();
+		
+	public: void saveEntries(System::String^ path);
 
 	private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picMinimize_Click(System::Object^  sender, System::EventArgs^  e);
@@ -464,5 +475,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 	private: System::Void picAdd_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picSave_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picOpen_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void MainForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e);
+	private: System::Void picSettings_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }

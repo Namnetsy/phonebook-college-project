@@ -30,7 +30,7 @@ namespace Phonebook {
 		}
 	private: System::Windows::Forms::Panel^  panTopPanel;
 	private: System::Windows::Forms::Label^  lbTitle;
-	private: System::Windows::Forms::RichTextBox^  rtbName;
+
 
 	protected:
 
@@ -46,32 +46,32 @@ namespace Phonebook {
 
 
 
-	private: System::Windows::Forms::Panel^  panel2;
 
 
 
 
-	private: System::Windows::Forms::Panel^  panel4;
-	private: System::Windows::Forms::RichTextBox^  rtbPassword;
 
 
-	private: System::Windows::Forms::Panel^  panel5;
-	private: System::Windows::Forms::RichTextBox^  rtbPasswordRetype;
+
+
+
+
+
 
 
 
 
 	private: System::Windows::Forms::Label^  label2;
 
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Label^  label5;
+
+
 
 	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::CheckBox^  cbAutosaveWhenClosing;
-	private: System::Windows::Forms::CheckBox^  cbAutosaveAfteChanges;
 
 
-	private: System::Windows::Forms::CheckBox^  cbAskWhenClosing;
+
+
+
 
 
 	private: System::Windows::Forms::Panel^  panCredentials;
@@ -80,6 +80,22 @@ namespace Phonebook {
 	private: System::Windows::Forms::Panel^  panel9;
 	private: System::Windows::Forms::Panel^  panel10;
 	private: System::Windows::Forms::Button^  btnApply;
+	private: System::Windows::Forms::TextBox^  tbName;
+
+	private: System::Windows::Forms::Panel^  panel1;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::TextBox^  tbPassword;
+
+	private: System::Windows::Forms::Panel^  panel2;
+	private: System::Windows::Forms::TextBox^  tbPasswordAgain;
+
+	private: System::Windows::Forms::Panel^  panel3;
+	private: System::Windows::Forms::CheckBox^  cbAutosaveWhenClosing;
+
+	private: System::Windows::Forms::CheckBox^  cbAskPasswordWhenStart;
+	private: System::Windows::Forms::CheckBox^  cbAskWhenClosing;
+
 
 
 
@@ -112,20 +128,20 @@ namespace Phonebook {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(FirstRunForm::typeid));
 			this->panTopPanel = (gcnew System::Windows::Forms::Panel());
 			this->lbTitle = (gcnew System::Windows::Forms::Label());
-			this->rtbName = (gcnew System::Windows::Forms::RichTextBox());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->rtbPassword = (gcnew System::Windows::Forms::RichTextBox());
-			this->panel5 = (gcnew System::Windows::Forms::Panel());
-			this->rtbPasswordRetype = (gcnew System::Windows::Forms::RichTextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->cbAutosaveWhenClosing = (gcnew System::Windows::Forms::CheckBox());
-			this->cbAutosaveAfteChanges = (gcnew System::Windows::Forms::CheckBox());
-			this->cbAskWhenClosing = (gcnew System::Windows::Forms::CheckBox());
 			this->panCredentials = (gcnew System::Windows::Forms::Panel());
+			this->cbAutosaveWhenClosing = (gcnew System::Windows::Forms::CheckBox());
+			this->cbAskPasswordWhenStart = (gcnew System::Windows::Forms::CheckBox());
+			this->cbAskWhenClosing = (gcnew System::Windows::Forms::CheckBox());
+			this->tbPasswordAgain = (gcnew System::Windows::Forms::TextBox());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
+			this->tbPassword = (gcnew System::Windows::Forms::TextBox());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->tbName = (gcnew System::Windows::Forms::TextBox());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->panel10 = (gcnew System::Windows::Forms::Panel());
@@ -148,181 +164,174 @@ namespace Phonebook {
 			// 
 			// lbTitle
 			// 
-			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->lbTitle->Font = (gcnew System::Drawing::Font(L"Arial", 16));
 			this->lbTitle->ForeColor = System::Drawing::Color::White;
 			this->lbTitle->Location = System::Drawing::Point(12, 15);
 			this->lbTitle->Name = L"lbTitle";
-			this->lbTitle->Size = System::Drawing::Size(487, 33);
+			this->lbTitle->Size = System::Drawing::Size(171, 33);
 			this->lbTitle->TabIndex = 0;
-			this->lbTitle->Text = L"Set up your account";
+			this->lbTitle->Text = L"Перший запуск";
 			this->lbTitle->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &FirstRunForm::panTopPanel_MouseDown);
 			this->lbTitle->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &FirstRunForm::panTopPanel_MouseMove);
-			// 
-			// rtbName
-			// 
-			this->rtbName->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
-				static_cast<System::Int32>(static_cast<System::Byte>(211)));
-			this->rtbName->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->rtbName->Location = System::Drawing::Point(28, 56);
-			this->rtbName->Multiline = false;
-			this->rtbName->Name = L"rtbName";
-			this->rtbName->Size = System::Drawing::Size(138, 22);
-			this->rtbName->TabIndex = 8;
-			this->rtbName->Text = L"your real name";
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel2->Location = System::Drawing::Point(28, 78);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(139, 1);
-			this->panel2->TabIndex = 9;
-			// 
-			// panel4
-			// 
-			this->panel4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel4->Location = System::Drawing::Point(193, 78);
-			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(139, 1);
-			this->panel4->TabIndex = 16;
-			// 
-			// rtbPassword
-			// 
-			this->rtbPassword->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
-				static_cast<System::Int32>(static_cast<System::Byte>(211)));
-			this->rtbPassword->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbPassword->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->rtbPassword->Location = System::Drawing::Point(193, 56);
-			this->rtbPassword->Multiline = false;
-			this->rtbPassword->Name = L"rtbPassword";
-			this->rtbPassword->Size = System::Drawing::Size(138, 22);
-			this->rtbPassword->TabIndex = 15;
-			this->rtbPassword->Text = L"password";
-			// 
-			// panel5
-			// 
-			this->panel5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
-				static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panel5->Location = System::Drawing::Point(362, 78);
-			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(139, 1);
-			this->panel5->TabIndex = 19;
-			// 
-			// rtbPasswordRetype
-			// 
-			this->rtbPasswordRetype->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
-				static_cast<System::Int32>(static_cast<System::Byte>(232)), static_cast<System::Int32>(static_cast<System::Byte>(211)));
-			this->rtbPasswordRetype->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbPasswordRetype->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12.25F));
-			this->rtbPasswordRetype->Location = System::Drawing::Point(362, 57);
-			this->rtbPasswordRetype->Multiline = false;
-			this->rtbPasswordRetype->Name = L"rtbPasswordRetype";
-			this->rtbPasswordRetype->Size = System::Drawing::Size(138, 22);
-			this->rtbPasswordRetype->TabIndex = 18;
-			this->rtbPasswordRetype->Text = L"password again";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(9, 16);
+			this->label2->Location = System::Drawing::Point(24, 23);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(70, 30);
+			this->label2->Size = System::Drawing::Size(34, 18);
 			this->label2->TabIndex = 7;
-			this->label2->Text = L"Name";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(174, 16);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(103, 30);
-			this->label3->TabIndex = 14;
-			this->label3->Text = L"Password";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(343, 16);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(177, 30);
-			this->label5->TabIndex = 17;
-			this->label5->Text = L"Retype password";
+			this->label2->Text = L"Ім\'я";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(9, 126);
+			this->label7->Location = System::Drawing::Point(14, 102);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(226, 30);
+			this->label7->Size = System::Drawing::Size(254, 19);
 			this->label7->TabIndex = 23;
-			this->label7->Text = L"Preferences (Optional)";
+			this->label7->Text = L"Налаштування (не обов\'язково)";
+			// 
+			// panCredentials
+			// 
+			this->panCredentials->Controls->Add(this->cbAutosaveWhenClosing);
+			this->panCredentials->Controls->Add(this->cbAskPasswordWhenStart);
+			this->panCredentials->Controls->Add(this->cbAskWhenClosing);
+			this->panCredentials->Controls->Add(this->tbPasswordAgain);
+			this->panCredentials->Controls->Add(this->panel3);
+			this->panCredentials->Controls->Add(this->tbPassword);
+			this->panCredentials->Controls->Add(this->panel2);
+			this->panCredentials->Controls->Add(this->label3);
+			this->panCredentials->Controls->Add(this->label1);
+			this->panCredentials->Controls->Add(this->tbName);
+			this->panCredentials->Controls->Add(this->panel1);
+			this->panCredentials->Controls->Add(this->label2);
+			this->panCredentials->Controls->Add(this->label7);
+			this->panCredentials->Location = System::Drawing::Point(8, 68);
+			this->panCredentials->Name = L"panCredentials";
+			this->panCredentials->Size = System::Drawing::Size(738, 307);
+			this->panCredentials->TabIndex = 27;
 			// 
 			// cbAutosaveWhenClosing
 			// 
 			this->cbAutosaveWhenClosing->AutoSize = true;
 			this->cbAutosaveWhenClosing->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
-			this->cbAutosaveWhenClosing->Location = System::Drawing::Point(28, 183);
+			this->cbAutosaveWhenClosing->Location = System::Drawing::Point(27, 141);
 			this->cbAutosaveWhenClosing->Name = L"cbAutosaveWhenClosing";
-			this->cbAutosaveWhenClosing->Size = System::Drawing::Size(177, 24);
-			this->cbAutosaveWhenClosing->TabIndex = 24;
-			this->cbAutosaveWhenClosing->Text = L"autosave when closing";
+			this->cbAutosaveWhenClosing->Size = System::Drawing::Size(269, 24);
+			this->cbAutosaveWhenClosing->TabIndex = 52;
+			this->cbAutosaveWhenClosing->Text = L"автоматично зберігати при виході";
 			this->cbAutosaveWhenClosing->UseVisualStyleBackColor = true;
 			// 
-			// cbAutosaveAfteChanges
+			// cbAskPasswordWhenStart
 			// 
-			this->cbAutosaveAfteChanges->AutoSize = true;
-			this->cbAutosaveAfteChanges->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
-			this->cbAutosaveAfteChanges->Location = System::Drawing::Point(28, 229);
-			this->cbAutosaveAfteChanges->Name = L"cbAutosaveAfteChanges";
-			this->cbAutosaveAfteChanges->Size = System::Drawing::Size(207, 24);
-			this->cbAutosaveAfteChanges->TabIndex = 25;
-			this->cbAutosaveAfteChanges->Text = L"autosave after any changes";
-			this->cbAutosaveAfteChanges->UseVisualStyleBackColor = true;
+			this->cbAskPasswordWhenStart->AutoSize = true;
+			this->cbAskPasswordWhenStart->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
+			this->cbAskPasswordWhenStart->Location = System::Drawing::Point(27, 176);
+			this->cbAskPasswordWhenStart->Name = L"cbAskPasswordWhenStart";
+			this->cbAskPasswordWhenStart->Size = System::Drawing::Size(231, 24);
+			this->cbAskPasswordWhenStart->TabIndex = 53;
+			this->cbAskPasswordWhenStart->Text = L"запитувати пароль при вході";
+			this->cbAskPasswordWhenStart->UseVisualStyleBackColor = true;
 			// 
 			// cbAskWhenClosing
 			// 
 			this->cbAskWhenClosing->AutoSize = true;
 			this->cbAskWhenClosing->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
-			this->cbAskWhenClosing->Location = System::Drawing::Point(260, 183);
+			this->cbAskWhenClosing->Location = System::Drawing::Point(27, 210);
 			this->cbAskWhenClosing->Name = L"cbAskWhenClosing";
-			this->cbAskWhenClosing->Size = System::Drawing::Size(164, 24);
-			this->cbAskWhenClosing->TabIndex = 26;
-			this->cbAskWhenClosing->Text = L"ask me when closing";
+			this->cbAskWhenClosing->Size = System::Drawing::Size(185, 24);
+			this->cbAskWhenClosing->TabIndex = 54;
+			this->cbAskWhenClosing->Text = L"запитувати при виході";
 			this->cbAskWhenClosing->UseVisualStyleBackColor = true;
 			// 
-			// panCredentials
+			// tbPasswordAgain
 			// 
-			this->panCredentials->Controls->Add(this->label2);
-			this->panCredentials->Controls->Add(this->cbAskWhenClosing);
-			this->panCredentials->Controls->Add(this->rtbName);
-			this->panCredentials->Controls->Add(this->cbAutosaveAfteChanges);
-			this->panCredentials->Controls->Add(this->panel2);
-			this->panCredentials->Controls->Add(this->cbAutosaveWhenClosing);
-			this->panCredentials->Controls->Add(this->label7);
-			this->panCredentials->Controls->Add(this->label3);
-			this->panCredentials->Controls->Add(this->rtbPassword);
-			this->panCredentials->Controls->Add(this->panel5);
-			this->panCredentials->Controls->Add(this->panel4);
-			this->panCredentials->Controls->Add(this->rtbPasswordRetype);
-			this->panCredentials->Controls->Add(this->label5);
-			this->panCredentials->Location = System::Drawing::Point(8, 68);
-			this->panCredentials->Name = L"panCredentials";
-			this->panCredentials->Size = System::Drawing::Size(738, 307);
-			this->panCredentials->TabIndex = 27;
+			this->tbPasswordAgain->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
+				static_cast<System::Int32>(static_cast<System::Byte>(211)));
+			this->tbPasswordAgain->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbPasswordAgain->Font = (gcnew System::Drawing::Font(L"Arial", 9));
+			this->tbPasswordAgain->Location = System::Drawing::Point(360, 47);
+			this->tbPasswordAgain->Name = L"tbPasswordAgain";
+			this->tbPasswordAgain->PasswordChar = '*';
+			this->tbPasswordAgain->Size = System::Drawing::Size(138, 14);
+			this->tbPasswordAgain->TabIndex = 51;
+			// 
+			// panel3
+			// 
+			this->panel3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->panel3->Location = System::Drawing::Point(360, 62);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(139, 1);
+			this->panel3->TabIndex = 50;
+			// 
+			// tbPassword
+			// 
+			this->tbPassword->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
+				static_cast<System::Int32>(static_cast<System::Byte>(211)));
+			this->tbPassword->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbPassword->Font = (gcnew System::Drawing::Font(L"Arial", 9));
+			this->tbPassword->Location = System::Drawing::Point(192, 45);
+			this->tbPassword->Name = L"tbPassword";
+			this->tbPassword->PasswordChar = '*';
+			this->tbPassword->Size = System::Drawing::Size(138, 14);
+			this->tbPassword->TabIndex = 49;
+			// 
+			// panel2
+			// 
+			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->panel2->Location = System::Drawing::Point(192, 60);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(139, 1);
+			this->panel2->TabIndex = 48;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(357, 15);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(126, 18);
+			this->label3->TabIndex = 47;
+			this->label3->Text = L"Пароль (ще раз)";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(189, 23);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(63, 18);
+			this->label1->TabIndex = 46;
+			this->label1->Text = L"Пароль";
+			// 
+			// tbName
+			// 
+			this->tbName->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
+				static_cast<System::Int32>(static_cast<System::Byte>(211)));
+			this->tbName->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->tbName->Font = (gcnew System::Drawing::Font(L"Arial", 9));
+			this->tbName->Location = System::Drawing::Point(27, 44);
+			this->tbName->Name = L"tbName";
+			this->tbName->Size = System::Drawing::Size(138, 14);
+			this->tbName->TabIndex = 45;
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
+				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->panel1->Location = System::Drawing::Point(27, 59);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(139, 1);
+			this->panel1->TabIndex = 44;
 			// 
 			// panel8
 			// 
@@ -353,13 +362,14 @@ namespace Phonebook {
 			// 
 			// btnApply
 			// 
+			this->btnApply->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnApply->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->btnApply->Location = System::Drawing::Point(625, 381);
 			this->btnApply->Name = L"btnApply";
 			this->btnApply->Size = System::Drawing::Size(118, 31);
 			this->btnApply->TabIndex = 31;
-			this->btnApply->Text = L"Apply";
+			this->btnApply->Text = L"Продовжити";
 			this->btnApply->UseVisualStyleBackColor = true;
 			this->btnApply->Click += gcnew System::EventHandler(this, &FirstRunForm::btnApply_Click);
 			// 

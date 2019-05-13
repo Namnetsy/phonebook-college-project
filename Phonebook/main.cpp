@@ -1,5 +1,6 @@
 #include "PasswordForm.h"
 #include "FirstRunForm.h"
+#include "MainForm.h"
 #include "Config.h"
 
 #include <fstream>
@@ -17,8 +18,15 @@ void Main() {
 	ifstream storedData(Config::FILE_PATH, ios::binary);
 
 	if (storedData.is_open()) {
-		Phonebook::PasswordForm passwordForm;
-		Application::Run(%passwordForm);
+		Config::Config config;
+
+		if (config.getConfig().askPasswordAtStart) {
+			Phonebook::PasswordForm passwordForm;
+			Application::Run(%passwordForm);
+		} else {
+			Phonebook::MainForm mainRun;
+			Application::Run(%mainRun);
+		}
 	} else {
 		Phonebook::FirstRunForm firstRun;
 		Application::Run(%firstRun);

@@ -30,11 +30,11 @@ namespace Phonebook {
 	System::Void FirstRunForm::btnApply_Click(System::Object^  sender, System::EventArgs^  e) {
 		Config::Config config;
 
-		if (rtbPassword->Text == rtbPasswordRetype->Text) {
-			config.name = Helper::toString(rtbName->Text);
-			config.password = Helper::getHash(rtbPassword->Text);
+		if (tbPassword->Text == tbPasswordAgain->Text) {
+			config.name = Helper::toString(tbName->Text);
+			config.password = Helper::getHash(tbPassword->Text);
 			config.askWhenClosing = cbAskWhenClosing->Checked;
-			config.autosaveAfterChanges = cbAutosaveAfteChanges->Checked;
+			config.askPasswordAtStart = cbAskPasswordWhenStart->Checked;
 			config.autosaveWhenClosing = cbAutosaveWhenClosing->Checked;
 
 			config.setConfig(config);

@@ -1,5 +1,6 @@
 #include "MainForm.h"
-#include "EntryControl.h"
+#include "SettingsForm.h"
+
 #include "Config.h"
 #include "Helper.h"
 
@@ -27,7 +28,7 @@ namespace Phonebook {
 		if (e->Button == ::MouseButtons::Left) {
 			Point mousePos = Control::MousePosition;
 			mousePos.Offset(mouseLocation.X, mouseLocation.Y);
-			Location  = mousePos;
+			Location = mousePos;
 		}
 	}
 
@@ -67,8 +68,7 @@ namespace Phonebook {
 	// save button' events
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
-			Entry::Entry entry;
-			entry.set(getEntries(), Helper::toString(saveFileDialog1->FileName));
+			saveEntries(saveFileDialog1->FileName);
 			MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
 		}
 	}
@@ -78,13 +78,27 @@ namespace Phonebook {
 		if (openFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
 			Entry::Entry entry;
 			std::vector<Entry::Entry> entries = entry.get(Helper::toString(openFileDialog1->FileName));
-			// TODO: Remove all entries from list before loading new ones
+			clearTable();
+
 			for (auto i = entries.begin(); i != entries.end(); ++i) {
 				addEntry(*i);
 			}
-
-			MessageBox::Show("Дані завантажено з " + openFileDialog1->FileName);
 		}
+	}
+
+	// Hotkeys
+	System::Void MainForm::MainForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+		if (e->KeyCode == Keys::Delete)
+			removeEntry();
+		else if (e->Control && e->KeyCode == Keys::N)
+			addEntry();
+		// TODO:: Add more hotkeys
+	}
+
+	// Settings button' events
+	System::Void MainForm::picSettings_Click(System::Object^  sender, System::EventArgs^  e) {
+		auto s = gcnew SettingsForm();
+		s->ShowDialog();
 	}
 
 	// Other
@@ -99,4 +113,31 @@ namespace Phonebook {
 
 		flpEntries->Controls->Add(control);
 	}
+
+	void MainForm::saveEntries(System::String^ path) {
+		Entry::Entry entry;
+		entry.set(getEntries(), Helper::toString(path));
+	}
+
+	void MainForm::removeEntry() {
+		auto  e = flpEntries->Controls->GetEnumerator();
+
+		while (e->MoveNext()) {
+			auto tmp = (EntryControl^)e->Current;
+
+			if (tmp->BorderStyle == Windows::Forms::BorderStyle::Fixed3D) {
+				flpEntries->Controls->Remove(tmp);
+				break;
+			}
+		}
+	}
+
+	void MainForm::clearTable() {
+		auto  e = flpEntries->Controls->GetEnumerator();
+
+		while (e->MoveNext()) {
+			flpEntries->Controls->Remove((EntryControl^)e->Current);
+		}
+	}
+
 }

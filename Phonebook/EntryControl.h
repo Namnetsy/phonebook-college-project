@@ -18,7 +18,7 @@ namespace Phonebook {
 	public ref class EntryControl : public System::Windows::Forms::UserControl
 	{
 	public:
-		EntryControl(void);
+		EntryControl();
 
 	protected:
 		/// <summary>
@@ -452,6 +452,8 @@ namespace Phonebook {
 			this->Margin = System::Windows::Forms::Padding(0);
 			this->Name = L"EntryControl";
 			this->Size = System::Drawing::Size(1029, 50);
+			this->Enter += gcnew System::EventHandler(this, &EntryControl::EntryControl_Enter);
+			this->Leave += gcnew System::EventHandler(this, &EntryControl::EntryControl_Leave);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhoto))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowMore))->EndInit();
 			this->panData->ResumeLayout(false);
@@ -482,5 +484,7 @@ namespace Phonebook {
 	private: System::Void lbCity_DoubleClick(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void rtbEmail_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e);
 	private: System::Void lbEmail_DoubleClick(System::Object^  sender, System::EventArgs^  e);
-	};
+	private: System::Void EntryControl_Enter(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void EntryControl_Leave(System::Object^  sender, System::EventArgs^  e);
+};
 }

@@ -10,6 +10,7 @@ namespace Phonebook {
 
 		rtbFullName->Hide();
 	}
+
 	// lbMobilePhone' events
 	System::Void EntryControl::lbMobilePhone_DoubleClick(System::Object^  sender, System::EventArgs^  e) {
 		rtbMobilePhone->Text = lbMobilePhone->Text;
@@ -95,6 +96,15 @@ namespace Phonebook {
 		} else {
 			Height -= 50;
 		}
+	}
+
+	// EntryControl' events
+	System::Void EntryControl::EntryControl_Enter(System::Object^  sender, System::EventArgs^  e) {
+		BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
+	}
+
+	System::Void EntryControl::EntryControl_Leave(System::Object^  sender, System::EventArgs^  e) {
+		BorderStyle = Windows::Forms::BorderStyle::None;
 	}
 
 	// Other

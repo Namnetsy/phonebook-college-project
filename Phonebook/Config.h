@@ -11,7 +11,7 @@ namespace Config {
 		int password;
 		
 		bool autosaveWhenClosing;
-		bool autosaveAfterChanges;
+		bool askPasswordAtStart;
 		bool askWhenClosing;
 
 		Config getConfig();

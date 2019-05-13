@@ -39,6 +39,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::Button^  btnContinue;
 
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  lbWarning;
 
 
 
@@ -64,6 +65,7 @@ namespace Phonebook {
 			this->tbPassword = (gcnew System::Windows::Forms::TextBox());
 			this->btnContinue = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->lbWarning = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -133,11 +135,25 @@ namespace Phonebook {
 			this->label2->TabIndex = 21;
 			this->label2->Text = L"¬вед≥ть пароль дл€ входу в Phonebook";
 			// 
+			// lbWarning
+			// 
+			this->lbWarning->AutoSize = true;
+			this->lbWarning->Font = (gcnew System::Drawing::Font(L"Arial", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbWarning->ForeColor = System::Drawing::Color::Red;
+			this->lbWarning->Location = System::Drawing::Point(187, 216);
+			this->lbWarning->Name = L"lbWarning";
+			this->lbWarning->Size = System::Drawing::Size(126, 14);
+			this->lbWarning->TabIndex = 22;
+			this->lbWarning->Text = L"ѕарол≥ не зб≥гаютьс€!";
+			this->lbWarning->Visible = false;
+			// 
 			// PasswordForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(527, 303);
+			this->Controls->Add(this->lbWarning);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->btnContinue);
 			this->Controls->Add(this->tbPassword);
