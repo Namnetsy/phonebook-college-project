@@ -14,6 +14,8 @@ namespace Phonebook {
 		cbAskPasswordWhenStart->Checked = config.askPasswordAtStart;
 		cbAskWhenClosing->Checked = config.askWhenClosing;
 		cbAutosaveWhenClosing->Checked = config.autosaveWhenClosing;
+
+		mouseLocation = gcnew Point();
 	}
 
 	// Apply button' event
@@ -58,9 +60,21 @@ namespace Phonebook {
 		}
 	}
 
-	// Other
-	bool SettingsForm::checkFields() {
-		return true;
+	System::Void SettingsForm::picXout_Click(System::Object^  sender, System::EventArgs^  e) {
+		Close();
+	}
+
+	System::Void SettingsForm::panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		mouseLocation->X = -e->X;
+		mouseLocation->Y = -e->Y;
+	}
+		
+	System::Void SettingsForm::panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		if (e->Button == Windows::Forms::MouseButtons::Left) {
+			Point mousePos = Control::MousePosition;
+			mousePos.Offset(mouseLocation->X, mouseLocation->Y);
+			Location = mousePos;
+		}
 	}
 
 }

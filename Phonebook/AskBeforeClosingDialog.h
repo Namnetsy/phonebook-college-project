@@ -18,6 +18,7 @@ namespace Phonebook {
 	{
 	public:
 		AskBeforeClosingDialog(MainForm^ mainForm, System::String^ path);
+		AskBeforeClosingDialog(MainForm^ mainForm);
 
 	protected:
 		/// <summary>
@@ -42,6 +43,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::Panel^  leftBorder;
 	private: System::Windows::Forms::Panel^  rightBorder;
 	private: System::Windows::Forms::Panel^  panBottom;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
 	private:
 		/// <summary>
@@ -66,6 +68,7 @@ namespace Phonebook {
 			this->leftBorder = (gcnew System::Windows::Forms::Panel());
 			this->rightBorder = (gcnew System::Windows::Forms::Panel());
 			this->panBottom = (gcnew System::Windows::Forms::Panel());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->panControlButtons->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picAccount))->BeginInit();
@@ -81,6 +84,8 @@ namespace Phonebook {
 			this->panControlButtons->Name = L"panControlButtons";
 			this->panControlButtons->Size = System::Drawing::Size(339, 39);
 			this->panControlButtons->TabIndex = 1;
+			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &AskBeforeClosingDialog::panControlButtons_MouseDown);
+			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AskBeforeClosingDialog::panControlButtons_MouseMove);
 			// 
 			// picXout
 			// 
@@ -92,6 +97,7 @@ namespace Phonebook {
 			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
+			this->picXout->Click += gcnew System::EventHandler(this, &AskBeforeClosingDialog::picXout_Click);
 			// 
 			// picAccount
 			// 
@@ -176,7 +182,9 @@ namespace Phonebook {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->panControlButtons);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AskBeforeClosingDialog";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AskBeforeClosingDialog";
 			this->panControlButtons->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
@@ -186,9 +194,15 @@ namespace Phonebook {
 
 		}
 #pragma endregion
-		private: MainForm^ mainForm;
-		private: System::String^ path;
-		private: System::Void btnClose_Click(System::Object^  sender, System::EventArgs^  e);
+		private:
+			MainForm^ mainForm;
+			Point^ mouseLocation;
+			System::String^ path = "None";
+		
+private: System::Void btnClose_Click(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void btnSave_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 };
 }

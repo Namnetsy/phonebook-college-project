@@ -5,9 +5,11 @@ using namespace System;
 using namespace System::IO;
 using namespace Text;
 
-namespace Config {
+namespace Config 
+{
 
-	void Config::setConfig(Config config) {
+	void Config::setConfig(Config config) 
+	{
 		BinaryWriter^ writer = gcnew BinaryWriter(gcnew FileStream(gcnew String(FILE_PATH.c_str()), FileMode::Create), Encoding::UTF8);
 		writer->Write(gcnew String(config.name.c_str()));
 		writer->Write(config.password);

@@ -115,6 +115,8 @@ namespace Phonebook {
 			this->panControlButtons->Name = L"panControlButtons";
 			this->panControlButtons->Size = System::Drawing::Size(540, 46);
 			this->panControlButtons->TabIndex = 1;
+			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &SettingsForm::panControlButtons_MouseDown);
+			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &SettingsForm::panControlButtons_MouseMove);
 			// 
 			// picXout
 			// 
@@ -126,6 +128,7 @@ namespace Phonebook {
 			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
+			this->picXout->Click += gcnew System::EventHandler(this, &SettingsForm::picXout_Click);
 			// 
 			// picAccount
 			// 
@@ -173,6 +176,7 @@ namespace Phonebook {
 			this->cbAskWhenClosing->TabIndex = 29;
 			this->cbAskWhenClosing->Text = L"запитувати при виході";
 			this->cbAskWhenClosing->UseVisualStyleBackColor = true;
+			this->cbAskWhenClosing->Visible = false;
 			// 
 			// cbAskPasswordWhenStart
 			// 
@@ -336,7 +340,9 @@ namespace Phonebook {
 			this->Controls->Add(this->btnApplyChanges);
 			this->Controls->Add(this->panControlButtons);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"SettingsForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"SettingsForm";
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
@@ -350,8 +356,10 @@ namespace Phonebook {
 
 		}
 #pragma endregion
-		private: bool checkFields();
+		private: Point^ mouseLocation;
 		private: System::Void btnApplyChanges_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
+		private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 };
 }
- 

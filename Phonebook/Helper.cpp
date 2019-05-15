@@ -1,13 +1,14 @@
-#include <msclr\marshal_cppstd.h>
 #include <unordered_map>
 
 #include "Helper.h"
 
 using namespace System::Security::Cryptography;
 using namespace System::Text;
+using namespace System::Runtime::InteropServices;
 
 std::string Helper::toString(System::String^ value) {
-	return msclr::interop::marshal_as<std::string>(value);
+	const char* c= (const char*)(Marshal::StringToHGlobalAnsi(value)).ToPointer();
+	return c;
 }
 
 System::String^ Helper::toString(std::string value) {

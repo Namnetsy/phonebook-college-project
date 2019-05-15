@@ -1,5 +1,7 @@
 #include "MainForm.h"
 #include "SettingsForm.h"
+#include "AskBeforeClosingDialog.h"
+#include "AboutForm.h"
 
 #include "Config.h"
 #include "Helper.h"
@@ -14,7 +16,6 @@ namespace Phonebook {
 
 		Config::Config config;
 		config = config.getConfig();
-
 		lbUsername->Text = gcnew String(config.name.c_str());
 	}
 
@@ -34,6 +35,46 @@ namespace Phonebook {
 
 	// X out events
 	System::Void MainForm::picXout_Click(System::Object^  sender, System::EventArgs^  e) {
+		Config::Config cfg;
+		Entry::Entry entry;
+		cfg = cfg.getConfig();
+
+		if (cfg.autosaveWhenClosing) {
+			auto entries = getEntries();
+			entry.set(entries, "entries.pb");
+
+			Application::Exit();
+		}
+
+		if (openFileDialog1->FileName != "openFileDialog1" && cfg.askWhenClosing == true) {
+			Entry::Entry entry;
+			auto loaded = entry.get(Helper::toString(openFileDialog1->FileName));
+			auto local = getEntries();
+
+			if (loaded.size() > local.size()) {
+				auto a = gcnew AskBeforeClosingDialog(this, openFileDialog1->FileName);
+				a->ShowDialog();
+			} else {
+				for (int i = 0; i < local.size(); i++) {
+					if (loaded.at(i).city == local.at(i).city
+						&& loaded.at(i).fullName == local.at(i).fullName
+						&& loaded.at(i).country == local.at(i).country
+						&& loaded.at(i).email == local.at(i).email
+						&& loaded.at(i).homePhone == local.at(i).homePhone
+						&& loaded.at(i).mobilePhone == local.at(i).mobilePhone
+						&& loaded.at(i).workPhone == local.at(i).workPhone) {
+						continue;
+					} else {
+						auto a = gcnew AskBeforeClosingDialog(this, openFileDialog1->FileName);
+						a->ShowDialog();
+					}
+				}
+			}
+		} else if (flpEntries->Controls->Count > 0 && cfg.askWhenClosing == true) {
+			auto a = gcnew AskBeforeClosingDialog(this);
+			a->ShowDialog();
+		}
+
 		Application::Exit();
 	}
 
@@ -67,9 +108,17 @@ namespace Phonebook {
 
 	// save button' events
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+		if (!String::IsNullOrEmpty(saveFileDialog1->FileName)) {
 			saveEntries(saveFileDialog1->FileName);
 			MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
+		} else if (openFileDialog1->FileName != "openFileDialog1") {
+			saveEntries(openFileDialog1->FileName);
+			MessageBox::Show("Дані збережено в " + openFileDialog1->FileName);
+		} else {
+			if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+				saveEntries(saveFileDialog1->FileName);
+				MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
+			}
 		}
 	}
 
@@ -99,6 +148,12 @@ namespace Phonebook {
 	System::Void MainForm::picSettings_Click(System::Object^  sender, System::EventArgs^  e) {
 		auto s = gcnew SettingsForm();
 		s->ShowDialog();
+	}
+
+	// About button' events
+	System::Void MainForm::picAbout_Click(System::Object^  sender, System::EventArgs^  e) {
+		auto a = gcnew AboutForm();
+		a->ShowDialog();
 	}
 
 	// Other

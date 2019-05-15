@@ -42,6 +42,8 @@ namespace Phonebook {
 			MainForm^ mainForm = gcnew MainForm();
 			Hide();
 			mainForm->Show();
+		} else {
+			MessageBox::Show("Паролі не співпадають!");
 		}
 	}
 }

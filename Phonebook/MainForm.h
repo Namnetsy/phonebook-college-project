@@ -28,7 +28,7 @@ namespace Phonebook {
 
 
 	private: System::Windows::Forms::ToolTip^  toolTip;
-	private: System::Windows::Forms::Panel^  panBottomBorder2;
+
 
 
 
@@ -49,6 +49,18 @@ namespace Phonebook {
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 	private: System::Windows::Forms::PictureBox^  picOpen;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -246,7 +258,6 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picSettings = (gcnew System::Windows::Forms::PictureBox());
 			this->toolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->flpEntries = (gcnew System::Windows::Forms::FlowLayoutPanel());
-			this->panBottomBorder2 = (gcnew System::Windows::Forms::Panel());
 			this->directoryEntry1 = (gcnew System::DirectoryServices::DirectoryEntry());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
@@ -335,7 +346,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->panSidebar->Controls->Add(this->picAdd);
 			this->panSidebar->Controls->Add(this->picAbout);
 			this->panSidebar->Controls->Add(this->picSettings);
-			this->panSidebar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->panSidebar->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->panSidebar->Location = System::Drawing::Point(-1, 45);
 			this->panSidebar->Name = L"panSidebar";
 			this->panSidebar->Size = System::Drawing::Size(46, 527);
@@ -344,9 +355,9 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			// picOpen
 			// 
 			this->picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picOpen.Image")));
-			this->picOpen->Location = System::Drawing::Point(6, 7);
+			this->picOpen->Location = System::Drawing::Point(7, 7);
 			this->picOpen->Name = L"picOpen";
-			this->picOpen->Size = System::Drawing::Size(35, 26);
+			this->picOpen->Size = System::Drawing::Size(34, 26);
 			this->picOpen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picOpen->TabIndex = 12;
 			this->picOpen->TabStop = false;
@@ -383,6 +394,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picAbout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAbout->TabIndex = 9;
 			this->picAbout->TabStop = false;
+			this->picAbout->Click += gcnew System::EventHandler(this, &MainForm::picAbout_Click);
 			// 
 			// picSettings
 			// 
@@ -404,15 +416,6 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->flpEntries->Size = System::Drawing::Size(1029, 525);
 			this->flpEntries->TabIndex = 10;
 			// 
-			// panBottomBorder2
-			// 
-			this->panBottomBorder2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->panBottomBorder2->Location = System::Drawing::Point(0, 585);
-			this->panBottomBorder2->Name = L"panBottomBorder2";
-			this->panBottomBorder2->Size = System::Drawing::Size(1076, 3);
-			this->panBottomBorder2->TabIndex = 9;
-			// 
 			// openFileDialog1
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
@@ -425,7 +428,6 @@ private: System::Windows::Forms::Panel^  panSidebar;
 				static_cast<System::Int32>(static_cast<System::Byte>(211)));
 			this->ClientSize = System::Drawing::Size(1075, 572);
 			this->Controls->Add(this->flpEntries);
-			this->Controls->Add(this->panBottomBorder2);
 			this->Controls->Add(this->panSidebar);
 			this->Controls->Add(this->panControlButtons);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
@@ -477,5 +479,6 @@ private: System::Windows::Forms::Panel^  panSidebar;
 	private: System::Void picOpen_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void MainForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e);
 	private: System::Void picSettings_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void picAbout_Click(System::Object^  sender, System::EventArgs^  e);
 };
 }
