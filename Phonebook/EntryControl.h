@@ -37,7 +37,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::Label^  lbFullName;
 	private: System::Windows::Forms::PictureBox^  picShowMore;
 	private: System::Windows::Forms::RichTextBox^  rtbFullName;
-	private: System::Windows::Forms::Panel^  panSeparator;
+
 	private: System::Windows::Forms::Panel^  panData;
 
 	private: System::Windows::Forms::Label^  lbEmail;
@@ -72,6 +72,8 @@ namespace Phonebook {
 	private: System::Windows::Forms::RichTextBox^  rtbCountry;
 	private: System::Windows::Forms::RichTextBox^  rtbCity;
 	private: System::Windows::Forms::RichTextBox^  rtbEmail;
+	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ panSeparator;
 
 
 
@@ -111,8 +113,8 @@ namespace Phonebook {
 			this->lbFullName = (gcnew System::Windows::Forms::Label());
 			this->picShowMore = (gcnew System::Windows::Forms::PictureBox());
 			this->rtbFullName = (gcnew System::Windows::Forms::RichTextBox());
-			this->panSeparator = (gcnew System::Windows::Forms::Panel());
 			this->panData = (gcnew System::Windows::Forms::Panel());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->rtbMobilePhone = (gcnew System::Windows::Forms::RichTextBox());
 			this->lbHeadingEmail = (gcnew System::Windows::Forms::Label());
 			this->lbHeadingCity = (gcnew System::Windows::Forms::Label());
@@ -127,10 +129,11 @@ namespace Phonebook {
 			this->lbCountry = (gcnew System::Windows::Forms::Label());
 			this->rtbCity = (gcnew System::Windows::Forms::RichTextBox());
 			this->lbCity = (gcnew System::Windows::Forms::Label());
-			this->rtbEmail = (gcnew System::Windows::Forms::RichTextBox());
-			this->lbEmail = (gcnew System::Windows::Forms::Label());
 			this->rtbHomePhone = (gcnew System::Windows::Forms::RichTextBox());
 			this->lbHomePhone = (gcnew System::Windows::Forms::Label());
+			this->rtbEmail = (gcnew System::Windows::Forms::RichTextBox());
+			this->lbEmail = (gcnew System::Windows::Forms::Label());
+			this->panSeparator = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhoto))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picShowMore))->BeginInit();
 			this->panData->SuspendLayout();
@@ -152,6 +155,7 @@ namespace Phonebook {
 			this->lbFullName->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbFullName->Location = System::Drawing::Point(55, 4);
+			this->lbFullName->MaximumSize = System::Drawing::Size(844, 32);
 			this->lbFullName->Name = L"lbFullName";
 			this->lbFullName->Size = System::Drawing::Size(118, 32);
 			this->lbFullName->TabIndex = 1;
@@ -185,19 +189,11 @@ namespace Phonebook {
 			this->rtbFullName->Text = L"";
 			this->rtbFullName->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &EntryControl::rtbFullName_KeyPress);
 			// 
-			// panSeparator
-			// 
-			this->panSeparator->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->panSeparator->Location = System::Drawing::Point(0, 50);
-			this->panSeparator->Name = L"panSeparator";
-			this->panSeparator->Size = System::Drawing::Size(1029, 1);
-			this->panSeparator->TabIndex = 4;
-			// 
 			// panData
 			// 
-			this->panData->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->panData->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
+			this->panData->Controls->Add(this->panel1);
 			this->panData->Controls->Add(this->rtbMobilePhone);
 			this->panData->Controls->Add(this->lbHeadingEmail);
 			this->panData->Controls->Add(this->lbHeadingCity);
@@ -212,24 +208,33 @@ namespace Phonebook {
 			this->panData->Controls->Add(this->lbCountry);
 			this->panData->Controls->Add(this->rtbCity);
 			this->panData->Controls->Add(this->lbCity);
-			this->panData->Controls->Add(this->rtbEmail);
-			this->panData->Controls->Add(this->lbEmail);
 			this->panData->Controls->Add(this->rtbHomePhone);
 			this->panData->Controls->Add(this->lbHomePhone);
+			this->panData->Controls->Add(this->rtbEmail);
+			this->panData->Controls->Add(this->lbEmail);
 			this->panData->Location = System::Drawing::Point(0, 51);
 			this->panData->Name = L"panData";
 			this->panData->Size = System::Drawing::Size(1029, 49);
 			this->panData->TabIndex = 5;
 			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
+				static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->panel1->Location = System::Drawing::Point(0, 47);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(1029, 1);
+			this->panel1->TabIndex = 5;
+			// 
 			// rtbMobilePhone
 			// 
-			this->rtbMobilePhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->rtbMobilePhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
 			this->rtbMobilePhone->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->rtbMobilePhone->Location = System::Drawing::Point(21, 26);
 			this->rtbMobilePhone->Multiline = false;
 			this->rtbMobilePhone->Name = L"rtbMobilePhone";
-			this->rtbMobilePhone->Size = System::Drawing::Size(109, 15);
+			this->rtbMobilePhone->Size = System::Drawing::Size(124, 15);
 			this->rtbMobilePhone->TabIndex = 29;
 			this->rtbMobilePhone->Text = L"";
 			this->rtbMobilePhone->Visible = false;
@@ -239,7 +244,7 @@ namespace Phonebook {
 			// 
 			this->lbHeadingEmail->AutoSize = true;
 			this->lbHeadingEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10, System::Drawing::FontStyle::Bold));
-			this->lbHeadingEmail->Location = System::Drawing::Point(601, 1);
+			this->lbHeadingEmail->Location = System::Drawing::Point(650, 3);
 			this->lbHeadingEmail->Name = L"lbHeadingEmail";
 			this->lbHeadingEmail->Size = System::Drawing::Size(131, 19);
 			this->lbHeadingEmail->TabIndex = 27;
@@ -249,7 +254,7 @@ namespace Phonebook {
 			// 
 			this->lbHeadingCity->AutoSize = true;
 			this->lbHeadingCity->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10, System::Drawing::FontStyle::Bold));
-			this->lbHeadingCity->Location = System::Drawing::Point(526, 1);
+			this->lbHeadingCity->Location = System::Drawing::Point(567, 3);
 			this->lbHeadingCity->Name = L"lbHeadingCity";
 			this->lbHeadingCity->Size = System::Drawing::Size(47, 19);
 			this->lbHeadingCity->TabIndex = 25;
@@ -259,7 +264,7 @@ namespace Phonebook {
 			// 
 			this->lbHeadingCountry->AutoSize = true;
 			this->lbHeadingCountry->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10, System::Drawing::FontStyle::Bold));
-			this->lbHeadingCountry->Location = System::Drawing::Point(445, 1);
+			this->lbHeadingCountry->Location = System::Drawing::Point(479, 3);
 			this->lbHeadingCountry->Name = L"lbHeadingCountry";
 			this->lbHeadingCountry->Size = System::Drawing::Size(52, 19);
 			this->lbHeadingCountry->TabIndex = 23;
@@ -269,7 +274,7 @@ namespace Phonebook {
 			// 
 			this->lbHeadingWorkPhone->AutoSize = true;
 			this->lbHeadingWorkPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10, System::Drawing::FontStyle::Bold));
-			this->lbHeadingWorkPhone->Location = System::Drawing::Point(302, 1);
+			this->lbHeadingWorkPhone->Location = System::Drawing::Point(331, 0);
 			this->lbHeadingWorkPhone->Name = L"lbHeadingWorkPhone";
 			this->lbHeadingWorkPhone->Size = System::Drawing::Size(123, 19);
 			this->lbHeadingWorkPhone->TabIndex = 21;
@@ -279,7 +284,7 @@ namespace Phonebook {
 			// 
 			this->lbHeadingHomePhone->AutoSize = true;
 			this->lbHeadingHomePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 10, System::Drawing::FontStyle::Bold));
-			this->lbHeadingHomePhone->Location = System::Drawing::Point(151, 1);
+			this->lbHeadingHomePhone->Location = System::Drawing::Point(167, 3);
 			this->lbHeadingHomePhone->Name = L"lbHeadingHomePhone";
 			this->lbHeadingHomePhone->Size = System::Drawing::Size(134, 19);
 			this->lbHeadingHomePhone->TabIndex = 19;
@@ -297,25 +302,24 @@ namespace Phonebook {
 			// 
 			// lbMobilePhone
 			// 
-			this->lbMobilePhone->AutoSize = true;
 			this->lbMobilePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbMobilePhone->Location = System::Drawing::Point(18, 26);
 			this->lbMobilePhone->Name = L"lbMobilePhone";
-			this->lbMobilePhone->Size = System::Drawing::Size(57, 15);
+			this->lbMobilePhone->Size = System::Drawing::Size(127, 15);
 			this->lbMobilePhone->TabIndex = 18;
 			this->lbMobilePhone->Text = L"<empty>";
 			this->lbMobilePhone->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbMobilePhone_DoubleClick);
 			// 
 			// rtbWorkPhone
 			// 
-			this->rtbWorkPhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->rtbWorkPhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
 			this->rtbWorkPhone->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbWorkPhone->Location = System::Drawing::Point(315, 26);
+			this->rtbWorkPhone->Location = System::Drawing::Point(344, 25);
 			this->rtbWorkPhone->Multiline = false;
 			this->rtbWorkPhone->Name = L"rtbWorkPhone";
-			this->rtbWorkPhone->Size = System::Drawing::Size(100, 15);
+			this->rtbWorkPhone->Size = System::Drawing::Size(110, 15);
 			this->rtbWorkPhone->TabIndex = 31;
 			this->rtbWorkPhone->Text = L"";
 			this->rtbWorkPhone->Visible = false;
@@ -323,25 +327,24 @@ namespace Phonebook {
 			// 
 			// lbWorkPhone
 			// 
-			this->lbWorkPhone->AutoSize = true;
 			this->lbWorkPhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbWorkPhone->Location = System::Drawing::Point(312, 26);
+			this->lbWorkPhone->Location = System::Drawing::Point(341, 25);
 			this->lbWorkPhone->Name = L"lbWorkPhone";
-			this->lbWorkPhone->Size = System::Drawing::Size(57, 15);
+			this->lbWorkPhone->Size = System::Drawing::Size(113, 15);
 			this->lbWorkPhone->TabIndex = 22;
 			this->lbWorkPhone->Text = L"<empty>";
 			this->lbWorkPhone->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbWorkPhone_DoubleClick);
 			// 
 			// rtbCountry
 			// 
-			this->rtbCountry->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->rtbCountry->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
 			this->rtbCountry->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbCountry->Location = System::Drawing::Point(450, 26);
+			this->rtbCountry->Location = System::Drawing::Point(484, 28);
 			this->rtbCountry->Multiline = false;
 			this->rtbCountry->Name = L"rtbCountry";
-			this->rtbCountry->Size = System::Drawing::Size(54, 15);
+			this->rtbCountry->Size = System::Drawing::Size(66, 15);
 			this->rtbCountry->TabIndex = 32;
 			this->rtbCountry->Text = L"";
 			this->rtbCountry->Visible = false;
@@ -349,22 +352,21 @@ namespace Phonebook {
 			// 
 			// lbCountry
 			// 
-			this->lbCountry->AutoSize = true;
 			this->lbCountry->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbCountry->Location = System::Drawing::Point(447, 26);
+			this->lbCountry->Location = System::Drawing::Point(481, 28);
 			this->lbCountry->Name = L"lbCountry";
-			this->lbCountry->Size = System::Drawing::Size(57, 15);
+			this->lbCountry->Size = System::Drawing::Size(79, 15);
 			this->lbCountry->TabIndex = 24;
 			this->lbCountry->Text = L"<empty>";
 			this->lbCountry->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbCountry_DoubleClick);
 			// 
 			// rtbCity
 			// 
-			this->rtbCity->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->rtbCity->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
 			this->rtbCity->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbCity->Location = System::Drawing::Point(527, 26);
+			this->rtbCity->Location = System::Drawing::Point(575, 28);
 			this->rtbCity->Multiline = false;
 			this->rtbCity->Name = L"rtbCity";
 			this->rtbCity->Size = System::Drawing::Size(57, 15);
@@ -375,51 +377,24 @@ namespace Phonebook {
 			// 
 			// lbCity
 			// 
-			this->lbCity->AutoSize = true;
 			this->lbCity->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbCity->Location = System::Drawing::Point(524, 26);
+			this->lbCity->Location = System::Drawing::Point(572, 28);
 			this->lbCity->Name = L"lbCity";
 			this->lbCity->Size = System::Drawing::Size(57, 15);
 			this->lbCity->TabIndex = 26;
 			this->lbCity->Text = L"<empty>";
 			this->lbCity->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbCity_DoubleClick);
 			// 
-			// rtbEmail
-			// 
-			this->rtbEmail->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
-			this->rtbEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbEmail->Location = System::Drawing::Point(608, 26);
-			this->rtbEmail->Multiline = false;
-			this->rtbEmail->Name = L"rtbEmail";
-			this->rtbEmail->Size = System::Drawing::Size(138, 15);
-			this->rtbEmail->TabIndex = 34;
-			this->rtbEmail->Text = L"";
-			this->rtbEmail->Visible = false;
-			this->rtbEmail->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &EntryControl::rtbEmail_KeyPress);
-			// 
-			// lbEmail
-			// 
-			this->lbEmail->AutoSize = true;
-			this->lbEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->lbEmail->Location = System::Drawing::Point(605, 26);
-			this->lbEmail->Name = L"lbEmail";
-			this->lbEmail->Size = System::Drawing::Size(57, 15);
-			this->lbEmail->TabIndex = 28;
-			this->lbEmail->Text = L"<empty>";
-			this->lbEmail->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbEmail_DoubleClick);
-			// 
 			// rtbHomePhone
 			// 
-			this->rtbHomePhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(211)), static_cast<System::Int32>(static_cast<System::Byte>(219)),
-				static_cast<System::Int32>(static_cast<System::Byte>(199)));
+			this->rtbHomePhone->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
 			this->rtbHomePhone->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->rtbHomePhone->Location = System::Drawing::Point(169, 26);
+			this->rtbHomePhone->Location = System::Drawing::Point(185, 28);
 			this->rtbHomePhone->Multiline = false;
 			this->rtbHomePhone->Name = L"rtbHomePhone";
-			this->rtbHomePhone->Size = System::Drawing::Size(99, 15);
+			this->rtbHomePhone->Size = System::Drawing::Size(116, 15);
 			this->rtbHomePhone->TabIndex = 30;
 			this->rtbHomePhone->Text = L"";
 			this->rtbHomePhone->Visible = false;
@@ -427,15 +402,48 @@ namespace Phonebook {
 			// 
 			// lbHomePhone
 			// 
-			this->lbHomePhone->AutoSize = true;
 			this->lbHomePhone->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbHomePhone->Location = System::Drawing::Point(166, 26);
+			this->lbHomePhone->Location = System::Drawing::Point(182, 28);
 			this->lbHomePhone->Name = L"lbHomePhone";
-			this->lbHomePhone->Size = System::Drawing::Size(57, 15);
+			this->lbHomePhone->Size = System::Drawing::Size(119, 15);
 			this->lbHomePhone->TabIndex = 20;
 			this->lbHomePhone->Text = L"<empty>";
 			this->lbHomePhone->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbHomePhone_DoubleClick);
+			// 
+			// rtbEmail
+			// 
+			this->rtbEmail->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(240)),
+				static_cast<System::Int32>(static_cast<System::Byte>(244)));
+			this->rtbEmail->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->rtbEmail->Location = System::Drawing::Point(657, 28);
+			this->rtbEmail->Multiline = false;
+			this->rtbEmail->Name = L"rtbEmail";
+			this->rtbEmail->Size = System::Drawing::Size(162, 15);
+			this->rtbEmail->TabIndex = 34;
+			this->rtbEmail->Text = L"";
+			this->rtbEmail->Visible = false;
+			this->rtbEmail->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &EntryControl::rtbEmail_KeyPress);
+			// 
+			// lbEmail
+			// 
+			this->lbEmail->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbEmail->Location = System::Drawing::Point(654, 28);
+			this->lbEmail->Name = L"lbEmail";
+			this->lbEmail->Size = System::Drawing::Size(165, 15);
+			this->lbEmail->TabIndex = 28;
+			this->lbEmail->Text = L"<empty>";
+			this->lbEmail->DoubleClick += gcnew System::EventHandler(this, &EntryControl::lbEmail_DoubleClick);
+			// 
+			// panSeparator
+			// 
+			this->panSeparator->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
+				static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->panSeparator->Location = System::Drawing::Point(0, 50);
+			this->panSeparator->Name = L"panSeparator";
+			this->panSeparator->Size = System::Drawing::Size(1029, 1);
+			this->panSeparator->TabIndex = 4;
 			// 
 			// EntryControl
 			// 
@@ -443,15 +451,15 @@ namespace Phonebook {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(232)),
 				static_cast<System::Int32>(static_cast<System::Byte>(211)));
+			this->Controls->Add(this->rtbFullName);
 			this->Controls->Add(this->panData);
 			this->Controls->Add(this->panSeparator);
 			this->Controls->Add(this->picShowMore);
 			this->Controls->Add(this->picPhoto);
-			this->Controls->Add(this->rtbFullName);
 			this->Controls->Add(this->lbFullName);
 			this->Margin = System::Windows::Forms::Padding(0);
 			this->Name = L"EntryControl";
-			this->Size = System::Drawing::Size(1029, 164);
+			this->Size = System::Drawing::Size(1029, 50);
 			this->Enter += gcnew System::EventHandler(this, &EntryControl::EntryControl_Enter);
 			this->Leave += gcnew System::EventHandler(this, &EntryControl::EntryControl_Leave);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhoto))->EndInit();

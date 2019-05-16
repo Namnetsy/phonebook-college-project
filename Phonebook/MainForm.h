@@ -80,6 +80,7 @@ namespace Phonebook {
 
 
 
+
 	private: System::Windows::Forms::FlowLayoutPanel^  flpEntries;
 
 
@@ -443,6 +444,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->Controls->Add(this->flpEntries);
 			this->Controls->Add(this->panSidebar);
 			this->Controls->Add(this->panControlButtons);
+			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->KeyPreview = true;

@@ -125,7 +125,7 @@ namespace Phonebook {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(FirstRunForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(FirstRunForm::typeid));
 			this->panTopPanel = (gcnew System::Windows::Forms::Panel());
 			this->lbTitle = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -389,6 +389,7 @@ namespace Phonebook {
 			this->Controls->Add(this->panel8);
 			this->Controls->Add(this->panTopPanel);
 			this->Controls->Add(this->panCredentials);
+			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"FirstRunForm";

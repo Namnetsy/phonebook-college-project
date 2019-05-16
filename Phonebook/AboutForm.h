@@ -128,7 +128,7 @@ namespace Phonebook {
 			// panel3
 			// 
 			this->panel3->BackColor = System::Drawing::Color::Black;
-			this->panel3->Location = System::Drawing::Point(0, 335);
+			this->panel3->Location = System::Drawing::Point(0, 299);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(391, 3);
 			this->panel3->TabIndex = 4;
@@ -158,7 +158,7 @@ namespace Phonebook {
 			this->lbCopyright->AutoSize = true;
 			this->lbCopyright->Font = (gcnew System::Drawing::Font(L"Arial", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->lbCopyright->Location = System::Drawing::Point(289, 315);
+			this->lbCopyright->Location = System::Drawing::Point(286, 275);
 			this->lbCopyright->Name = L"lbCopyright";
 			this->lbCopyright->Size = System::Drawing::Size(96, 14);
 			this->lbCopyright->TabIndex = 7;
@@ -168,7 +168,7 @@ namespace Phonebook {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(391, 338);
+			this->ClientSize = System::Drawing::Size(391, 302);
 			this->Controls->Add(this->lbCopyright);
 			this->Controls->Add(this->lbContent);
 			this->Controls->Add(this->lbHeading);
@@ -176,6 +176,7 @@ namespace Phonebook {
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panControlButtons);
+			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"AboutForm";

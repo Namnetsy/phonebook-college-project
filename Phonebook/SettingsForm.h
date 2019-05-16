@@ -76,7 +76,7 @@ namespace Phonebook {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(SettingsForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(SettingsForm::typeid));
 			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
 			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->picAccount = (gcnew System::Windows::Forms::PictureBox());
@@ -341,6 +341,7 @@ namespace Phonebook {
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->btnApplyChanges);
 			this->Controls->Add(this->panControlButtons);
+			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"SettingsForm";

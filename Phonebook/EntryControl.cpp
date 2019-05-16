@@ -100,11 +100,13 @@ namespace Phonebook {
 
 	// EntryControl' events
 	System::Void EntryControl::EntryControl_Enter(System::Object^  sender, System::EventArgs^  e) {
-		BorderStyle = Windows::Forms::BorderStyle::Fixed3D;
+		BackColor = Color::FromArgb(192, 192, 255);
+		rtbFullName->BackColor = Color::FromArgb(192, 192, 255);
 	}
 
 	System::Void EntryControl::EntryControl_Leave(System::Object^  sender, System::EventArgs^  e) {
-		BorderStyle = Windows::Forms::BorderStyle::None;
+		BackColor = Color::FromArgb(224, 232, 211);
+		rtbFullName->BackColor = Color::FromArgb(224, 232, 211);
 	}
 
 	// Other

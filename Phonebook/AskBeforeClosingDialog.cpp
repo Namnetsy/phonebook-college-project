@@ -28,8 +28,6 @@ namespace Phonebook {
 			if (saveFileDialog1->ShowDialog() != Windows::Forms::DialogResult::Cancel) {
 				mainForm->saveEntries(saveFileDialog1->FileName);
 				Application::Exit();
-			} else {
-				MessageBox::Show("Виберіть куди повинен бути збережений файл.");
 			}
 		} else {
 			mainForm->saveEntries(path);

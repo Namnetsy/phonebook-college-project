@@ -17,6 +17,15 @@ namespace Phonebook {
 		Config::Config config;
 		config = config.getConfig();
 		lbUsername->Text = gcnew String(config.name.c_str());
+
+		flpEntries->AutoScroll = false;
+		flpEntries->HorizontalScroll->Enabled = false;
+		flpEntries->HorizontalScroll->Visible = false;
+		flpEntries->VerticalScroll->Visible = false;
+		flpEntries->VerticalScroll->Enabled = false;
+		flpEntries->HorizontalScroll->Maximum = 0;
+		flpEntries->VerticalScroll->Maximum = 0;
+		flpEntries->AutoScroll = true;
 	}
 
 	// top panel' events
@@ -218,7 +227,7 @@ namespace Phonebook {
 		while (e->MoveNext()) {
 			auto tmp = (EntryControl^)e->Current;
 
-			if (tmp->BorderStyle == Windows::Forms::BorderStyle::Fixed3D) {
+			if (tmp->BackColor == Color::FromArgb(192, 192, 255)) {
 				flpEntries->Controls->Remove(tmp);
 				break;
 			}
