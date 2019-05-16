@@ -129,6 +129,8 @@ namespace Phonebook {
 			this->picXout->TabIndex = 2;
 			this->picXout->TabStop = false;
 			this->picXout->Click += gcnew System::EventHandler(this, &SettingsForm::picXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &SettingsForm::PicXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &SettingsForm::PicXout_MouseLeave);
 			// 
 			// picAccount
 			// 
@@ -359,10 +361,16 @@ namespace Phonebook {
 
 		}
 #pragma endregion
-		private: Point^ mouseLocation;
+		private:
+			Point^ mouseLocation;
+			Resources::ResourceManager^ rmSettingsForm;
+			Resources::ResourceManager^ rmGlobal;
+
 		private: System::Void btnApplyChanges_Click(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void picXout_Click(System::Object^  sender, System::EventArgs^  e);
 		private: System::Void panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 		private: System::Void panControlButtons_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		private: System::Void PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e);
 };
 }

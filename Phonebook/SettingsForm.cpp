@@ -16,6 +16,9 @@ namespace Phonebook {
 		cbAutosaveWhenClosing->Checked = config.autosaveWhenClosing;
 
 		mouseLocation = gcnew Point();
+
+		rmSettingsForm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
+		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
 	}
 
 	// Apply button' event
@@ -60,8 +63,17 @@ namespace Phonebook {
 		}
 	}
 
+	// X out' events
 	System::Void SettingsForm::picXout_Click(System::Object^  sender, System::EventArgs^  e) {
 		Close();
+	}
+
+	System::Void SettingsForm::PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"x_out-focused")));
+	}
+	
+	System::Void SettingsForm::PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmSettingsForm->GetObject(L"picXout.Image")));
 	}
 
 	System::Void SettingsForm::panControlButtons_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
