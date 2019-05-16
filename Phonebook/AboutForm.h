@@ -30,7 +30,7 @@ namespace Phonebook {
 		}
 	private: System::Windows::Forms::Panel^  panControlButtons;
 	protected:
-	private: System::Windows::Forms::PictureBox^  picPhonebookIcon;
+
 
 	private: System::Windows::Forms::PictureBox^  picXout;
 	private: System::Windows::Forms::Label^  lbWindowTitle;
@@ -39,6 +39,7 @@ namespace Phonebook {
 	private: System::Windows::Forms::Panel^  panel3;
 	private: System::Windows::Forms::Label^  lbHeading;
 	private: System::Windows::Forms::Label^  lbContent;
+	private: System::Windows::Forms::Label^ lbCopyright;
 
 
 	private:
@@ -54,9 +55,8 @@ namespace Phonebook {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(AboutForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AboutForm::typeid));
 			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
-			this->picPhonebookIcon = (gcnew System::Windows::Forms::PictureBox());
 			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->lbWindowTitle = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -64,8 +64,8 @@ namespace Phonebook {
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->lbHeading = (gcnew System::Windows::Forms::Label());
 			this->lbContent = (gcnew System::Windows::Forms::Label());
+			this->lbCopyright = (gcnew System::Windows::Forms::Label());
 			this->panControlButtons->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhonebookIcon))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -73,7 +73,6 @@ namespace Phonebook {
 			// 
 			this->panControlButtons->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)));
-			this->panControlButtons->Controls->Add(this->picPhonebookIcon);
 			this->panControlButtons->Controls->Add(this->picXout);
 			this->panControlButtons->Controls->Add(this->lbWindowTitle);
 			this->panControlButtons->Location = System::Drawing::Point(0, 0);
@@ -82,16 +81,6 @@ namespace Phonebook {
 			this->panControlButtons->TabIndex = 1;
 			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &AboutForm::panControlButtons_MouseDown);
 			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &AboutForm::panControlButtons_MouseMove);
-			// 
-			// picPhonebookIcon
-			// 
-			this->picPhonebookIcon->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picPhonebookIcon.Image")));
-			this->picPhonebookIcon->Location = System::Drawing::Point(7, 10);
-			this->picPhonebookIcon->Name = L"picPhonebookIcon";
-			this->picPhonebookIcon->Size = System::Drawing::Size(36, 26);
-			this->picPhonebookIcon->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->picPhonebookIcon->TabIndex = 6;
-			this->picPhonebookIcon->TabStop = false;
 			// 
 			// picXout
 			// 
@@ -110,14 +99,14 @@ namespace Phonebook {
 			// lbWindowTitle
 			// 
 			this->lbWindowTitle->AutoSize = true;
-			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbWindowTitle->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbWindowTitle->ForeColor = System::Drawing::Color::White;
-			this->lbWindowTitle->Location = System::Drawing::Point(44, 12);
+			this->lbWindowTitle->Location = System::Drawing::Point(12, 12);
 			this->lbWindowTitle->Name = L"lbWindowTitle";
-			this->lbWindowTitle->Size = System::Drawing::Size(68, 25);
+			this->lbWindowTitle->Size = System::Drawing::Size(143, 22);
 			this->lbWindowTitle->TabIndex = 0;
-			this->lbWindowTitle->Text = L"About";
+			this->lbWindowTitle->Text = L"Про програму";
 			this->lbWindowTitle->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
 			// panel1
@@ -152,7 +141,7 @@ namespace Phonebook {
 			this->lbHeading->Name = L"lbHeading";
 			this->lbHeading->Size = System::Drawing::Size(166, 23);
 			this->lbHeading->TabIndex = 5;
-			this->lbHeading->Text = L"Phonebook 1.0.5";
+			this->lbHeading->Text = L"Phonebook 1.1.5";
 			// 
 			// lbContent
 			// 
@@ -162,13 +151,25 @@ namespace Phonebook {
 			this->lbContent->Name = L"lbContent";
 			this->lbContent->Size = System::Drawing::Size(371, 126);
 			this->lbContent->TabIndex = 6;
-			this->lbContent->Text = resources->GetString(L"lbContent.Text");
+			this->lbContent->Text = L"Телефонна книга.";
+			// 
+			// lbCopyright
+			// 
+			this->lbCopyright->AutoSize = true;
+			this->lbCopyright->Font = (gcnew System::Drawing::Font(L"Arial", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->lbCopyright->Location = System::Drawing::Point(289, 315);
+			this->lbCopyright->Name = L"lbCopyright";
+			this->lbCopyright->Size = System::Drawing::Size(96, 14);
+			this->lbCopyright->TabIndex = 7;
+			this->lbCopyright->Text = L"Copyright© 2019";
 			// 
 			// AboutForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(391, 338);
+			this->Controls->Add(this->lbCopyright);
 			this->Controls->Add(this->lbContent);
 			this->Controls->Add(this->lbHeading);
 			this->Controls->Add(this->panel3);
@@ -182,9 +183,9 @@ namespace Phonebook {
 			this->Text = L"AboutForm";
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picPhonebookIcon))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion

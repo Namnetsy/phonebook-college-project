@@ -112,7 +112,8 @@ namespace Phonebook {
 		rtb->Text = rtb->Text->Replace("\n", "");
 
 		if (String::IsNullOrWhiteSpace(rtb->Text)) {
-			rtb->Text = "Cannot be empty!";
+			lb->Text = "<empty>";
+			rtb->Hide();
 		} else {
 			lb->Text = rtb->Text;
 			rtb->Hide();

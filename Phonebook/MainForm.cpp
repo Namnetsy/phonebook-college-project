@@ -39,9 +39,17 @@ namespace Phonebook {
 		Entry::Entry entry;
 		cfg = cfg.getConfig();
 
-		if (cfg.autosaveWhenClosing) {
-			auto entries = getEntries();
-			entry.set(entries, "entries.pb");
+		if (cfg.autosaveWhenClosing && flpEntries->Controls->Count > 0) {
+			if (!String::IsNullOrEmpty(saveFileDialog1->FileName)) {
+				auto entries = getEntries();
+				entry.set(entries, Helper::toString(saveFileDialog1->FileName));
+			} else if (openFileDialog1->FileName != "openFileDialog1") {
+				auto entries = getEntries();
+				entry.set(entries, Helper::toString(openFileDialog1->FileName));
+			} else {
+				auto entries = getEntries();
+				entry.set(entries, Helper::toString(openFileDialog1->FileName));
+			}
 
 			Application::Exit();
 		}
@@ -110,14 +118,14 @@ namespace Phonebook {
 	System::Void MainForm::picSave_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (!String::IsNullOrEmpty(saveFileDialog1->FileName)) {
 			saveEntries(saveFileDialog1->FileName);
-			MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
+			MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		} else if (openFileDialog1->FileName != "openFileDialog1") {
 			saveEntries(openFileDialog1->FileName);
-			MessageBox::Show("Дані збережено в " + openFileDialog1->FileName);
+			MessageBox::Show("Дані збережено в " + openFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		} else {
 			if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
 				saveEntries(saveFileDialog1->FileName);
-				MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName);
+				MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	}
@@ -137,11 +145,35 @@ namespace Phonebook {
 
 	// Hotkeys
 	System::Void MainForm::MainForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
-		if (e->KeyCode == Keys::Delete)
+		if (e->KeyCode == Keys::Delete) {
 			removeEntry();
-		else if (e->Control && e->KeyCode == Keys::N)
+		} else if (e->Control && e->KeyCode == Keys::N) {
 			addEntry();
-		// TODO:: Add more hotkeys
+
+		} else if (e->Control && e->KeyCode == Keys::O) {
+			if (openFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+				Entry::Entry entry;
+				std::vector<Entry::Entry> entries = entry.get(Helper::toString(openFileDialog1->FileName));
+				flpEntries->Controls->Clear();
+
+				for (auto i = entries.begin(); i != entries.end(); ++i) {
+					addEntry(*i);
+				}
+			}
+		} else if (e->Control && e->KeyCode == Keys::S) {
+			if (!String::IsNullOrEmpty(saveFileDialog1->FileName)) {
+				saveEntries(saveFileDialog1->FileName);
+				MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			} else if (openFileDialog1->FileName != "openFileDialog1") {
+				saveEntries(openFileDialog1->FileName);
+				MessageBox::Show("Дані збережено в " + openFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			} else {
+				if (saveFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::Cancel) {
+					saveEntries(saveFileDialog1->FileName);
+					MessageBox::Show("Дані збережено в " + saveFileDialog1->FileName, "Інформація", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+			}
+		}
 	}
 
 	// Settings button' events
@@ -154,6 +186,12 @@ namespace Phonebook {
 	System::Void MainForm::picAbout_Click(System::Object^  sender, System::EventArgs^  e) {
 		auto a = gcnew AboutForm();
 		a->ShowDialog();
+	}
+
+
+	// MainForm' events
+	System::Void MainForm::MainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Application::Exit();
 	}
 
 	// Other

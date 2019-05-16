@@ -219,10 +219,11 @@ namespace Phonebook {
 			// cbAutosaveWhenClosing
 			// 
 			this->cbAutosaveWhenClosing->AutoSize = true;
-			this->cbAutosaveWhenClosing->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
+			this->cbAutosaveWhenClosing->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->cbAutosaveWhenClosing->Location = System::Drawing::Point(27, 141);
 			this->cbAutosaveWhenClosing->Name = L"cbAutosaveWhenClosing";
-			this->cbAutosaveWhenClosing->Size = System::Drawing::Size(269, 24);
+			this->cbAutosaveWhenClosing->Size = System::Drawing::Size(257, 21);
 			this->cbAutosaveWhenClosing->TabIndex = 52;
 			this->cbAutosaveWhenClosing->Text = L"автоматично зберігати при виході";
 			this->cbAutosaveWhenClosing->UseVisualStyleBackColor = true;
@@ -230,10 +231,11 @@ namespace Phonebook {
 			// cbAskPasswordWhenStart
 			// 
 			this->cbAskPasswordWhenStart->AutoSize = true;
-			this->cbAskPasswordWhenStart->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
+			this->cbAskPasswordWhenStart->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->cbAskPasswordWhenStart->Location = System::Drawing::Point(27, 176);
 			this->cbAskPasswordWhenStart->Name = L"cbAskPasswordWhenStart";
-			this->cbAskPasswordWhenStart->Size = System::Drawing::Size(231, 24);
+			this->cbAskPasswordWhenStart->Size = System::Drawing::Size(222, 21);
 			this->cbAskPasswordWhenStart->TabIndex = 53;
 			this->cbAskPasswordWhenStart->Text = L"запитувати пароль при вході";
 			this->cbAskPasswordWhenStart->UseVisualStyleBackColor = true;
@@ -241,10 +243,11 @@ namespace Phonebook {
 			// cbAskWhenClosing
 			// 
 			this->cbAskWhenClosing->AutoSize = true;
-			this->cbAskWhenClosing->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.75F));
+			this->cbAskWhenClosing->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->cbAskWhenClosing->Location = System::Drawing::Point(27, 210);
 			this->cbAskWhenClosing->Name = L"cbAskWhenClosing";
-			this->cbAskWhenClosing->Size = System::Drawing::Size(185, 24);
+			this->cbAskWhenClosing->Size = System::Drawing::Size(178, 21);
 			this->cbAskWhenClosing->TabIndex = 54;
 			this->cbAskWhenClosing->Text = L"запитувати при виході";
 			this->cbAskWhenClosing->UseVisualStyleBackColor = true;

@@ -77,6 +77,9 @@ namespace Phonebook {
 
 
 
+
+
+
 	private: System::Windows::Forms::FlowLayoutPanel^  flpEntries;
 
 
@@ -244,7 +247,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
 			this->picMinimize = (gcnew System::Windows::Forms::PictureBox());
 			this->picXout = (gcnew System::Windows::Forms::PictureBox());
@@ -354,6 +357,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			// 
 			// picOpen
 			// 
+			this->picOpen->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picOpen->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picOpen.Image")));
 			this->picOpen->Location = System::Drawing::Point(7, 7);
 			this->picOpen->Name = L"picOpen";
@@ -361,10 +365,12 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picOpen->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picOpen->TabIndex = 12;
 			this->picOpen->TabStop = false;
+			this->toolTip->SetToolTip(this->picOpen, L"Завантажити дані");
 			this->picOpen->Click += gcnew System::EventHandler(this, &MainForm::picOpen_Click);
 			// 
 			// picSave
 			// 
+			this->picSave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSave.Image")));
 			this->picSave->Location = System::Drawing::Point(5, 41);
 			this->picSave->Name = L"picSave";
@@ -372,10 +378,12 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picSave->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSave->TabIndex = 11;
 			this->picSave->TabStop = false;
+			this->toolTip->SetToolTip(this->picSave, L"Зберегти");
 			this->picSave->Click += gcnew System::EventHandler(this, &MainForm::picSave_Click);
 			// 
 			// picAdd
 			// 
+			this->picAdd->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picAdd->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAdd.Image")));
 			this->picAdd->Location = System::Drawing::Point(5, 73);
 			this->picAdd->Name = L"picAdd";
@@ -383,10 +391,12 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picAdd->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAdd->TabIndex = 10;
 			this->picAdd->TabStop = false;
+			this->toolTip->SetToolTip(this->picAdd, L"Додати");
 			this->picAdd->Click += gcnew System::EventHandler(this, &MainForm::picAdd_Click);
 			// 
 			// picAbout
 			// 
+			this->picAbout->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picAbout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picAbout.Image")));
 			this->picAbout->Location = System::Drawing::Point(6, 492);
 			this->picAbout->Name = L"picAbout";
@@ -394,10 +404,12 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picAbout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picAbout->TabIndex = 9;
 			this->picAbout->TabStop = false;
+			this->toolTip->SetToolTip(this->picAbout, L"Про програму");
 			this->picAbout->Click += gcnew System::EventHandler(this, &MainForm::picAbout_Click);
 			// 
 			// picSettings
 			// 
+			this->picSettings->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->picSettings->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picSettings.Image")));
 			this->picSettings->Location = System::Drawing::Point(6, 105);
 			this->picSettings->Name = L"picSettings";
@@ -405,6 +417,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->picSettings->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->picSettings->TabIndex = 8;
 			this->picSettings->TabStop = false;
+			this->toolTip->SetToolTip(this->picSettings, L"Налаштування");
 			this->picSettings->Click += gcnew System::EventHandler(this, &MainForm::picSettings_Click);
 			// 
 			// flpEntries
@@ -436,6 +449,7 @@ private: System::Windows::Forms::Panel^  panSidebar;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Category Manager";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainForm::MainForm_FormClosing);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
 			this->panControlButtons->ResumeLayout(false);
 			this->panControlButtons->PerformLayout();
@@ -480,5 +494,6 @@ private: System::Windows::Forms::Panel^  panSidebar;
 	private: System::Void MainForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e);
 	private: System::Void picSettings_Click(System::Object^  sender, System::EventArgs^  e);
 	private: System::Void picAbout_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 };
 }

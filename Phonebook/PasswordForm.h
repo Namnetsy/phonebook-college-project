@@ -82,14 +82,14 @@ namespace Phonebook {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Segoe UI Semibold", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(12, 9);
+			this->label1->Location = System::Drawing::Point(12, 12);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(77, 30);
+			this->label1->Size = System::Drawing::Size(51, 24);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Sign in";
+			this->label1->Text = L"¬х≥д";
 			// 
 			// panel4
 			// 
@@ -129,11 +129,11 @@ namespace Phonebook {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(75, 70);
+			this->label2->Location = System::Drawing::Point(106, 71);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(353, 22);
+			this->label2->Size = System::Drawing::Size(304, 22);
 			this->label2->TabIndex = 21;
-			this->label2->Text = L"¬вед≥ть пароль дл€ входу в Phonebook";
+			this->label2->Text = L"¬вед≥ть пароль дл€ продовженн€";
 			// 
 			// lbWarning
 			// 
@@ -141,11 +141,11 @@ namespace Phonebook {
 			this->lbWarning->Font = (gcnew System::Drawing::Font(L"Arial", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->lbWarning->ForeColor = System::Drawing::Color::Red;
-			this->lbWarning->Location = System::Drawing::Point(187, 216);
+			this->lbWarning->Location = System::Drawing::Point(163, 216);
 			this->lbWarning->Name = L"lbWarning";
-			this->lbWarning->Size = System::Drawing::Size(126, 14);
+			this->lbWarning->Size = System::Drawing::Size(184, 14);
 			this->lbWarning->TabIndex = 22;
-			this->lbWarning->Text = L"ѕарол≥ не зб≥гаютьс€!";
+			this->lbWarning->Text = L"¬ведено неправильний пароль";
 			this->lbWarning->Visible = false;
 			// 
 			// PasswordForm
