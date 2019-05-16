@@ -15,10 +15,7 @@ namespace Phonebook {
 	public ref class PasswordForm : public System::Windows::Forms::Form
 	{
 	public:
-		PasswordForm(void)
-		{
-			InitializeComponent();
-		}
+		PasswordForm(void);
 
 	protected:
 		/// <summary>
@@ -31,7 +28,11 @@ namespace Phonebook {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Panel^  panel1;
+	private: System::Windows::Forms::Panel^ panControlButtons;
+	protected:
+
+	protected:
+
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Panel^  panel4;
 	private: System::Windows::Forms::TextBox^  tbPassword;
@@ -40,6 +41,7 @@ namespace Phonebook {
 
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Label^  lbWarning;
+	private: System::Windows::Forms::PictureBox^ picXout;
 
 
 
@@ -59,25 +61,44 @@ namespace Phonebook {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PasswordForm::typeid));
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panControlButtons = (gcnew System::Windows::Forms::Panel());
+			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->tbPassword = (gcnew System::Windows::Forms::TextBox());
 			this->btnContinue = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->lbWarning = (gcnew System::Windows::Forms::Label());
-			this->panel1->SuspendLayout();
+			this->panControlButtons->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// panel1
+			// panControlButtons
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)),
-				static_cast<System::Int32>(static_cast<System::Byte>(23)));
-			this->panel1->Controls->Add(this->label1);
-			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(527, 49);
-			this->panel1->TabIndex = 0;
+			this->panControlButtons->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(23)),
+				static_cast<System::Int32>(static_cast<System::Byte>(23)), static_cast<System::Int32>(static_cast<System::Byte>(23)));
+			this->panControlButtons->Controls->Add(this->picXout);
+			this->panControlButtons->Controls->Add(this->label1);
+			this->panControlButtons->Location = System::Drawing::Point(0, 0);
+			this->panControlButtons->Name = L"panControlButtons";
+			this->panControlButtons->Size = System::Drawing::Size(527, 49);
+			this->panControlButtons->TabIndex = 0;
+			this->panControlButtons->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &PasswordForm::PanControlButtons_MouseDown);
+			this->panControlButtons->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &PasswordForm::PanControlButtons_MouseMove);
+			// 
+			// picXout
+			// 
+			this->picXout->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picXout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picXout.Image")));
+			this->picXout->Location = System::Drawing::Point(487, 8);
+			this->picXout->Name = L"picXout";
+			this->picXout->Size = System::Drawing::Size(37, 33);
+			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picXout->TabIndex = 3;
+			this->picXout->TabStop = false;
+			this->picXout->Click += gcnew System::EventHandler(this, &PasswordForm::PicXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &PasswordForm::PicXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &PasswordForm::PicXout_MouseLeave);
 			// 
 			// label1
 			// 
@@ -110,6 +131,7 @@ namespace Phonebook {
 			this->tbPassword->PasswordChar = '*';
 			this->tbPassword->Size = System::Drawing::Size(228, 25);
 			this->tbPassword->TabIndex = 19;
+			this->tbPassword->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &PasswordForm::TbPassword_KeyPress);
 			// 
 			// btnContinue
 			// 
@@ -158,20 +180,32 @@ namespace Phonebook {
 			this->Controls->Add(this->btnContinue);
 			this->Controls->Add(this->tbPassword);
 			this->Controls->Add(this->panel4);
-			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->panControlButtons);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"PasswordForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"PasswordForm";
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
+			this->panControlButtons->ResumeLayout(false);
+			this->panControlButtons->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private:
+		Resources::ResourceManager^ rmSettingsForm;
+		Resources::ResourceManager^ rmGlobal;
+		Point^ mousePosition;
+
 	private: System::Void btnContinue_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void TbPassword_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e);
+	private: System::Void PicXout_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PanControlButtons_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void PanControlButtons_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 };
 }

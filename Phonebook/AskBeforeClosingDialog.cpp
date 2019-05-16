@@ -10,6 +10,8 @@ namespace Phonebook {
 		this->path = path;
 
 		mouseLocation = gcnew Point();
+		rmAskBeforeClosingForm = gcnew Resources::ResourceManager(L"Phonebook.MainForm", this->GetType()->Assembly);
+		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
 	}
 
 	AskBeforeClosingDialog::AskBeforeClosingDialog(MainForm^ mainForm) {
@@ -17,6 +19,14 @@ namespace Phonebook {
 
 		this->mainForm = mainForm;
 		mouseLocation = gcnew Point();
+	}
+
+	System::Void AskBeforeClosingDialog::PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"x_out-focused")));
+	}
+
+	System::Void AskBeforeClosingDialog::PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmAskBeforeClosingForm->GetObject(L"picXout.Image")));
 	}
 
 	System::Void AskBeforeClosingDialog::btnClose_Click(System::Object^  sender, System::EventArgs^  e) {

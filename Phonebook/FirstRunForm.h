@@ -95,6 +95,7 @@ namespace Phonebook {
 
 	private: System::Windows::Forms::CheckBox^  cbAskPasswordWhenStart;
 	private: System::Windows::Forms::CheckBox^  cbAskWhenClosing;
+	private: System::Windows::Forms::PictureBox^ picXout;
 
 
 
@@ -146,14 +147,17 @@ namespace Phonebook {
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->panel10 = (gcnew System::Windows::Forms::Panel());
 			this->btnApply = (gcnew System::Windows::Forms::Button());
+			this->picXout = (gcnew System::Windows::Forms::PictureBox());
 			this->panTopPanel->SuspendLayout();
 			this->panCredentials->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panTopPanel
 			// 
 			this->panTopPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(25)), static_cast<System::Int32>(static_cast<System::Byte>(25)),
 				static_cast<System::Int32>(static_cast<System::Byte>(25)));
+			this->panTopPanel->Controls->Add(this->picXout);
 			this->panTopPanel->Controls->Add(this->lbTitle);
 			this->panTopPanel->Location = System::Drawing::Point(0, 0);
 			this->panTopPanel->Name = L"panTopPanel";
@@ -376,6 +380,20 @@ namespace Phonebook {
 			this->btnApply->UseVisualStyleBackColor = true;
 			this->btnApply->Click += gcnew System::EventHandler(this, &FirstRunForm::btnApply_Click);
 			// 
+			// picXout
+			// 
+			this->picXout->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->picXout->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"picXout.Image")));
+			this->picXout->Location = System::Drawing::Point(706, 15);
+			this->picXout->Name = L"picXout";
+			this->picXout->Size = System::Drawing::Size(37, 33);
+			this->picXout->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->picXout->TabIndex = 3;
+			this->picXout->TabStop = false;
+			this->picXout->Click += gcnew System::EventHandler(this, &FirstRunForm::PicXout_Click);
+			this->picXout->MouseEnter += gcnew System::EventHandler(this, &FirstRunForm::PicXout_MouseEnter);
+			this->picXout->MouseLeave += gcnew System::EventHandler(this, &FirstRunForm::PicXout_MouseLeave);
+			// 
 			// FirstRunForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -398,6 +416,7 @@ namespace Phonebook {
 			this->panTopPanel->ResumeLayout(false);
 			this->panCredentials->ResumeLayout(false);
 			this->panCredentials->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->picXout))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -410,5 +429,8 @@ namespace Phonebook {
 	private: System::Void panTopPanel_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void panTopPanel_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	private: System::Void btnApply_Click(System::Object^  sender, System::EventArgs^  e);
+	private: System::Void PicXout_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e);
 };
 }

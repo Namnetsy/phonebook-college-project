@@ -5,8 +5,6 @@
 
 namespace Entry {
 
-	const std::string FILE_PATH = "entries.pbe";
-
 	struct Entry {
 		std::string fullName;
 		std::string homePhone;

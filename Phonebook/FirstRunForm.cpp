@@ -12,6 +12,19 @@ namespace Phonebook {
 		rmGlobal = gcnew Resources::ResourceManager(L"Phonebook.Resource", this->GetType()->Assembly);
 	}
 
+	// X out events
+	System::Void FirstRunForm::PicXout_Click(System::Object^ sender, System::EventArgs^ e) {
+		Close();
+	}
+
+	System::Void FirstRunForm::PicXout_MouseEnter(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmGlobal->GetObject(L"x_out-focused")));
+	}
+
+	System::Void FirstRunForm::PicXout_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
+		picXout->Image = (cli::safe_cast<System::Drawing::Image^>(rmFirstRunForm->GetObject(L"picXout.Image")));
+	}
+
 	// Top panel' events
 	System::Void FirstRunForm::panTopPanel_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^ e) {
 		mouseLocation.X = -e->X;
